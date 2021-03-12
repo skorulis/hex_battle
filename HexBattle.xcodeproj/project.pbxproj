@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,16 @@
 		FA59B69625FC280F00C7ABC8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B66B25FC280E00C7ABC8 /* ContentView.swift */; };
 		FA59B69725FC280F00C7ABC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA59B66C25FC280F00C7ABC8 /* Assets.xcassets */; };
 		FA59B69825FC280F00C7ABC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA59B66C25FC280F00C7ABC8 /* Assets.xcassets */; };
+		FA59B6AE25FC287800C7ABC8 /* HexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6AD25FC287800C7ABC8 /* HexView.swift */; };
+		FA59B6AF25FC287800C7ABC8 /* HexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6AD25FC287800C7ABC8 /* HexView.swift */; };
+		FA59B6B925FC287F00C7ABC8 /* HexMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6B825FC287F00C7ABC8 /* HexMapModel.swift */; };
+		FA59B6BA25FC287F00C7ABC8 /* HexMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6B825FC287F00C7ABC8 /* HexMapModel.swift */; };
+		FA59B6C125FC293700C7ABC8 /* map1.json in Resources */ = {isa = PBXBuildFile; fileRef = FA59B6C025FC293700C7ABC8 /* map1.json */; };
+		FA59B6C225FC293700C7ABC8 /* map1.json in Resources */ = {isa = PBXBuildFile; fileRef = FA59B6C025FC293700C7ABC8 /* map1.json */; };
+		FA59B6C925FC2A1600C7ABC8 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6C825FC2A1600C7ABC8 /* MapService.swift */; };
+		FA59B6CA25FC2A1600C7ABC8 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6C825FC2A1600C7ABC8 /* MapService.swift */; };
+		FA59B6D525FC2A8400C7ABC8 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = FA59B6D425FC2A8400C7ABC8 /* Swinject */; };
+		FA59B6DC25FC2A8F00C7ABC8 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = FA59B6DB25FC2A8F00C7ABC8 /* Swinject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +59,10 @@
 		FA59B68C25FC280F00C7ABC8 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA59B69025FC280F00C7ABC8 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		FA59B69225FC280F00C7ABC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA59B6AD25FC287800C7ABC8 /* HexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexView.swift; sourceTree = "<group>"; };
+		FA59B6B825FC287F00C7ABC8 /* HexMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapModel.swift; sourceTree = "<group>"; };
+		FA59B6C025FC293700C7ABC8 /* map1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = map1.json; sourceTree = "<group>"; };
+		FA59B6C825FC2A1600C7ABC8 /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA59B6D525FC2A8400C7ABC8 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA59B6DC25FC2A8F00C7ABC8 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,12 +108,17 @@
 				FA59B68425FC280F00C7ABC8 /* Tests iOS */,
 				FA59B68F25FC280F00C7ABC8 /* Tests macOS */,
 				FA59B67225FC280F00C7ABC8 /* Products */,
+				FA59B6DA25FC2A8F00C7ABC8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		FA59B66925FC280E00C7ABC8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				FA59B6C725FC29EB00C7ABC8 /* Service */,
+				FA59B6BF25FC292300C7ABC8 /* Resources */,
+				FA59B6AB25FC286A00C7ABC8 /* Model */,
+				FA59B6AC25FC286A00C7ABC8 /* View */,
 				FA59B66A25FC280E00C7ABC8 /* HexBattleApp.swift */,
 				FA59B66B25FC280E00C7ABC8 /* ContentView.swift */,
 				FA59B66C25FC280F00C7ABC8 /* Assets.xcassets */,
@@ -151,6 +172,45 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		FA59B6AB25FC286A00C7ABC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA59B6B825FC287F00C7ABC8 /* HexMapModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA59B6AC25FC286A00C7ABC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA59B6AD25FC287800C7ABC8 /* HexView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA59B6BF25FC292300C7ABC8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA59B6C025FC293700C7ABC8 /* map1.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FA59B6C725FC29EB00C7ABC8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FA59B6C825FC2A1600C7ABC8 /* MapService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FA59B6DA25FC2A8F00C7ABC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,6 +227,9 @@
 			dependencies = (
 			);
 			name = "HexBattle (iOS)";
+			packageProductDependencies = (
+				FA59B6D425FC2A8400C7ABC8 /* Swinject */,
+			);
 			productName = "HexBattle (iOS)";
 			productReference = FA59B67125FC280F00C7ABC8 /* HexBattle.app */;
 			productType = "com.apple.product-type.application";
@@ -184,6 +247,9 @@
 			dependencies = (
 			);
 			name = "HexBattle (macOS)";
+			packageProductDependencies = (
+				FA59B6DB25FC2A8F00C7ABC8 /* Swinject */,
+			);
 			productName = "HexBattle (macOS)";
 			productReference = FA59B67925FC280F00C7ABC8 /* HexBattle.app */;
 			productType = "com.apple.product-type.application";
@@ -258,6 +324,9 @@
 				Base,
 			);
 			mainGroup = FA59B66425FC280D00C7ABC8;
+			packageReferences = (
+				FA59B6D325FC2A8400C7ABC8 /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			productRefGroup = FA59B67225FC280F00C7ABC8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -275,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA59B6C125FC293700C7ABC8 /* map1.json in Resources */,
 				FA59B69725FC280F00C7ABC8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA59B6C225FC293700C7ABC8 /* map1.json in Resources */,
 				FA59B69825FC280F00C7ABC8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +379,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA59B6C925FC2A1600C7ABC8 /* MapService.swift in Sources */,
+				FA59B6B925FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
+				FA59B6AE25FC287800C7ABC8 /* HexView.swift in Sources */,
 				FA59B69525FC280F00C7ABC8 /* ContentView.swift in Sources */,
 				FA59B69325FC280F00C7ABC8 /* HexBattleApp.swift in Sources */,
 			);
@@ -317,6 +391,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA59B6CA25FC2A1600C7ABC8 /* MapService.swift in Sources */,
+				FA59B6BA25FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
+				FA59B6AF25FC287800C7ABC8 /* HexView.swift in Sources */,
 				FA59B69625FC280F00C7ABC8 /* ContentView.swift in Sources */,
 				FA59B69425FC280F00C7ABC8 /* HexBattleApp.swift in Sources */,
 			);
@@ -696,6 +773,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA59B6D325FC2A8400C7ABC8 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA59B6D425FC2A8400C7ABC8 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA59B6D325FC2A8400C7ABC8 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+		FA59B6DB25FC2A8F00C7ABC8 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA59B6D325FC2A8400C7ABC8 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA59B66525FC280D00C7ABC8 /* Project object */;
 }
