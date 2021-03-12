@@ -19,12 +19,17 @@
 		FA59B6AF25FC287800C7ABC8 /* HexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6AD25FC287800C7ABC8 /* HexView.swift */; };
 		FA59B6B925FC287F00C7ABC8 /* HexMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6B825FC287F00C7ABC8 /* HexMapModel.swift */; };
 		FA59B6BA25FC287F00C7ABC8 /* HexMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6B825FC287F00C7ABC8 /* HexMapModel.swift */; };
-		FA59B6C125FC293700C7ABC8 /* map1.json in Resources */ = {isa = PBXBuildFile; fileRef = FA59B6C025FC293700C7ABC8 /* map1.json */; };
-		FA59B6C225FC293700C7ABC8 /* map1.json in Resources */ = {isa = PBXBuildFile; fileRef = FA59B6C025FC293700C7ABC8 /* map1.json */; };
 		FA59B6C925FC2A1600C7ABC8 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6C825FC2A1600C7ABC8 /* MapService.swift */; };
 		FA59B6CA25FC2A1600C7ABC8 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6C825FC2A1600C7ABC8 /* MapService.swift */; };
 		FA59B6D525FC2A8400C7ABC8 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = FA59B6D425FC2A8400C7ABC8 /* Swinject */; };
 		FA59B6DC25FC2A8F00C7ABC8 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = FA59B6DB25FC2A8F00C7ABC8 /* Swinject */; };
+		FA59B6E225FC2ACD00C7ABC8 /* IocConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6E125FC2ACD00C7ABC8 /* IocConfig.swift */; };
+		FA59B6E325FC2ACD00C7ABC8 /* IocConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6E125FC2ACD00C7ABC8 /* IocConfig.swift */; };
+		FA59B6EB25FC2B3A00C7ABC8 /* PServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6EA25FC2B3A00C7ABC8 /* PServiceType.swift */; };
+		FA59B6EC25FC2B3A00C7ABC8 /* PServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6EA25FC2B3A00C7ABC8 /* PServiceType.swift */; };
+		FA59B6F225FC2C9600C7ABC8 /* maps in Resources */ = {isa = PBXBuildFile; fileRef = FA59B6F125FC2C9600C7ABC8 /* maps */; };
+		FA59B6F325FC2C9600C7ABC8 /* maps in Resources */ = {isa = PBXBuildFile; fileRef = FA59B6F125FC2C9600C7ABC8 /* maps */; };
+		FA59B6FD25FC2CE900C7ABC8 /* MapServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6FC25FC2CE900C7ABC8 /* MapServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +66,11 @@
 		FA59B69225FC280F00C7ABC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA59B6AD25FC287800C7ABC8 /* HexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexView.swift; sourceTree = "<group>"; };
 		FA59B6B825FC287F00C7ABC8 /* HexMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapModel.swift; sourceTree = "<group>"; };
-		FA59B6C025FC293700C7ABC8 /* map1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = map1.json; sourceTree = "<group>"; };
 		FA59B6C825FC2A1600C7ABC8 /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
+		FA59B6E125FC2ACD00C7ABC8 /* IocConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IocConfig.swift; sourceTree = "<group>"; };
+		FA59B6EA25FC2B3A00C7ABC8 /* PServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PServiceType.swift; sourceTree = "<group>"; };
+		FA59B6F125FC2C9600C7ABC8 /* maps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = maps; sourceTree = "<group>"; };
+		FA59B6FC25FC2CE900C7ABC8 /* MapServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +123,7 @@
 		FA59B66925FC280E00C7ABC8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				FA59B6E825FC2B2900C7ABC8 /* Infrastructure */,
 				FA59B6C725FC29EB00C7ABC8 /* Service */,
 				FA59B6BF25FC292300C7ABC8 /* Resources */,
 				FA59B6AB25FC286A00C7ABC8 /* Model */,
@@ -168,6 +177,7 @@
 			children = (
 				FA59B69025FC280F00C7ABC8 /* Tests_macOS.swift */,
 				FA59B69225FC280F00C7ABC8 /* Info.plist */,
+				FA59B6FC25FC2CE900C7ABC8 /* MapServiceTests.swift */,
 			);
 			path = "Tests macOS";
 			sourceTree = "<group>";
@@ -191,7 +201,7 @@
 		FA59B6BF25FC292300C7ABC8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FA59B6C025FC293700C7ABC8 /* map1.json */,
+				FA59B6F125FC2C9600C7ABC8 /* maps */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -200,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				FA59B6C825FC2A1600C7ABC8 /* MapService.swift */,
+				FA59B6E125FC2ACD00C7ABC8 /* IocConfig.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -209,6 +220,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA59B6E825FC2B2900C7ABC8 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				FA59B6E925FC2B3300C7ABC8 /* Extensions */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		FA59B6E925FC2B3300C7ABC8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA59B6EA25FC2B3A00C7ABC8 /* PServiceType.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,7 +371,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA59B6C125FC293700C7ABC8 /* map1.json in Resources */,
+				FA59B6F225FC2C9600C7ABC8 /* maps in Resources */,
 				FA59B69725FC280F00C7ABC8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,7 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA59B6C225FC293700C7ABC8 /* map1.json in Resources */,
+				FA59B6F325FC2C9600C7ABC8 /* maps in Resources */,
 				FA59B69825FC280F00C7ABC8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,9 +407,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA59B6C925FC2A1600C7ABC8 /* MapService.swift in Sources */,
+				FA59B6E225FC2ACD00C7ABC8 /* IocConfig.swift in Sources */,
 				FA59B6B925FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
 				FA59B6AE25FC287800C7ABC8 /* HexView.swift in Sources */,
 				FA59B69525FC280F00C7ABC8 /* ContentView.swift in Sources */,
+				FA59B6EB25FC2B3A00C7ABC8 /* PServiceType.swift in Sources */,
 				FA59B69325FC280F00C7ABC8 /* HexBattleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,9 +421,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA59B6CA25FC2A1600C7ABC8 /* MapService.swift in Sources */,
+				FA59B6E325FC2ACD00C7ABC8 /* IocConfig.swift in Sources */,
 				FA59B6BA25FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
 				FA59B6AF25FC287800C7ABC8 /* HexView.swift in Sources */,
 				FA59B69625FC280F00C7ABC8 /* ContentView.swift in Sources */,
+				FA59B6EC25FC2B3A00C7ABC8 /* PServiceType.swift in Sources */,
 				FA59B69425FC280F00C7ABC8 /* HexBattleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA59B69125FC280F00C7ABC8 /* Tests_macOS.swift in Sources */,
+				FA59B6FD25FC2CE900C7ABC8 /* MapServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
