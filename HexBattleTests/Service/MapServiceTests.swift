@@ -17,7 +17,8 @@ class MapServiceTests: XCTestCase {
     
     
     func testLoadingMaps() {
-        mapService.allMaps()
+        XCTAssertGreaterThan(mapService.allMaps().count, 0)
+        
     }
     
 }

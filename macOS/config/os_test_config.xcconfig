@@ -1,0 +1,12 @@
+//
+//  os_test_config.xcconfig
+//  HexBattle
+//
+//  Created by Alexander Skorulis on 13/3/21.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+//BUNDLE_LOADER = $(BUILT_PRODUCTS_DIR)/HexBattle.app/HexBattle
+//TEST_HOST = $(BUNDLE_LOADER)

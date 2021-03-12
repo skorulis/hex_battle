@@ -7,25 +7,25 @@
 
 import Foundation
 
-struct HexMapModel: Codable {
+public struct HexMapModel: Codable {
     
-    var name: String
-    var nodes: [HexMapNode]
-    var edges: [HexMapEdge]
-    
-}
-
-struct HexMapNode: Codable {
-    
-    let id: Int
-    let x: Double
-    let y: Double
+    public var name: String
+    public var nodes: [HexMapNode]
+    public var edges: [HexMapEdge]
     
 }
 
-struct HexMapEdge: Codable {
+public struct HexMapNode: Codable {
     
-    let id1: Int
-    let id2: Int
+    public let id: Int
+    public let x: Double
+    public let y: Double
+    
+}
+
+public struct HexMapEdge: Codable {
+    
+    public let id1: Int
+    public let id2: Int
     
 }

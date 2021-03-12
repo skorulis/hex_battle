@@ -15,10 +15,23 @@ final class MapService: PServiceType {
     }
     
     func allMaps() -> [HexMapModel] {
-        let allURLS = Bundle.main.urls(forResourcesWithExtension: "json", subdirectory: "maps", localization: nil)
-        print(allURLS)
+        guard let allURLS = Bundle.main.urls(forResourcesWithExtension: "json", subdirectory: "maps", localization: nil) else {
+            return []
+        }
         
-        return []
+        do {
+            let maps = try allURLS.map { try loadMap(url: $0) }
+            return maps
+        } catch {
+            print("Error reading maps \(error)")
+            return []
+        }
+        
+    }
+    
+    private func loadMap(url: URL) throws -> HexMapModel {
+        let data = try Data(contentsOf: url)
+        return try JSONDecoder().decode(HexMapModel.self, from: data)
     }
     
 }

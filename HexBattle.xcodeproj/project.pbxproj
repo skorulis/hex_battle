@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FA59B68625FC280F00C7ABC8 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B68525FC280F00C7ABC8 /* Tests_iOS.swift */; };
-		FA59B69125FC280F00C7ABC8 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B69025FC280F00C7ABC8 /* Tests_macOS.swift */; };
 		FA59B69325FC280F00C7ABC8 /* HexBattleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B66A25FC280E00C7ABC8 /* HexBattleApp.swift */; };
 		FA59B69425FC280F00C7ABC8 /* HexBattleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B66A25FC280E00C7ABC8 /* HexBattleApp.swift */; };
 		FA59B69525FC280F00C7ABC8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B66B25FC280E00C7ABC8 /* ContentView.swift */; };
@@ -29,7 +28,8 @@
 		FA59B6EC25FC2B3A00C7ABC8 /* PServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6EA25FC2B3A00C7ABC8 /* PServiceType.swift */; };
 		FA59B6F225FC2C9600C7ABC8 /* maps in Resources */ = {isa = PBXBuildFile; fileRef = FA59B6F125FC2C9600C7ABC8 /* maps */; };
 		FA59B6F325FC2C9600C7ABC8 /* maps in Resources */ = {isa = PBXBuildFile; fileRef = FA59B6F125FC2C9600C7ABC8 /* maps */; };
-		FA59B6FD25FC2CE900C7ABC8 /* MapServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B6FC25FC2CE900C7ABC8 /* MapServiceTests.swift */; };
+		FA59B77125FC33DE00C7ABC8 /* HexBattleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B77025FC33DE00C7ABC8 /* HexBattleTests.swift */; };
+		FA59B77F25FC341800C7ABC8 /* MapServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B77E25FC341800C7ABC8 /* MapServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,7 @@
 			remoteGlobalIDString = FA59B67025FC280F00C7ABC8;
 			remoteInfo = "HexBattle (iOS)";
 		};
-		FA59B68D25FC280F00C7ABC8 /* PBXContainerItemProxy */ = {
+		FA59B77325FC33DE00C7ABC8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA59B66525FC280D00C7ABC8 /* Project object */;
 			proxyType = 1;
@@ -61,16 +61,17 @@
 		FA59B68125FC280F00C7ABC8 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA59B68525FC280F00C7ABC8 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
 		FA59B68725FC280F00C7ABC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA59B68C25FC280F00C7ABC8 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA59B69025FC280F00C7ABC8 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
-		FA59B69225FC280F00C7ABC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA59B6AD25FC287800C7ABC8 /* HexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexView.swift; sourceTree = "<group>"; };
 		FA59B6B825FC287F00C7ABC8 /* HexMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapModel.swift; sourceTree = "<group>"; };
 		FA59B6C825FC2A1600C7ABC8 /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
 		FA59B6E125FC2ACD00C7ABC8 /* IocConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IocConfig.swift; sourceTree = "<group>"; };
 		FA59B6EA25FC2B3A00C7ABC8 /* PServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PServiceType.swift; sourceTree = "<group>"; };
 		FA59B6F125FC2C9600C7ABC8 /* maps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = maps; sourceTree = "<group>"; };
-		FA59B6FC25FC2CE900C7ABC8 /* MapServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapServiceTests.swift; sourceTree = "<group>"; };
+		FA59B71C25FC314000C7ABC8 /* os_test_config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = os_test_config.xcconfig; sourceTree = "<group>"; };
+		FA59B76E25FC33DE00C7ABC8 /* HexBattleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HexBattleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA59B77025FC33DE00C7ABC8 /* HexBattleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexBattleTests.swift; sourceTree = "<group>"; };
+		FA59B77225FC33DE00C7ABC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA59B77E25FC341800C7ABC8 /* MapServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +98,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA59B68925FC280F00C7ABC8 /* Frameworks */ = {
+		FA59B76B25FC33DE00C7ABC8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -114,7 +115,7 @@
 				FA59B67325FC280F00C7ABC8 /* iOS */,
 				FA59B67A25FC280F00C7ABC8 /* macOS */,
 				FA59B68425FC280F00C7ABC8 /* Tests iOS */,
-				FA59B68F25FC280F00C7ABC8 /* Tests macOS */,
+				FA59B76F25FC33DE00C7ABC8 /* HexBattleTests */,
 				FA59B67225FC280F00C7ABC8 /* Products */,
 				FA59B6DA25FC2A8F00C7ABC8 /* Frameworks */,
 			);
@@ -141,7 +142,7 @@
 				FA59B67125FC280F00C7ABC8 /* HexBattle.app */,
 				FA59B67925FC280F00C7ABC8 /* HexBattle.app */,
 				FA59B68125FC280F00C7ABC8 /* Tests iOS.xctest */,
-				FA59B68C25FC280F00C7ABC8 /* Tests macOS.xctest */,
+				FA59B76E25FC33DE00C7ABC8 /* HexBattleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,6 +158,7 @@
 		FA59B67A25FC280F00C7ABC8 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				FA59B71B25FC314000C7ABC8 /* config */,
 				FA59B67B25FC280F00C7ABC8 /* Info.plist */,
 				FA59B67C25FC280F00C7ABC8 /* macOS.entitlements */,
 			);
@@ -170,16 +172,6 @@
 				FA59B68725FC280F00C7ABC8 /* Info.plist */,
 			);
 			path = "Tests iOS";
-			sourceTree = "<group>";
-		};
-		FA59B68F25FC280F00C7ABC8 /* Tests macOS */ = {
-			isa = PBXGroup;
-			children = (
-				FA59B69025FC280F00C7ABC8 /* Tests_macOS.swift */,
-				FA59B69225FC280F00C7ABC8 /* Info.plist */,
-				FA59B6FC25FC2CE900C7ABC8 /* MapServiceTests.swift */,
-			);
-			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
 		FA59B6AB25FC286A00C7ABC8 /* Model */ = {
@@ -236,6 +228,32 @@
 				FA59B6EA25FC2B3A00C7ABC8 /* PServiceType.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FA59B71B25FC314000C7ABC8 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				FA59B71C25FC314000C7ABC8 /* os_test_config.xcconfig */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		FA59B76F25FC33DE00C7ABC8 /* HexBattleTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA59B77D25FC341800C7ABC8 /* Service */,
+				FA59B77025FC33DE00C7ABC8 /* HexBattleTests.swift */,
+				FA59B77225FC33DE00C7ABC8 /* Info.plist */,
+			);
+			path = HexBattleTests;
+			sourceTree = "<group>";
+		};
+		FA59B77D25FC341800C7ABC8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FA59B77E25FC341800C7ABC8 /* MapServiceTests.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,23 +317,23 @@
 			productReference = FA59B68125FC280F00C7ABC8 /* Tests iOS.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		FA59B68B25FC280F00C7ABC8 /* Tests macOS */ = {
+		FA59B76D25FC33DE00C7ABC8 /* HexBattleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA59B6A425FC280F00C7ABC8 /* Build configuration list for PBXNativeTarget "Tests macOS" */;
+			buildConfigurationList = FA59B77525FC33DE00C7ABC8 /* Build configuration list for PBXNativeTarget "HexBattleTests" */;
 			buildPhases = (
-				FA59B68825FC280F00C7ABC8 /* Sources */,
-				FA59B68925FC280F00C7ABC8 /* Frameworks */,
-				FA59B68A25FC280F00C7ABC8 /* Resources */,
+				FA59B76A25FC33DE00C7ABC8 /* Sources */,
+				FA59B76B25FC33DE00C7ABC8 /* Frameworks */,
+				FA59B76C25FC33DE00C7ABC8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FA59B68E25FC280F00C7ABC8 /* PBXTargetDependency */,
+				FA59B77425FC33DE00C7ABC8 /* PBXTargetDependency */,
 			);
-			name = "Tests macOS";
-			productName = "Tests macOS";
-			productReference = FA59B68C25FC280F00C7ABC8 /* Tests macOS.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
+			name = HexBattleTests;
+			productName = HexBattleTests;
+			productReference = FA59B76E25FC33DE00C7ABC8 /* HexBattleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -336,7 +354,7 @@
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = FA59B67025FC280F00C7ABC8;
 					};
-					FA59B68B25FC280F00C7ABC8 = {
+					FA59B76D25FC33DE00C7ABC8 = {
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = FA59B67825FC280F00C7ABC8;
 					};
@@ -361,7 +379,7 @@
 				FA59B67025FC280F00C7ABC8 /* HexBattle (iOS) */,
 				FA59B67825FC280F00C7ABC8 /* HexBattle (macOS) */,
 				FA59B68025FC280F00C7ABC8 /* Tests iOS */,
-				FA59B68B25FC280F00C7ABC8 /* Tests macOS */,
+				FA59B76D25FC33DE00C7ABC8 /* HexBattleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -392,7 +410,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA59B68A25FC280F00C7ABC8 /* Resources */ = {
+		FA59B76C25FC33DE00C7ABC8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -438,12 +456,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA59B68825FC280F00C7ABC8 /* Sources */ = {
+		FA59B76A25FC33DE00C7ABC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA59B69125FC280F00C7ABC8 /* Tests_macOS.swift in Sources */,
-				FA59B6FD25FC2CE900C7ABC8 /* MapServiceTests.swift in Sources */,
+				FA59B77F25FC341800C7ABC8 /* MapServiceTests.swift in Sources */,
+				FA59B77125FC33DE00C7ABC8 /* HexBattleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,10 +473,10 @@
 			target = FA59B67025FC280F00C7ABC8 /* HexBattle (iOS) */;
 			targetProxy = FA59B68225FC280F00C7ABC8 /* PBXContainerItemProxy */;
 		};
-		FA59B68E25FC280F00C7ABC8 /* PBXTargetDependency */ = {
+		FA59B77425FC33DE00C7ABC8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA59B67825FC280F00C7ABC8 /* HexBattle (macOS) */;
-			targetProxy = FA59B68D25FC280F00C7ABC8 /* PBXContainerItemProxy */;
+			targetProxy = FA59B77325FC33DE00C7ABC8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -712,47 +730,47 @@
 			};
 			name = Release;
 		};
-		FA59B6A525FC280F00C7ABC8 /* Debug */ = {
+		FA59B77625FC33DE00C7ABC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = X4S6MUZL2D;
-				INFOPLIST_FILE = "Tests macOS/Info.plist";
+				INFOPLIST_FILE = HexBattleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.skorulis.Tests-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.skorulis.HexBattleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "HexBattle (macOS)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HexBattle.app/Contents/MacOS/HexBattle";
 			};
 			name = Debug;
 		};
-		FA59B6A625FC280F00C7ABC8 /* Release */ = {
+		FA59B77725FC33DE00C7ABC8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = X4S6MUZL2D;
-				INFOPLIST_FILE = "Tests macOS/Info.plist";
+				INFOPLIST_FILE = HexBattleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.skorulis.Tests-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.skorulis.HexBattleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "HexBattle (macOS)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HexBattle.app/Contents/MacOS/HexBattle";
 			};
 			name = Release;
 		};
@@ -795,11 +813,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA59B6A425FC280F00C7ABC8 /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
+		FA59B77525FC33DE00C7ABC8 /* Build configuration list for PBXNativeTarget "HexBattleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FA59B6A525FC280F00C7ABC8 /* Debug */,
-				FA59B6A625FC280F00C7ABC8 /* Release */,
+				FA59B77625FC33DE00C7ABC8 /* Debug */,
+				FA59B77725FC33DE00C7ABC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

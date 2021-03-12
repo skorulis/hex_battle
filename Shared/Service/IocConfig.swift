@@ -8,16 +8,16 @@
 import Foundation
 import Swinject
 
-final class IOCConfig {
+public final class IOCConfig {
     
-    let container: Container
+    private  let container: Container
     
-    init() {
+    public init() {
         container = Container()
     }
     
     @discardableResult
-    func configure() -> IOCConfig {
+    public func configure() -> IOCConfig {
         setupServices()
         return self
     }
@@ -26,7 +26,7 @@ final class IOCConfig {
         container.register(MapService.self)
     }
     
-    func get<Service>(_ serviceType: Service.Type = Service.self) -> Service? {
+    public func get<Service>(_ serviceType: Service.Type = Service.self) -> Service? {
         return container.resolve(serviceType)
     }
     
