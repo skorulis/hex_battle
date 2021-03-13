@@ -12,7 +12,11 @@ import SwiftUI
 
 struct HexMapView {
     
-    let model: HexMapModel
+    let viewModel: HexMapNodeViewModel
+    
+    var model: HexMapModel {
+        return viewModel.map
+    }
     
 }
 
@@ -23,20 +27,24 @@ extension HexMapView: View {
     
     var body: some View {
         ZStack {
+            Color.offWhite
             edges
             nodes
         }
-        
+        .mapFrame(viewModel.map)
     }
     
     private var nodes: some View {
         ZStack {
             ForEach(model.nodes) { node in
-                HexMapNodeView(model: node)
-                    .position(x: CGFloat(node.x), y: CGFloat(node.y))
+                HexMapNodeView(
+                    model: node,
+                    state: viewModel.nodeState(id: node.id)
+                )
+                .position(x: CGFloat(node.x), y: CGFloat(node.y))
             }
         }
-        .mapFrame(model)
+        .mapFrame(viewModel.map)
         
     }
     
@@ -49,8 +57,8 @@ extension HexMapView: View {
                 path.addLine(to: node2.point)
             }
         }
-        .stroke(Color.gray)
-        .mapFrame(model)
+        .stroke(lineWidth: 6)
+        .mapFrame(viewModel.map)
     }
     
 }
@@ -72,18 +80,21 @@ extension View {
 
 struct HexMapView_Previews: PreviewProvider {
     
-    static var previews: some View {
+    static var previewMap: HexMapModel {
         let nodes = [
             HexMapNode(id: 1, x: 40, y: 40),
-            HexMapNode(id: 2, x: 100, y: 190)
+            HexMapNode(id: 2, x: 100, y: 190),
+            HexMapNode(id: 3, x: 200, y: 100),
         ]
         let edges = [
             HexMapEdge(id1: 1, id2: 2)
         ]
-        let model = HexMapModel(name: "Map1", nodes: nodes, edges: edges)
-        
-        
-        return HexMapView(model: model)
+        return HexMapModel(name: "Map1", nodes: nodes, edges: edges)
+    }
+    
+    static var previews: some View {
+        let viewModel = HexMapNodeViewModel(map: previewMap)
+        return HexMapView(viewModel: viewModel)
     }
     
 }
