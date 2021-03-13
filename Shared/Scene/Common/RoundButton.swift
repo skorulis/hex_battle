@@ -36,7 +36,7 @@ struct RoundButtonStyle:ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(30)
+            .frame(width: RenderConstants.nodeRadius * 2, height: RenderConstants.nodeRadius * 2)
             .background(circleBackground(configuration: configuration))
     }
     

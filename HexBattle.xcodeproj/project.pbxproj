@@ -73,6 +73,10 @@
 		FAC16E7A25FD722D004238EC /* HexBattleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E7625FD722D004238EC /* HexBattleApp.swift */; };
 		FAC16E8825FD7756004238EC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E8725FD7756004238EC /* RoundButton.swift */; };
 		FAC16E8925FD7756004238EC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E8725FD7756004238EC /* RoundButton.swift */; };
+		FAC16E8F25FD791A004238EC /* GameControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E8E25FD791A004238EC /* GameControls.swift */; };
+		FAC16E9025FD791A004238EC /* GameControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E8E25FD791A004238EC /* GameControls.swift */; };
+		FAC16E9625FD81F0004238EC /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E9525FD81F0004238EC /* PlayerState.swift */; };
+		FAC16E9725FD81F0004238EC /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E9525FD81F0004238EC /* PlayerState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +142,8 @@
 		FAC16E7525FD722D004238EC /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FAC16E7625FD722D004238EC /* HexBattleApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexBattleApp.swift; sourceTree = "<group>"; };
 		FAC16E8725FD7756004238EC /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		FAC16E8E25FD791A004238EC /* GameControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControls.swift; sourceTree = "<group>"; };
+		FAC16E9525FD81F0004238EC /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +251,7 @@
 				FAC16D6F25FC4A44004238EC /* HexMapState.swift */,
 				FAC16D7625FC4B33004238EC /* NodeType.swift */,
 				FAC16D9625FC5CC4004238EC /* PlayerModel.swift */,
+				FAC16E9525FD81F0004238EC /* PlayerState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -383,6 +390,7 @@
 			children = (
 				FAC16E4B25FD720C004238EC /* GameView.swift */,
 				FAC16E4C25FD720C004238EC /* GameViewModel.swift */,
+				FAC16E8E25FD791A004238EC /* GameControls.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -602,6 +610,7 @@
 				FAC16D7725FC4B33004238EC /* NodeType.swift in Sources */,
 				FA59B6C925FC2A1600C7ABC8 /* MapService.swift in Sources */,
 				FAC16E5B25FD720C004238EC /* AppCoordinatorView.swift in Sources */,
+				FAC16E9625FD81F0004238EC /* PlayerState.swift in Sources */,
 				FAC16E2525FCA41A004238EC /* Color+Extensions.swift in Sources */,
 				FAC16E5D25FD720C004238EC /* GameView.swift in Sources */,
 				FAC16DD625FC753C004238EC /* GameStateService.swift in Sources */,
@@ -620,6 +629,7 @@
 				FAC16E6F25FD720C004238EC /* LevelSelectionViewModel.swift in Sources */,
 				FAC16E6725FD720C004238EC /* HexMapModel+ViewModel.swift in Sources */,
 				FA59B7F325FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */,
+				FAC16E8F25FD791A004238EC /* GameControls.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +646,7 @@
 				FAC16D7825FC4B33004238EC /* NodeType.swift in Sources */,
 				FA59B6CA25FC2A1600C7ABC8 /* MapService.swift in Sources */,
 				FAC16E5C25FD720C004238EC /* AppCoordinatorView.swift in Sources */,
+				FAC16E9725FD81F0004238EC /* PlayerState.swift in Sources */,
 				FAC16E2625FCA41A004238EC /* Color+Extensions.swift in Sources */,
 				FAC16E5E25FD720C004238EC /* GameView.swift in Sources */,
 				FAC16DD725FC753C004238EC /* GameStateService.swift in Sources */,
@@ -654,6 +665,7 @@
 				FAC16E7025FD720C004238EC /* LevelSelectionViewModel.swift in Sources */,
 				FAC16E6825FD720C004238EC /* HexMapModel+ViewModel.swift in Sources */,
 				FA59B7F425FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */,
+				FAC16E9025FD791A004238EC /* GameControls.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

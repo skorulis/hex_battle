@@ -19,15 +19,32 @@ final class GameStateService: ObservableObject {
     @Published
     public var selectedNode: Int?
     
+    @Published
+    public var playerStates: [Int: PlayerState] = [:]
+    
     public func start(map: HexMapModel) {
         self.map = GameStateService.reposition(map)
         self.state = GameStateService.buildState(self.map!)
+        for player in self.state?.players ?? [] {
+            playerStates[player.id] = PlayerState()
+        }
     }
 
     public func mapViewModel() -> MapViewModel {
         return MapViewModel(map: map!, state: state!, stateService: self)
     }
     
+}
+
+// MARK: Behaviours
+
+extension GameStateService {
+    
+    func startConstruction(player:Int, type: NodeType) {
+        var state = self.playerStates[player]!
+        state.constructionQueue.append(type)
+        playerStates[player] = state
+    }
 }
 
 // MARK: Helpers

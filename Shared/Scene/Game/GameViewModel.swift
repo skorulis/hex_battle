@@ -18,12 +18,21 @@ final class GameViewModel: ObservableObject {
     @Published
     var selectedNode: Int?
     
+    @Published
+    var playerState: PlayerState
+    
     init(stateService: GameStateService) {
+        let playerId = stateService.player.id
         self.player = stateService.player
-        self.stateService =  stateService
+        self.stateService = stateService
+        self.playerState = stateService.playerStates[playerId]!
         
         stateService.$selectedNode
             .assign(to: &$selectedNode)
+        
+        stateService.$playerStates
+            .map({$0[playerId]!})
+            .assign(to: &$playerState)
     }
     
     public func mapViewModel() -> MapViewModel? {
@@ -42,6 +51,12 @@ extension GameViewModel {
     
     func deselect() {
         stateService?.selectedNode = nil
+    }
+    
+    func startConstruction(type: NodeType) -> () -> Void {
+        return {
+            self.stateService?.startConstruction(player: self.player.id, type: type)
+        }
     }
     
 }

@@ -26,39 +26,8 @@ extension GameView: View {
     var body: some View {
         VStack {
             maybeMap
-            controls
-                .frame(height: 60)
-        }
-    }
-    
-    @ViewBuilder
-    var controls: some View  {
-        if let selected = viewModel.selectedNode, let node = viewModel.nodeState(id: selected) {
-            VStack {
-                Divider()
-            }
-            nodeControls(node: node)
-            
-        } else {
-            EmptyView()
-        }
-    }
-    
-    @ViewBuilder
-    private func nodeControls(node: HexMapNodeState) -> some View {
-        switch node.type {
-        case .command:
-            commandButtons
-        default:
-            Text("TODO")
-        }
-    }
-    
-    var commandButtons: some View {
-        HStack {
-            Button(action: viewModel.deselect, label: {
-                Text("Cancel")
-            })
+            GameControlsView(viewModel: viewModel)
+                .frame(height: 80)
         }
     }
     
