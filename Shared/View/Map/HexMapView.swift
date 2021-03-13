@@ -14,7 +14,6 @@ struct HexMapView {
     
     let model: HexMapModel
     
-    
 }
 
 
@@ -33,11 +32,11 @@ extension HexMapView: View {
     private var nodes: some View {
         ZStack {
             ForEach(model.nodes) { node in
-                Text("\(node.id)")
+                HexMapNodeView(model: node)
                     .position(x: CGFloat(node.x), y: CGFloat(node.y))
             }
         }
-        .frame(width: model.size.width + 20, height: model.size.height + 20)
+        .mapFrame(model)
         
     }
     
@@ -50,10 +49,22 @@ extension HexMapView: View {
                 path.addLine(to: node2.point)
             }
         }
-        .stroke()
-        .frame(width: model.size.width + 20, height: model.size.height + 20)
+        .stroke(Color.gray)
+        .mapFrame(model)
     }
     
+}
+
+// MARK: - View extensions
+
+extension View {
+    
+    func mapFrame(_ model: HexMapModel) -> some View {
+        let width = model.size.width + RenderConstants.nodeRadius + RenderConstants.borderBuffer
+        let height = model.size.height + RenderConstants.nodeRadius + RenderConstants.borderBuffer
+        
+        return frame(width: width, height: height)
+    }
 }
 
 
@@ -63,8 +74,8 @@ struct HexMapView_Previews: PreviewProvider {
     
     static var previews: some View {
         let nodes = [
-            HexMapNode(id: 1, x: 50, y: 50),
-            HexMapNode(id: 2, x: 100, y: 50)
+            HexMapNode(id: 1, x: 40, y: 40),
+            HexMapNode(id: 2, x: 100, y: 190)
         ]
         let edges = [
             HexMapEdge(id1: 1, id2: 2)

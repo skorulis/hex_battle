@@ -32,6 +32,10 @@
 		FA59B7D025FC37D100C7ABC8 /* HexMapModel+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7CD25FC37D100C7ABC8 /* HexMapModel+ViewModel.swift */; };
 		FA59B7D125FC37D100C7ABC8 /* HexMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7CE25FC37D100C7ABC8 /* HexMapView.swift */; };
 		FA59B7D225FC37D100C7ABC8 /* HexMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7CE25FC37D100C7ABC8 /* HexMapView.swift */; };
+		FA59B7D825FC3EED00C7ABC8 /* HexMapNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7D725FC3EED00C7ABC8 /* HexMapNodeView.swift */; };
+		FA59B7D925FC3EED00C7ABC8 /* HexMapNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7D725FC3EED00C7ABC8 /* HexMapNodeView.swift */; };
+		FA59B7E025FC416500C7ABC8 /* RenderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7DF25FC416500C7ABC8 /* RenderConstants.swift */; };
+		FA59B7E125FC416500C7ABC8 /* RenderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7DF25FC416500C7ABC8 /* RenderConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,8 @@
 		FA59B77E25FC341800C7ABC8 /* MapServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapServiceTests.swift; sourceTree = "<group>"; };
 		FA59B7CD25FC37D100C7ABC8 /* HexMapModel+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HexMapModel+ViewModel.swift"; sourceTree = "<group>"; };
 		FA59B7CE25FC37D100C7ABC8 /* HexMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexMapView.swift; sourceTree = "<group>"; };
+		FA59B7D725FC3EED00C7ABC8 /* HexMapNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapNodeView.swift; sourceTree = "<group>"; };
+		FA59B7DF25FC416500C7ABC8 /* RenderConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +194,7 @@
 		FA59B6AC25FC286A00C7ABC8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA59B7DE25FC415800C7ABC8 /* Common */,
 				FA59B7CC25FC37D100C7ABC8 /* Map */,
 			);
 			path = View;
@@ -264,8 +271,17 @@
 			children = (
 				FA59B7CD25FC37D100C7ABC8 /* HexMapModel+ViewModel.swift */,
 				FA59B7CE25FC37D100C7ABC8 /* HexMapView.swift */,
+				FA59B7D725FC3EED00C7ABC8 /* HexMapNodeView.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		FA59B7DE25FC415800C7ABC8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FA59B7DF25FC416500C7ABC8 /* RenderConstants.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,10 +456,12 @@
 				FA59B7D125FC37D100C7ABC8 /* HexMapView.swift in Sources */,
 				FA59B6E225FC2ACD00C7ABC8 /* IocConfig.swift in Sources */,
 				FA59B6B925FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
+				FA59B7D825FC3EED00C7ABC8 /* HexMapNodeView.swift in Sources */,
 				FA59B69525FC280F00C7ABC8 /* ContentView.swift in Sources */,
 				FA59B6EB25FC2B3A00C7ABC8 /* PServiceType.swift in Sources */,
 				FA59B69325FC280F00C7ABC8 /* HexBattleApp.swift in Sources */,
 				FA59B7CF25FC37D100C7ABC8 /* HexMapModel+ViewModel.swift in Sources */,
+				FA59B7E025FC416500C7ABC8 /* RenderConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,10 +473,12 @@
 				FA59B7D225FC37D100C7ABC8 /* HexMapView.swift in Sources */,
 				FA59B6E325FC2ACD00C7ABC8 /* IocConfig.swift in Sources */,
 				FA59B6BA25FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
+				FA59B7D925FC3EED00C7ABC8 /* HexMapNodeView.swift in Sources */,
 				FA59B69625FC280F00C7ABC8 /* ContentView.swift in Sources */,
 				FA59B6EC25FC2B3A00C7ABC8 /* PServiceType.swift in Sources */,
 				FA59B69425FC280F00C7ABC8 /* HexBattleApp.swift in Sources */,
 				FA59B7D025FC37D100C7ABC8 /* HexMapModel+ViewModel.swift in Sources */,
+				FA59B7E125FC416500C7ABC8 /* RenderConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
