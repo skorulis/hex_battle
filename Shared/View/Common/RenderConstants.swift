@@ -11,4 +11,5 @@ struct RenderConstants {
     
     static let nodeRadius: CGFloat = 30
     static let borderBuffer: CGFloat = 10
+    static let basicTerritoryRadius: CGFloat = nodeRadius + 20
 }

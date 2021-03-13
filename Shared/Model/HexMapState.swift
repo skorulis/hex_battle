@@ -11,12 +11,14 @@ import Foundation
 struct HexMapState: Codable {
     
     var nodes:[Int: HexMapNodeState] = [:]
+    var players: [PlayerModel] = []
     
 }
 
 struct HexMapNodeState: Codable {
     
     var type: NodeType = .empty
+    var owner: Int?
     
     
 }

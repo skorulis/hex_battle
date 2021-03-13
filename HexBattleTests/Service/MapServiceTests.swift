@@ -9,7 +9,6 @@
 import Foundation
 import XCTest
 
-
 class MapServiceTests: XCTestCase {
     
     let ioc = IOCConfig().configure()
