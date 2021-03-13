@@ -31,7 +31,8 @@ extension GameView: View {
 struct GameView_Previews: PreviewProvider {
     
     static var previews: some View {
-        GameView()
+        let player = PlayerModel(id: 1)
+        GameView(viewModel: HexGameViewModel(player: player))
     }
 }
 

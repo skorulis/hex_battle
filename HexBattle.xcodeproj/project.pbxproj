@@ -57,6 +57,7 @@
 		FAC16DD025FC7445004238EC /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16DCE25FC7445004238EC /* GameView.swift */; };
 		FAC16DD625FC753C004238EC /* GameStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16DD525FC753C004238EC /* GameStateService.swift */; };
 		FAC16DD725FC753C004238EC /* GameStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16DD525FC753C004238EC /* GameStateService.swift */; };
+		FAC16DDD25FC8022004238EC /* GameStateServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16DDC25FC8022004238EC /* GameStateServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		FAC16DC725FC7085004238EC /* HexGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexGameViewModel.swift; sourceTree = "<group>"; };
 		FAC16DCE25FC7445004238EC /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		FAC16DD525FC753C004238EC /* GameStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateService.swift; sourceTree = "<group>"; };
+		FAC16DDC25FC8022004238EC /* GameStateServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				FA59B77E25FC341800C7ABC8 /* MapServiceTests.swift */,
+				FAC16DDC25FC8022004238EC /* GameStateServiceTests.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC16D8D25FC57C4004238EC /* HexMapNodeViewModelTests.swift in Sources */,
+				FAC16DDD25FC8022004238EC /* GameStateServiceTests.swift in Sources */,
 				FA59B77F25FC341800C7ABC8 /* MapServiceTests.swift in Sources */,
 				FA59B77125FC33DE00C7ABC8 /* HexBattleTests.swift in Sources */,
 			);

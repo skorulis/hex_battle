@@ -111,11 +111,13 @@ struct HexMapView_Previews: PreviewProvider {
             HexMapEdge(id1: 3, id2: 5),
             HexMapEdge(id1: 3, id2: 6),
         ]
-        return HexMapModel(name: "Map1", nodes: nodes, edges: edges)
+        return GameStateService.reposition(HexMapModel(name: "Map1", nodes: nodes, edges: edges))
     }
     
     static var previewViewModel: HexMapViewModel {
-        let viewModel = HexMapViewModel(map: previewMap)
+        let map = previewMap
+        let state = GameStateService.buildState(map)
+        let viewModel = HexMapViewModel(map: previewMap, state: state, stateService: nil)
         viewModel.mapState.nodes[2] = HexMapNodeState(type: .passive, owner: 1)
         
         viewModel.mapState.nodes[4] = HexMapNodeState(type: .passive, owner: 2)

@@ -10,7 +10,7 @@ import Swinject
 
 public final class IOCConfig {
     
-    public let shared = IOCConfig().configure()
+    public static let shared = IOCConfig().configure()
     
     private  let container: Container
     

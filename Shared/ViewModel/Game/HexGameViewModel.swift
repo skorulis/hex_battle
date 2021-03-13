@@ -12,11 +12,10 @@ import Swinject
 
 final class HexGameViewModel {
     
-    let currentPlayer: PlayerModel
-    var currentLevel: String? //Level that has been selected
+    let player: PlayerModel
     
-    init(currentPlayer: PlayerModel) {
-        self.currentPlayer = currentPlayer
+    init(player: PlayerModel) {
+        self.player = player
     }
     
 }
@@ -26,7 +25,7 @@ final class HexGameViewModel {
 extension HexGameViewModel: PServiceType {
     
     static func make(_ r: Resolver) -> HexGameViewModel {
-        return HexGameViewModel(currentPlayer: PlayerModel(id: 1))
+        return HexGameViewModel(player: PlayerModel(id: 1))
     }
 }
 
