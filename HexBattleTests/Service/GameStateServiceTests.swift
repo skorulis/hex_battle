@@ -46,6 +46,8 @@ class GameStateServiceTests: XCTestCase {
         
         XCTAssertEqual(state.nodes[1]?.owner, 1)
         XCTAssertEqual(state.nodes[1]?.type, .command)
+        
+        XCTAssertEqual(state.players.count, 1)
     }
     
     func testViewModel() {

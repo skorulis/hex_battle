@@ -13,10 +13,19 @@ struct HexMapNodeView {
     
     let model: HexMapNode
     let state: HexMapNodeState
+    let selected: Bool
+    let action: () -> Void
     
-    init(model: HexMapNode, state: HexMapNodeState) {
+    init(
+        model: HexMapNode,
+        state: HexMapNodeState,
+        selected: Bool,
+        action: @escaping () -> Void
+    ) {
         self.model = model
         self.state = state
+        self.selected = selected
+        self.action = action
     }
     
 }
@@ -26,16 +35,23 @@ struct HexMapNodeView {
 extension HexMapNodeView: View {
     
     var body: some View {
-        Button(action: {}, label: {
+        Button(action: action, label: {
             Text(state.type.symbol)
         })
-        .buttonStyle(HexMapNodeButtonStyle())
+        .buttonStyle(HexMapNodeButtonStyle(selected: selected))
     }
 }
 
 // MARK: - ButtonStyle
 
 private struct HexMapNodeButtonStyle:ButtonStyle {
+    
+    private let selected: Bool
+    
+    init(selected: Bool) {
+        self.selected = selected
+    }
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(30)
@@ -64,8 +80,25 @@ private struct HexMapNodeButtonStyle:ButtonStyle {
         } else {
             Circle()
                 .fill(Color.offWhite)
-                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                .shadow(color: darkColor.opacity(0.2), radius: 10, x: 10, y: 10)
+                .shadow(color: lightColor.opacity(0.7), radius: 10, x: -5, y: -5)
+        }
+        
+    }
+    
+    private var lightColor: Color {
+        if selected {
+            return Color.mixed(colors: [Color.white, Color.peterRiver])
+        } else {
+            return Color.white
+        }
+    }
+    
+    private var darkColor: Color {
+        if selected {
+            return Color.mixed(colors: [Color.black, Color.peterRiver])
+        } else {
+            return Color.black
         }
         
     }
@@ -78,7 +111,12 @@ struct HexMapNodeView_Previews: PreviewProvider {
     static var previews: some View {
         let model = HexMapNode(id: 1, x: 10, y: 10, initialState: nil)
         let state = HexMapNodeState(type: .command)
-        HexMapNodeView(model: model, state: state)
+        HexMapNodeView(
+            model: model,
+            state: state,
+            selected: true,
+            action: {}
+        )
             .padding()
     }
 }

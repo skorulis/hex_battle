@@ -68,6 +68,9 @@
 		FAC16E0825FC924E004238EC /* AppCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E0625FC924E004238EC /* AppCoordinatorView.swift */; };
 		FAC16E0F25FC931C004238EC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E0E25FC931C004238EC /* AppCoordinator.swift */; };
 		FAC16E1025FC931C004238EC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E0E25FC931C004238EC /* AppCoordinator.swift */; };
+		FAC16E2525FCA41A004238EC /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E2425FCA41A004238EC /* Color+Extensions.swift */; };
+		FAC16E2625FCA41A004238EC /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E2425FCA41A004238EC /* Color+Extensions.swift */; };
+		FAC16E3925FCB139004238EC /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E3825FCB139004238EC /* ColorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +133,8 @@
 		FAC16DFE25FC8EB9004238EC /* AppStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateService.swift; sourceTree = "<group>"; };
 		FAC16E0625FC924E004238EC /* AppCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorView.swift; sourceTree = "<group>"; };
 		FAC16E0E25FC931C004238EC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FAC16E2425FCA41A004238EC /* Color+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		FAC16E3825FCB139004238EC /* ColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +298,7 @@
 		FA59B6E925FC2B3300C7ABC8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FAC16E2425FCA41A004238EC /* Color+Extensions.swift */,
 				FA59B6EA25FC2B3A00C7ABC8 /* PServiceType.swift */,
 				FA59B7EB25FC43C200C7ABC8 /* Color+Neumorphic.swift */,
 				FA59B7F225FC462700C7ABC8 /* LinearGradient+Neumorphic.swift */,
@@ -311,8 +317,9 @@
 		FA59B76F25FC33DE00C7ABC8 /* HexBattleTests */ = {
 			isa = PBXGroup;
 			children = (
-				FAC16D8A25FC57BB004238EC /* ViewModel */,
+				FAC16E3625FCB130004238EC /* Infrastructure */,
 				FA59B77D25FC341800C7ABC8 /* Service */,
+				FAC16D8A25FC57BB004238EC /* ViewModel */,
 				FA59B77025FC33DE00C7ABC8 /* HexBattleTests.swift */,
 				FA59B77225FC33DE00C7ABC8 /* Info.plist */,
 			);
@@ -428,6 +435,22 @@
 				FAC16E0E25FC931C004238EC /* AppCoordinator.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		FAC16E3625FCB130004238EC /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				FAC16E3725FCB130004238EC /* Extensions */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		FAC16E3725FCB130004238EC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FAC16E3825FCB139004238EC /* ColorTests.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -605,6 +628,7 @@
 				FAC16D7725FC4B33004238EC /* NodeType.swift in Sources */,
 				FA59B6C925FC2A1600C7ABC8 /* MapService.swift in Sources */,
 				FA59B7D125FC37D100C7ABC8 /* HexMapView.swift in Sources */,
+				FAC16E2525FCA41A004238EC /* Color+Extensions.swift in Sources */,
 				FAC16DD625FC753C004238EC /* GameStateService.swift in Sources */,
 				FA59B6E225FC2ACD00C7ABC8 /* IOCConfig.swift in Sources */,
 				FA59B6B925FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
@@ -637,6 +661,7 @@
 				FAC16D7825FC4B33004238EC /* NodeType.swift in Sources */,
 				FA59B6CA25FC2A1600C7ABC8 /* MapService.swift in Sources */,
 				FA59B7D225FC37D100C7ABC8 /* HexMapView.swift in Sources */,
+				FAC16E2625FCA41A004238EC /* Color+Extensions.swift in Sources */,
 				FAC16DD725FC753C004238EC /* GameStateService.swift in Sources */,
 				FA59B6E325FC2ACD00C7ABC8 /* IOCConfig.swift in Sources */,
 				FA59B6BA25FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
@@ -672,6 +697,7 @@
 			files = (
 				FAC16D8D25FC57C4004238EC /* HexMapNodeViewModelTests.swift in Sources */,
 				FAC16DDD25FC8022004238EC /* GameStateServiceTests.swift in Sources */,
+				FAC16E3925FCB139004238EC /* ColorTests.swift in Sources */,
 				FA59B77F25FC341800C7ABC8 /* MapServiceTests.swift in Sources */,
 				FA59B77125FC33DE00C7ABC8 /* HexBattleTests.swift in Sources */,
 			);

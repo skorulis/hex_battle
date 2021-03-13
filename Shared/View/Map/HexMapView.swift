@@ -12,7 +12,7 @@ import SwiftUI
 
 struct HexMapView {
     
-    let viewModel: HexMapViewModel
+    @ObservedObject var viewModel: HexMapViewModel
     
     var model: HexMapModel {
         return viewModel.map
@@ -41,9 +41,10 @@ extension HexMapView: View {
                 let state = viewModel.nodeState(id: node.id)
                 HexMapNodeView(
                     model: node,
-                    state: state
+                    state: state,
+                    selected: viewModel.selectedNode == node.id,
+                    action: viewModel.selectNode(id: node.id)
                 )
-                //.disabled(state.owner)
                 .position(x: CGFloat(node.x), y: CGFloat(node.y))
             }
         }
@@ -122,10 +123,6 @@ struct HexMapView_Previews: PreviewProvider {
         
         viewModel.mapState.nodes[4] = HexMapNodeState(type: .passive, owner: 2)
         
-        viewModel.mapState.players = [
-            PlayerModel(id: 1),
-            PlayerModel(id: 2),
-        ]
         return viewModel
     }
     

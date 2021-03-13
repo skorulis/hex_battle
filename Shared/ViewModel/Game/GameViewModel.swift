@@ -15,9 +15,15 @@ final class GameViewModel {
     let stateService: GameStateService?
     let player: PlayerModel
     
+    @Published
+    var selectedNode: Int?
+    
     init(stateService: GameStateService) {
         self.player = stateService.player
         self.stateService =  stateService
+        
+        stateService.$selectedNode
+            .assign(to: &$selectedNode)
     }
     
     public func mapViewModel() -> HexMapViewModel? {

@@ -16,6 +16,9 @@ final class GameStateService: ObservableObject {
     @Published
     public var state: HexMapState?
     
+    @Published
+    public var selectedNode: Int?
+    
     public func start(map: HexMapModel) {
         self.map = GameStateService.reposition(map)
         self.state = GameStateService.buildState(self.map!)
@@ -51,14 +54,24 @@ extension GameStateService {
     
     static func buildState(_ map: HexMapModel) -> HexMapState {
         var mapState = HexMapState()
+        var players: Set<Int> = []
         for node in map.nodes {
             if let initialState = node.initialState {
                 mapState.nodes[node.id] = initialState
+                if let owner = initialState.owner {
+                    players.insert(owner)
+                }
             } else {
                 mapState.nodes[node.id] = HexMapNodeState(type: .empty)
             }
             
         }
+        
+        mapState.players = Array(players).map { (id) -> PlayerModel in
+            return PlayerModel(id: id)
+        }
+        
+        
         return mapState
     }
     

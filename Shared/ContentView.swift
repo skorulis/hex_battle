@@ -13,6 +13,7 @@ struct ContentView: View {
         AppCoordinatorView(ioc: IOCConfig.shared)
             .frame(width:400, height: 600)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.offWhite)
     }
 }
 
