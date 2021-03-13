@@ -11,7 +11,7 @@ import SwiftUI
 
 struct GameView {
     
-    let viewModel: GameViewModel
+    @ObservedObject var viewModel: GameViewModel
     
     init(viewModel: GameViewModel) {
         self.viewModel = viewModel
@@ -30,10 +30,16 @@ extension GameView: View {
         }
     }
     
+    @ViewBuilder
     var controls: some View  {
-        Button(action: {}, label: {
-            Text("Do something")
-        })
+        if let selected = viewModel.selectedNode {
+            Button(action: viewModel.deselect, label: {
+                Text("Cancel")
+            })
+        } else {
+            EmptyView()
+        }
+        
     }
     
     @ViewBuilder
@@ -52,8 +58,9 @@ struct GameView_Previews: PreviewProvider {
     
     static var previews: some View {
         let stateService = GameStateService()
+        stateService.start(map: HexMapView_Previews.previewMap)
         let viewModel = GameViewModel(stateService: stateService)
-        GameView(viewModel: viewModel)
+        return GameView(viewModel: viewModel)
     }
 }
 

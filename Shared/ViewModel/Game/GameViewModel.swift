@@ -10,7 +10,7 @@ import Swinject
 
 //MARK: - Memory footprint
 
-final class GameViewModel {
+final class GameViewModel: ObservableObject {
     
     let stateService: GameStateService?
     let player: PlayerModel
@@ -28,6 +28,16 @@ final class GameViewModel {
     
     public func mapViewModel() -> HexMapViewModel? {
         return stateService?.mapViewModel()
+    }
+    
+}
+
+// MARK: - Behaviours
+
+extension GameViewModel {
+    
+    func deselect() {
+        stateService?.selectedNode = nil
     }
     
 }
