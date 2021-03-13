@@ -1,5 +1,5 @@
 //
-//  IocConfig.swift
+//  IOCConfig.swift
 //  HexBattle
 //
 //  Created by Alexander Skorulis on 13/3/21.
@@ -26,12 +26,15 @@ public final class IOCConfig {
     }
     
     private func setupServices() {
-        container.register(MapService.self)
+        container.register(MapService.self).inObjectScope(.container)
         container.register(GameStateService.self).inObjectScope(.container)
+        container.register(AppStateService.self).inObjectScope(.container)
     }
     
     private func setupViewModels() {
-        container.register(HexGameViewModel.self).inObjectScope(.weak)
+        container.register(LevelSelectionViewModel.self).inObjectScope(.weak)
+        container.register(GameViewModel.self).inObjectScope(.weak)
+        container.register(AppCoordinator.self).inObjectScope(.weak)
     }
     
     public func get<Service>(_ serviceType: Service.Type = Service.self) -> Service? {

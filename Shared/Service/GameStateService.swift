@@ -9,24 +9,18 @@ import Foundation
 import Swinject
 
 final class GameStateService: ObservableObject {
- 
-    public let mapService: MapService
     
     public var map: HexMapModel?
+    public var player: PlayerModel = PlayerModel(id: 1) //Always player 1 for now
     
     @Published
     public var state: HexMapState?
-    
-    init(mapService: MapService) {
-        self.mapService = mapService
-    }
     
     public func start(map: HexMapModel) {
         self.map = GameStateService.reposition(map)
         self.state = GameStateService.buildState(self.map!)
     }
 
-    
     public func mapViewModel() -> HexMapViewModel {
         return HexMapViewModel(map: map!, state: state!, stateService: self)
     }
@@ -75,7 +69,7 @@ extension GameStateService {
 extension GameStateService: PServiceType {
     
     static func make(_ r: Resolver) -> GameStateService {
-        return GameStateService(mapService: r.forceResolve())
+        return GameStateService()
     }
 }
 

@@ -11,8 +11,10 @@ import SwiftUI
 
 struct GameView {
     
-    init(viewModel: HexGameViewModel) {
-        
+    let viewModel: GameViewModel
+    
+    init(viewModel: GameViewModel) {
+        self.viewModel = viewModel
     }
     
 }
@@ -22,7 +24,25 @@ struct GameView {
 extension GameView: View {
     
     var body: some View {
-        EmptyView()
+        VStack {
+            maybeMap
+            controls
+        }
+    }
+    
+    var controls: some View  {
+        Button(action: {}, label: {
+            Text("Do something")
+        })
+    }
+    
+    @ViewBuilder
+    public var maybeMap: some View {
+        if let mapVM = viewModel.mapViewModel() {
+            HexMapView(viewModel: mapVM)
+        } else {
+            EmptyView()
+        }
     }
 }
 
@@ -31,8 +51,9 @@ extension GameView: View {
 struct GameView_Previews: PreviewProvider {
     
     static var previews: some View {
-        let player = PlayerModel(id: 1)
-        GameView(viewModel: HexGameViewModel(player: player))
+        let stateService = GameStateService()
+        let viewModel = GameViewModel(stateService: stateService)
+        GameView(viewModel: viewModel)
     }
 }
 

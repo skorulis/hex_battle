@@ -8,13 +8,16 @@
 import Foundation
 import Swinject
 
-final class MapService: PServiceType {
+struct MapService {
     
-    static func make(_ r: Resolver) -> MapService {
-        return MapService()
+    let maps: [HexMapModel]
+    
+    init() {
+        self.maps = MapService.loadMaps()
     }
     
-    func allMaps() -> [HexMapModel] {
+    
+    private static func loadMaps() -> [HexMapModel] {
         guard let allURLS = Bundle.main.urls(forResourcesWithExtension: "json", subdirectory: "maps", localization: nil) else {
             return []
         }
@@ -29,9 +32,26 @@ final class MapService: PServiceType {
         
     }
     
-    private func loadMap(url: URL) throws -> HexMapModel {
+    public func map(named: String) -> HexMapModel? {
+        return maps.first(where: {$0.name == named })
+    }
+    
+    private static func loadMap(url: URL) throws -> HexMapModel {
         let data = try Data(contentsOf: url)
         return try JSONDecoder().decode(HexMapModel.self, from: data)
     }
     
+    
+    
 }
+
+//MARK: PServiceType
+
+extension MapService: PServiceType {
+    
+    static func make(_ r: Resolver) -> MapService {
+        return MapService()
+    }
+}
+
+
