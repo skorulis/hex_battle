@@ -26,8 +26,12 @@ final class GameViewModel: ObservableObject {
             .assign(to: &$selectedNode)
     }
     
-    public func mapViewModel() -> HexMapViewModel? {
+    public func mapViewModel() -> MapViewModel? {
         return stateService?.mapViewModel()
+    }
+    
+    func nodeState(id: Int) -> HexMapNodeState? {
+        return stateService?.state?.nodes[id]
     }
     
 }

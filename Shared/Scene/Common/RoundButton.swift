@@ -1,50 +1,32 @@
 //
-//  HexMapNodeView.swift
+//  RoundButton.swift
 //  HexBattle
 //
-//  Created by Alexander Skorulis on 13/3/21.
+//  Created by Alexander Skorulis on 14/3/21.
 //
+
+import Foundation
 
 import SwiftUI
 
 // MARK: - Memory footprint
 
-struct HexMapNodeView {
-    
-    let model: HexMapNode
-    let state: HexMapNodeState
-    let selected: Bool
-    let action: () -> Void
-    
-    init(
-        model: HexMapNode,
-        state: HexMapNodeState,
-        selected: Bool,
-        action: @escaping () -> Void
-    ) {
-        self.model = model
-        self.state = state
-        self.selected = selected
-        self.action = action
-    }
+struct RoundButton {
     
 }
 
 // MARK: - Rendering
 
-extension HexMapNodeView: View {
+extension RoundButton: View {
     
     var body: some View {
-        Button(action: action, label: {
-            Text(state.type.symbol)
-        })
-        .buttonStyle(HexMapNodeButtonStyle(selected: selected))
+        EmptyView()
     }
 }
 
 // MARK: - ButtonStyle
 
-private struct HexMapNodeButtonStyle:ButtonStyle {
+struct RoundButtonStyle:ButtonStyle {
     
     private let selected: Bool
     
@@ -106,17 +88,10 @@ private struct HexMapNodeButtonStyle:ButtonStyle {
 
 // MARK: - Previews
 
-struct HexMapNodeView_Previews: PreviewProvider {
+struct RoundButton_Previews: PreviewProvider {
     
     static var previews: some View {
-        let model = HexMapNode(id: 1, x: 10, y: 10, initialState: nil)
-        let state = HexMapNodeState(type: .command)
-        HexMapNodeView(
-            model: model,
-            state: state,
-            selected: true,
-            action: {}
-        )
-            .padding()
+        RoundButton()
     }
 }
+

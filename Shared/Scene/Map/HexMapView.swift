@@ -12,7 +12,7 @@ import SwiftUI
 
 struct HexMapView {
     
-    @ObservedObject var viewModel: HexMapViewModel
+    @ObservedObject var viewModel: MapViewModel
     
     var model: HexMapModel {
         return viewModel.map
@@ -39,7 +39,7 @@ extension HexMapView: View {
         ZStack {
             ForEach(model.nodes) { node in
                 let state = viewModel.nodeState(id: node.id)
-                HexMapNodeView(
+                MapNodeView(
                     model: node,
                     state: state,
                     selected: viewModel.selectedNode == node.id,
@@ -115,10 +115,10 @@ struct HexMapView_Previews: PreviewProvider {
         return GameStateService.reposition(HexMapModel(name: "Map1", nodes: nodes, edges: edges))
     }
     
-    static var previewViewModel: HexMapViewModel {
+    static var previewViewModel: MapViewModel {
         let map = previewMap
         let state = GameStateService.buildState(map)
-        let viewModel = HexMapViewModel(map: previewMap, state: state, stateService: nil)
+        let viewModel = MapViewModel(map: previewMap, state: state, stateService: nil)
         viewModel.mapState.nodes[2] = HexMapNodeState(type: .passive, owner: 1)
         
         viewModel.mapState.nodes[4] = HexMapNodeState(type: .passive, owner: 2)

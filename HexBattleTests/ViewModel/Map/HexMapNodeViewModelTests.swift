@@ -1,5 +1,5 @@
 //
-//  HexMapViewModelTests.swift
+//  MapViewModelTests.swift
 //  HexBattleTests
 //
 //  Created by Alexander Skorulis on 13/3/21.
@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-class HexMapViewModelTests: XCTestCase {
+class MapViewModelTests: XCTestCase {
     
     
     

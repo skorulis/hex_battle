@@ -24,8 +24,8 @@ final class GameStateService: ObservableObject {
         self.state = GameStateService.buildState(self.map!)
     }
 
-    public func mapViewModel() -> HexMapViewModel {
-        return HexMapViewModel(map: map!, state: state!, stateService: self)
+    public func mapViewModel() -> MapViewModel {
+        return MapViewModel(map: map!, state: state!, stateService: self)
     }
     
 }

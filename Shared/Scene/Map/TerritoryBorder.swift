@@ -13,7 +13,7 @@ import SwiftUI
 
 struct TerritoryBorder {
     
-    let viewModel: HexMapViewModel
+    let viewModel: MapViewModel
     let player: PlayerModel
     
 }

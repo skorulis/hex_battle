@@ -1,5 +1,5 @@
 //
-//  HexMapViewModel.swift
+//  MapViewModel.swift
 //  HexBattle
 //
 //  Created by Alexander Skorulis on 13/3/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class HexMapViewModel: ObservableObject {
+final class MapViewModel: ObservableObject {
     
     let stateService: GameStateService?
     let map: HexMapModel
@@ -40,7 +40,7 @@ final class HexMapViewModel: ObservableObject {
 
 // MARK: - Behaviours
 
-extension HexMapViewModel {
+extension MapViewModel {
     
     func selectNode(id: Int) -> () -> Void {
         return {
