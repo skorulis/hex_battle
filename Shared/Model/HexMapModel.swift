@@ -20,6 +20,7 @@ public struct HexMapNode: Codable {
     public let id: Int
     public let x: Double
     public let y: Double
+    let initialState: HexMapNodeState?
     
 }
 

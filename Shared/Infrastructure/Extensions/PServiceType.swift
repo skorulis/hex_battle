@@ -24,7 +24,7 @@ extension Container {
     }
 }
 
-extension Container {
+extension Resolver {
     
     func resolve<Service>() -> Service? {
         return resolve(Service.self)

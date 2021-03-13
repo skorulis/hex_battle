@@ -38,10 +38,12 @@ extension HexMapView: View {
     private var nodes: some View {
         ZStack {
             ForEach(model.nodes) { node in
+                let state = viewModel.nodeState(id: node.id)
                 HexMapNodeView(
                     model: node,
-                    state: viewModel.nodeState(id: node.id)
+                    state: state
                 )
+                //.disabled(state.owner)
                 .position(x: CGFloat(node.x), y: CGFloat(node.y))
             }
         }
@@ -91,13 +93,16 @@ extension View {
 struct HexMapView_Previews: PreviewProvider {
     
     static var previewMap: HexMapModel {
+        let c1 = HexMapNodeState(type: .command, owner: 1)
+        let c2 = HexMapNodeState(type: .command, owner: 2)
+        
         let nodes = [
-            HexMapNode(id: 1, x: 40, y: 40),
-            HexMapNode(id: 2, x: 100, y: 190),
-            HexMapNode(id: 3, x: 200, y: 100),
-            HexMapNode(id: 4, x: 300, y: 100),
-            HexMapNode(id: 5, x: 300, y: 200),
-            HexMapNode(id: 6, x: 300, y: 0),
+            HexMapNode(id: 1, x: 40, y: 40, initialState: c1),
+            HexMapNode(id: 2, x: 100, y: 190, initialState: nil),
+            HexMapNode(id: 3, x: 200, y: 100, initialState: c2),
+            HexMapNode(id: 4, x: 300, y: 100, initialState: nil),
+            HexMapNode(id: 5, x: 300, y: 200, initialState: nil),
+            HexMapNode(id: 6, x: 300, y: 0, initialState: nil),
         ]
         let edges = [
             HexMapEdge(id1: 1, id2: 2),
@@ -111,11 +116,9 @@ struct HexMapView_Previews: PreviewProvider {
     
     static var previewViewModel: HexMapViewModel {
         let viewModel = HexMapViewModel(map: previewMap)
-        viewModel.mapState.nodes[1]?.owner = 1
-        viewModel.mapState.nodes[2]?.owner = 1
+        viewModel.mapState.nodes[2] = HexMapNodeState(type: .passive, owner: 1)
         
-        viewModel.mapState.nodes[3]?.owner = 2
-        viewModel.mapState.nodes[4]?.owner = 2
+        viewModel.mapState.nodes[4] = HexMapNodeState(type: .passive, owner: 2)
         
         viewModel.mapState.players = [
             PlayerModel(id: 1),

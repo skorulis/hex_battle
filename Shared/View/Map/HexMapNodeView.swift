@@ -76,7 +76,7 @@ private struct HexMapNodeButtonStyle:ButtonStyle {
 struct HexMapNodeView_Previews: PreviewProvider {
     
     static var previews: some View {
-        let model = HexMapNode(id: 1, x: 10, y: 10)
+        let model = HexMapNode(id: 1, x: 10, y: 10, initialState: nil)
         let state = HexMapNodeState(type: .command)
         HexMapNodeView(model: model, state: state)
             .padding()

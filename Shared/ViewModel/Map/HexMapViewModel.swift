@@ -36,7 +36,12 @@ extension HexMapViewModel {
         let xMovement = max(0, buffer - CGFloat(minX))
         let yMovement = max(0, buffer - CGFloat(minY))
         let mappedNodes = map.nodes.map { (node) -> HexMapNode in
-            return HexMapNode(id: node.id, x: node.x + Double(xMovement), y: node.y + Double(yMovement))
+            return HexMapNode(
+                id: node.id,
+                x: node.x + Double(xMovement),
+                y: node.y + Double(yMovement),
+                initialState: node.initialState
+            )
         }
         return HexMapModel(name: map.name, nodes: mappedNodes, edges: map.edges)
     }
@@ -44,7 +49,12 @@ extension HexMapViewModel {
     private static func buildState(_ map: HexMapModel) -> HexMapState {
         var mapState = HexMapState()
         for node in map.nodes {
-            mapState.nodes[node.id] = HexMapNodeState(type: .empty)
+            if let initialState = node.initialState {
+                mapState.nodes[node.id] = initialState
+            } else {
+                mapState.nodes[node.id] = HexMapNodeState(type: .empty)
+            }
+            
         }
         return mapState
     }
