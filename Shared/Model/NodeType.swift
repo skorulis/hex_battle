@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum NodeType: String, Codable {
     
@@ -28,6 +29,17 @@ extension NodeType {
         case .alpha: return "α"
         case .beta: return "β"
         case .gamma: return "𝛾"
+        }
+    }
+    
+    var baseColor: Color {
+        switch self {
+        case .empty: return .concrete
+        case .command: return .concrete
+        case .passive: return .concrete
+        case .alpha: return .alizarin
+        case .beta: return .emerald
+        case .gamma: return .peterRiver
         }
     }
     

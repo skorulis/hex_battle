@@ -42,9 +42,45 @@ extension GameStateService {
     
     func startConstruction(player:Int, type: NodeType) {
         var state = self.playerStates[player]!
-        state.constructionQueue.append(type)
+        
+        var item = PlayerState.ConstructionQueueItem(type: type, time: nil)
+        if state.constructionQueue.count == 0 {
+            item.time = constructionEvent(player: player)
+        }
+        
+        state.constructionQueue.append(item)
+
         playerStates[player] = state
     }
+    
+    private func constructionEvent(player: Int) -> PlayerState.ConstructionTimeFrame {
+        let duration: TimeInterval = 3
+        let subscriber = Timer.publish(every: duration, on: .main, in: .common)
+            .autoconnect()
+            .sink { _ in
+            self.finishConstruction(player: player)
+        }
+        
+        return PlayerState.ConstructionTimeFrame(start: Date().timeIntervalSince1970, duration: duration, subscriber: subscriber)
+    }
+    
+}
+
+// MARK: - Time events
+
+extension GameStateService {
+    
+    private func finishConstruction(player: Int) {
+        var state = self.playerStates[player]!
+        _ = state.constructionQueue.removeFirst()
+        if state.constructionQueue.count > 0 {
+            var first = state.constructionQueue[0]
+            first.time = constructionEvent(player: player)
+            state.constructionQueue[0] = first
+        }
+        playerStates[player] = state
+    }
+    
 }
 
 // MARK: Helpers

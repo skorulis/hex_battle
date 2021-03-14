@@ -77,6 +77,12 @@
 		FAC16E9025FD791A004238EC /* GameControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E8E25FD791A004238EC /* GameControls.swift */; };
 		FAC16E9625FD81F0004238EC /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E9525FD81F0004238EC /* PlayerState.swift */; };
 		FAC16E9725FD81F0004238EC /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E9525FD81F0004238EC /* PlayerState.swift */; };
+		FAC16EA225FD880D004238EC /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EA125FD880D004238EC /* CircularProgress.swift */; };
+		FAC16EA325FD880D004238EC /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EA125FD880D004238EC /* CircularProgress.swift */; };
+		FAC16EAE25FD9AAA004238EC /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EAD25FD9AAA004238EC /* StatefulPreviewWrapper.swift */; };
+		FAC16EAF25FD9AAA004238EC /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EAD25FD9AAA004238EC /* StatefulPreviewWrapper.swift */; };
+		FAC16EB825FD9F87004238EC /* BuildProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EB725FD9F87004238EC /* BuildProgressView.swift */; };
+		FAC16EB925FD9F87004238EC /* BuildProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EB725FD9F87004238EC /* BuildProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +150,9 @@
 		FAC16E8725FD7756004238EC /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		FAC16E8E25FD791A004238EC /* GameControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControls.swift; sourceTree = "<group>"; };
 		FAC16E9525FD81F0004238EC /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
+		FAC16EA125FD880D004238EC /* CircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
+		FAC16EAD25FD9AAA004238EC /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
+		FAC16EB725FD9F87004238EC /* BuildProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +294,7 @@
 		FA59B6E825FC2B2900C7ABC8 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				FAC16EAC25FD9AA2004238EC /* SwiftUI */,
 				FA59B6E925FC2B3300C7ABC8 /* Extensions */,
 			);
 			path = Infrastructure;
@@ -388,6 +398,7 @@
 		FAC16E4A25FD720C004238EC /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				FAC16EA025FD877D004238EC /* Controls */,
 				FAC16E4B25FD720C004238EC /* GameView.swift */,
 				FAC16E4C25FD720C004238EC /* GameViewModel.swift */,
 				FAC16E8E25FD791A004238EC /* GameControls.swift */,
@@ -400,6 +411,7 @@
 			children = (
 				FAC16E4E25FD720C004238EC /* RenderConstants.swift */,
 				FAC16E8725FD7756004238EC /* RoundButton.swift */,
+				FAC16EA125FD880D004238EC /* CircularProgress.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -431,6 +443,22 @@
 				FAC16E5825FD720C004238EC /* LevelSelectionViewModel.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		FAC16EA025FD877D004238EC /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				FAC16EB725FD9F87004238EC /* BuildProgressView.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		FAC16EAC25FD9AA2004238EC /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				FAC16EAD25FD9AAA004238EC /* StatefulPreviewWrapper.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -619,6 +647,7 @@
 				FA59B6B925FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
 				FAC16DFF25FC8EBA004238EC /* AppStateService.swift in Sources */,
 				FA59B7EC25FC43C200C7ABC8 /* Color+Neumorphic.swift in Sources */,
+				FAC16EB825FD9F87004238EC /* BuildProgressView.swift in Sources */,
 				FAC16DA425FC5D14004238EC /* PlayerModel.swift in Sources */,
 				FAC16E6525FD720C004238EC /* TerritoryBorder.swift in Sources */,
 				FAC16E6325FD720C004238EC /* MapViewModel.swift in Sources */,
@@ -626,10 +655,12 @@
 				FAC16E6B25FD720C004238EC /* MapNodeView.swift in Sources */,
 				FAC16E7925FD722D004238EC /* HexBattleApp.swift in Sources */,
 				FAC16E5925FD720C004238EC /* AppCoordinator.swift in Sources */,
+				FAC16EA225FD880D004238EC /* CircularProgress.swift in Sources */,
 				FAC16E6F25FD720C004238EC /* LevelSelectionViewModel.swift in Sources */,
 				FAC16E6725FD720C004238EC /* HexMapModel+ViewModel.swift in Sources */,
 				FA59B7F325FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */,
 				FAC16E8F25FD791A004238EC /* GameControls.swift in Sources */,
+				FAC16EAE25FD9AAA004238EC /* StatefulPreviewWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +686,7 @@
 				FA59B6BA25FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
 				FAC16E0025FC8EBA004238EC /* AppStateService.swift in Sources */,
 				FA59B7ED25FC43C200C7ABC8 /* Color+Neumorphic.swift in Sources */,
+				FAC16EB925FD9F87004238EC /* BuildProgressView.swift in Sources */,
 				FAC16DA925FC5D15004238EC /* PlayerModel.swift in Sources */,
 				FAC16E6625FD720C004238EC /* TerritoryBorder.swift in Sources */,
 				FAC16E6425FD720C004238EC /* MapViewModel.swift in Sources */,
@@ -662,10 +694,12 @@
 				FAC16E6C25FD720C004238EC /* MapNodeView.swift in Sources */,
 				FAC16E7A25FD722D004238EC /* HexBattleApp.swift in Sources */,
 				FAC16E5A25FD720C004238EC /* AppCoordinator.swift in Sources */,
+				FAC16EA325FD880D004238EC /* CircularProgress.swift in Sources */,
 				FAC16E7025FD720C004238EC /* LevelSelectionViewModel.swift in Sources */,
 				FAC16E6825FD720C004238EC /* HexMapModel+ViewModel.swift in Sources */,
 				FA59B7F425FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */,
 				FAC16E9025FD791A004238EC /* GameControls.swift in Sources */,
+				FAC16EAF25FD9AAA004238EC /* StatefulPreviewWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
