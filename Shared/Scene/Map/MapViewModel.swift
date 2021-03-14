@@ -39,10 +39,12 @@ final class MapViewModel: ObservableObject {
         return map.edges.map { (edge) -> MapEdgeViewModel in
             let node1 = map.node(id: edge.id1)
             let node2 = map.node(id: edge.id2)
-            return MapEdgeViewModel(node1: node1, node2: node2)
+            let type1 = mapState.nodes[edge.id1]?.type ?? .empty
+            let type2 = mapState.nodes[edge.id2]?.type ?? .empty
+            
+            return MapEdgeViewModel(node1: node1, node2: node2, type1: type1, type2: type2)
         }
     }
-    
     
 }
 

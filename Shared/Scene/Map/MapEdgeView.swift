@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import CGPointVector
 import SwiftUI
 
 // MARK: - Memory footprint
@@ -36,30 +36,55 @@ struct MapEdgeView {
 extension MapEdgeView: View {
     
     var body: some View {
-        line
-            .frame(width: size.width, height: size.height)
-            .position(x: minX + size.width/2, y: minY + size.height/2)
-            .onAppear(perform: {
-                withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false)) {
-                    dashPhase -= 24
-                }
-            })
+        ZStack {
+            forwardsLine
+                .frame(width: size.width, height: size.height)
+                .position(x: minX + size.width/2, y: minY + size.height/2)
+            backwardsLine
+                .frame(width: size.width, height: size.height)
+                .position(x: minX + size.width/2, y: minY + size.height/2)
+        }
+        .onAppear(perform: startAnimation)
+        
     }
     
-    private var line: some View {
-        let strokeStyle = StrokeStyle(lineWidth: lineWidth, lineCap: .butt, dash: [10,2], dashPhase: dashPhase)
-        
+    private var forwardsLine: some View {
+        line(from: node1.point, to: node2.point)
+            .stroke(style: strokeStyle(phase: dashPhase))
+            .foregroundColor(viewModel.type1.baseColor)
+    }
+    
+    private var backwardsLine: some View {
+        line(from: node2.point, to: node1.point)
+            .stroke(style: strokeStyle(phase: 0))
+            .foregroundColor(viewModel.type2.baseColor)
+    }
+    
+    private func line(from: CGPoint, to: CGPoint) -> Path {
+        let dir = (from - to).unit
+        let offset = lineWidth/2 * dir * CGAffineTransform(rotationAngle: CGFloat.pi/2)
+        let start = from - minPoint + offset
+        let end = to - minPoint + offset
         return Path { path in
-            path.move(to: CGPoint(x: node1.x - minX, y: node1.y - minY))
-            path.addLine(to: CGPoint(x: node2.x - minX, y: node2.y - minY))
+            path.move(to: start)
+            path.addLine(to: end)
         }
-        .stroke(style: strokeStyle)
     }
     
     var size: CGSize {
         let width = abs(node1.x - node2.x) + lineWidth
         let height = abs(node1.y - node2.y) + lineWidth
         return CGSize(width: CGFloat(width), height: CGFloat(height))
+    }
+    
+    private func strokeStyle(phase: CGFloat) -> StrokeStyle {
+        return StrokeStyle(lineWidth: lineWidth, lineCap: .butt, dash: [10,2], dashPhase: phase)
+    }
+    
+    var minPoint: CGPoint {
+        let x = CGFloat(min(node1.x, node2.x))
+        let y = CGFloat(min(node1.y, node2.y))
+        return CGPoint(x: x, y: y)
     }
     
     var minX: CGFloat {
@@ -69,6 +94,21 @@ extension MapEdgeView: View {
     var minY: CGFloat  {
         return CGFloat(min(node1.y, node2.y))
     }
+    
+}
+
+// MARK: - Behaviours
+
+extension MapEdgeView {
+    
+    private func startAnimation() {
+        if viewModel.isFlowingForwards {
+            withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false)) {
+                dashPhase -= 24
+            }
+        }
+    }
+    
 }
 
 // MARK: - Previews
@@ -81,9 +121,14 @@ struct MapEdgeView_Previews: PreviewProvider {
         let node3 = HexMapNode(id: 3, x: 70, y: 160, initialState: nil)
         let node4 = HexMapNode(id: 4, x: 200, y: 60, initialState: nil)
         
-        let vm1 = MapEdgeViewModel(node1: node1, node2: node2)
-        let vm2 = MapEdgeViewModel(node1: node2, node2: node3)
-        let vm3 = MapEdgeViewModel(node1: node1, node2: node4)
+        let vm1 = MapEdgeViewModel(node1: node1, node2: node2,
+                                   type1: .alpha, type2: .beta)
+        
+        let vm2 = MapEdgeViewModel(node1: node2, node2: node3,
+                                   type1: .beta, type2: .passive)
+        
+        let vm3 = MapEdgeViewModel(node1: node1, node2: node4,
+                                   type1: .alpha, type2: .command)
         
         ZStack {
             MapEdgeView(viewModel: vm1)

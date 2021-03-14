@@ -87,6 +87,8 @@
 		FAC16EC425FDC2A1004238EC /* MapEdgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EC225FDC2A1004238EC /* MapEdgeView.swift */; };
 		FAC16ED225FDD2CB004238EC /* MapEdgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16ED125FDD2CB004238EC /* MapEdgeViewModel.swift */; };
 		FAC16ED325FDD2CB004238EC /* MapEdgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16ED125FDD2CB004238EC /* MapEdgeViewModel.swift */; };
+		FAC16EDE25FDE982004238EC /* CGPointVector in Frameworks */ = {isa = PBXBuildFile; productRef = FAC16EDD25FDE982004238EC /* CGPointVector */; };
+		FAC16EE425FDE991004238EC /* CGPointVector in Frameworks */ = {isa = PBXBuildFile; productRef = FAC16EE325FDE991004238EC /* CGPointVector */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC16EDE25FDE982004238EC /* CGPointVector in Frameworks */,
 				FA59B6D525FC2A8400C7ABC8 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC16EE425FDE991004238EC /* CGPointVector in Frameworks */,
 				FA59B6DC25FC2A8F00C7ABC8 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +491,7 @@
 			name = "HexBattle (iOS)";
 			packageProductDependencies = (
 				FA59B6D425FC2A8400C7ABC8 /* Swinject */,
+				FAC16EDD25FDE982004238EC /* CGPointVector */,
 			);
 			productName = "HexBattle (iOS)";
 			productReference = FA59B67125FC280F00C7ABC8 /* HexBattle.app */;
@@ -507,6 +512,7 @@
 			name = "HexBattle (macOS)";
 			packageProductDependencies = (
 				FA59B6DB25FC2A8F00C7ABC8 /* Swinject */,
+				FAC16EE325FDE991004238EC /* CGPointVector */,
 			);
 			productName = "HexBattle (macOS)";
 			productReference = FA59B67925FC280F00C7ABC8 /* HexBattle.app */;
@@ -584,6 +590,7 @@
 			mainGroup = FA59B66425FC280D00C7ABC8;
 			packageReferences = (
 				FA59B6D325FC2A8400C7ABC8 /* XCRemoteSwiftPackageReference "Swinject" */,
+				FAC16EDC25FDE982004238EC /* XCRemoteSwiftPackageReference "CGPointVector" */,
 			);
 			productRefGroup = FA59B67225FC280F00C7ABC8 /* Products */;
 			projectDirPath = "";
@@ -1103,6 +1110,14 @@
 				minimumVersion = 2.7.1;
 			};
 		};
+		FAC16EDC25FDE982004238EC /* XCRemoteSwiftPackageReference "CGPointVector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:koher/CGPointVector.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1115,6 +1130,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA59B6D325FC2A8400C7ABC8 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		FAC16EDD25FDE982004238EC /* CGPointVector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAC16EDC25FDE982004238EC /* XCRemoteSwiftPackageReference "CGPointVector" */;
+			productName = CGPointVector;
+		};
+		FAC16EE325FDE991004238EC /* CGPointVector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAC16EDC25FDE982004238EC /* XCRemoteSwiftPackageReference "CGPointVector" */;
+			productName = CGPointVector;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

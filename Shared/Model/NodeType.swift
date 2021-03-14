@@ -46,7 +46,7 @@ extension NodeType {
     var baseColor: Color {
         switch self {
         case .empty: return .concrete
-        case .command: return .concrete
+        case .command: return .white
         case .passive: return .concrete
         case .alpha: return .alizarin
         case .beta: return .emerald
@@ -56,5 +56,23 @@ extension NodeType {
     
     static var buildable: [NodeType] {
         return [.passive, .alpha, .beta, .gamma]
+    }
+    
+    var sendsFlow: Bool {
+        switch self {
+        case .command, .alpha, .beta, .gamma:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    var acceptsFlow: Bool {
+        switch self {
+        case .alpha, .beta, .gamma, .passive:
+            return true
+        default:
+            return false
+        }
     }
 }

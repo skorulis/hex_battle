@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "CGPointVector",
+        "repositoryURL": "git@github.com:koher/CGPointVector.git",
+        "state": {
+          "branch": null,
+          "revision": "f6bed1d89d200cd639bf1284bf762fbb41835855",
+          "version": "0.4.1"
+        }
+      },
+      {
         "package": "Swinject",
         "repositoryURL": "git@github.com:Swinject/Swinject.git",
         "state": {
