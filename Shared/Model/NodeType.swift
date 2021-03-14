@@ -19,6 +19,13 @@ enum NodeType: String, Codable {
     
 }
 
+extension NodeType: Identifiable {
+    
+    var id: String {
+        return rawValue
+    }
+}
+
 extension NodeType {
     
     var symbol: String {
@@ -32,6 +39,10 @@ extension NodeType {
         }
     }
     
+    var name: String {
+        return self.rawValue.capitalized
+    }
+    
     var baseColor: Color {
         switch self {
         case .empty: return .concrete
@@ -43,4 +54,7 @@ extension NodeType {
         }
     }
     
+    static var buildable: [NodeType] {
+        return [.passive, .alpha, .beta, .gamma]
+    }
 }

@@ -53,8 +53,21 @@ extension GameStateService {
         playerStates[player] = state
     }
     
+    func buildNode(type: NodeType, nodeId: Int, owner: Int) {
+        guard var nodeState = state?.nodes[nodeId] else {
+            return
+        }
+        nodeState.owner = owner
+        nodeState.type = type
+        state?.nodes[nodeId] = nodeState
+        
+        var playerState = playerStates[owner]!
+        playerState.remove(node: type)
+        playerStates[owner] = playerState
+    }
+    
     private func constructionEvent(player: Int) -> PlayerState.ConstructionTimeFrame {
-        let duration: TimeInterval = 3
+        let duration: TimeInterval = 10
         let subscriber = Timer.publish(every: duration, on: .main, in: .common)
             .autoconnect()
             .sink { _ in
@@ -72,7 +85,8 @@ extension GameStateService {
     
     private func finishConstruction(player: Int) {
         var state = self.playerStates[player]!
-        _ = state.constructionQueue.removeFirst()
+        let built = state.constructionQueue.removeFirst()
+        state.add(node: built.type)
         if state.constructionQueue.count > 0 {
             var first = state.constructionQueue[0]
             first.time = constructionEvent(player: player)

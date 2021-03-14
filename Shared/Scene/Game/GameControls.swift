@@ -35,53 +35,52 @@ extension GameControlsView: View {
     @ViewBuilder
     private var nodeControls: some View {
         if let selected = viewModel.selectedNode, let node = viewModel.nodeState(id: selected) {
-            switch node.type {
-            case .command:
-                commandButtons
-            default:
-                Text("TODO")
-            }
-            
+            ScrollView(.horizontal, showsIndicators: false, content: {
+                switch node.type {
+                case .command:
+                    commandButtons
+                case .empty:
+                    emptyButtons
+                default:
+                    Text("TODO")
+                }
+            })
         } else {
             EmptyView()
         }
-        
-        
     }
     
-    var commandButtons: some View {
-        ScrollView(.horizontal, showsIndicators: false, content: {
-            HStack(spacing: 10) {
-                Button(action: viewModel.startConstruction(type: .passive), label: {
-                    Text("Passive")
-                })
-                .buttonStyle(RoundButtonStyle(selected: false))
-                
-                Button(action: viewModel.startConstruction(type: .alpha), label: {
-                    Text("Alpha")
-                })
-                .buttonStyle(RoundButtonStyle(selected: false))
-                
-                Button(action: viewModel.startConstruction(type: .beta), label: {
-                    Text("Beta")
-                })
-                .buttonStyle(RoundButtonStyle(selected: false))
-                
-                Button(action: viewModel.startConstruction(type: .gamma), label: {
-                    Text("Gamma")
-                })
-                .buttonStyle(RoundButtonStyle(selected: false))
-                
-                commandProgress
-                
-                Button(action: viewModel.deselect, label: {
-                    Text("Cancel")
-                })
-                
-                
+    func typeButton(type: NodeType, action: @escaping () -> ()) -> some View {
+        ZStack(alignment: .bottomTrailing ){
+            Button(action: action, label: {
+                Text(type.name)
+            })
+            .buttonStyle(RoundButtonStyle(selected: false))
+            Group {
+                Spacer()
+                Text("\(viewModel.builtCount(type: type))")
+                    .frame(alignment:.bottomLeading)
             }
-        })
-        
+        }
+    }
+}
+
+// MARK: - Command
+
+extension GameControlsView {
+    
+    var commandButtons: some View {
+        HStack(spacing: 10) {
+            ForEach(NodeType.buildable) { type in
+                typeButton(type: type, action: viewModel.startConstruction(type: type))
+            }
+            
+            commandProgress
+            
+            Button(action: viewModel.deselect, label: {
+                Text("Cancel")
+            })
+        }
     }
     
     @ViewBuilder
@@ -90,16 +89,33 @@ extension GameControlsView: View {
             let type = item.type
             if let timing = item.time {
                 let initial = (Date().timeIntervalSince1970 - timing.start) / timing.duration
+                let remaining = timing.duration * (1 - initial)
                 
-                let target = BuildProgressView.Target(initial: CGFloat(initial), final: 1, duration: timing.duration)
+                let target = BuildProgressView.Target(initial: CGFloat(initial), final: 1, duration: remaining)
                 BuildProgressView(type: type, target: target)
             } else {
                 BuildProgressView(type: type)
             }
-            
         }
     }
+        
 }
+
+// MARK: - Empty
+
+extension GameControlsView {
+    
+    var emptyButtons: some View {
+        HStack(spacing: 10) {
+            ForEach(NodeType.buildable) { type in
+                typeButton(type: type, action: viewModel.buildNode(type: type))
+                    .disabled(viewModel.builtCount(type: type) == 0)
+            }
+        }
+    }
+    
+}
+
 
 // MARK: - Previews
 
@@ -108,7 +124,7 @@ struct GameControlsView_Previews: PreviewProvider {
     static var previews: some View {
         let stateService = GameStateService()
         stateService.start(map: HexMapView_Previews.previewMap)
-        stateService.selectedNode = 1
+        stateService.selectedNode = 2
         let viewModel = GameViewModel(stateService: stateService)
         return GameControlsView(viewModel: viewModel)
     }

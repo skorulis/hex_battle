@@ -35,6 +35,12 @@ final class GameViewModel: ObservableObject {
             .assign(to: &$playerState)
     }
     
+}
+
+// MARK: - Data access
+
+extension GameViewModel {
+    
     public func mapViewModel() -> MapViewModel? {
         return stateService?.mapViewModel()
     }
@@ -43,6 +49,9 @@ final class GameViewModel: ObservableObject {
         return stateService?.state?.nodes[id]
     }
     
+    func builtCount(type: NodeType) -> Int {
+        return playerState.readyBuildings[type] ?? 0
+    }
 }
 
 // MARK: - Behaviours
@@ -56,6 +65,14 @@ extension GameViewModel {
     func startConstruction(type: NodeType) -> () -> Void {
         return {
             self.stateService?.startConstruction(player: self.player.id, type: type)
+        }
+    }
+    
+    func buildNode(type: NodeType) -> () -> Void {
+        return {
+            guard let nodeId = self.selectedNode else { return }
+            let ownerId = self.player.id
+            self.stateService?.buildNode(type: type, nodeId: nodeId, owner: ownerId)
         }
     }
     

@@ -12,7 +12,18 @@ import Combine
 /// Represents the state for a player
 struct PlayerState {
     
+    public var readyBuildings: [NodeType: Int] = [:]
     public var constructionQueue: [ConstructionQueueItem] = []
+    
+    mutating func add(node: NodeType) {
+        let count = readyBuildings[node] ?? 0
+        readyBuildings[node] = count + 1
+    }
+    
+    mutating func remove(node: NodeType) {
+        let count = readyBuildings[node] ?? 0
+        readyBuildings[node] = count - 1
+    }
     
 }
 
