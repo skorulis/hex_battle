@@ -111,8 +111,8 @@ extension GameStateService {
         let mappedNodes = map.nodes.map { (node) -> HexMapNode in
             return HexMapNode(
                 id: node.id,
-                x: node.x + Double(xMovement),
-                y: node.y + Double(yMovement),
+                x: node.x + xMovement,
+                y: node.y + yMovement,
                 initialState: node.initialState
             )
         }

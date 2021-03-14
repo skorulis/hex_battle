@@ -18,8 +18,8 @@ public struct HexMapModel: Codable {
 public struct HexMapNode: Codable {
     
     public let id: Int
-    public let x: Double
-    public let y: Double
+    public let x: CGFloat
+    public let y: CGFloat
     let initialState: HexMapNodeState?
     
 }

@@ -1,5 +1,5 @@
 //
-//  HexMapView.swift
+//  MapView.swift
 //  HexBattle
 //
 //  Created by Alexander Skorulis on 13/3/21.
@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - Memory footprint
 
-struct HexMapView {
+struct MapView {
     
     @ObservedObject var viewModel: MapViewModel
     
@@ -23,12 +23,12 @@ struct HexMapView {
 
 // MARK: - Rendering
 
-extension HexMapView: View {
+extension MapView: View {
     
     var body: some View {
         ZStack {
             Color.offWhite
-            edges
+            complexEdges
             borders
             nodes
         }
@@ -65,6 +65,15 @@ extension HexMapView: View {
         .mapFrame(viewModel.map)
     }
     
+    private var complexEdges: some View {
+        ZStack {
+            ForEach(viewModel.edgeViewModels) { edge in
+                MapEdgeView(viewModel: edge)
+            }
+        }
+        .mapFrame(viewModel.map)
+    }
+    
     private var borders: some View {
         ZStack {
             ForEach(viewModel.mapState.players) { player in
@@ -91,7 +100,7 @@ extension View {
 
 // MARK: - Previews
 
-struct HexMapView_Previews: PreviewProvider {
+struct MapView_Previews: PreviewProvider {
     
     static var previewMap: HexMapModel {
         let c1 = HexMapNodeState(type: .command, owner: 1)
@@ -127,7 +136,7 @@ struct HexMapView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        return HexMapView(viewModel: previewViewModel)
+        return MapView(viewModel: previewViewModel)
     }
     
 }

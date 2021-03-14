@@ -59,8 +59,8 @@
 		FAC16E6625FD720C004238EC /* TerritoryBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E5125FD720C004238EC /* TerritoryBorder.swift */; };
 		FAC16E6725FD720C004238EC /* HexMapModel+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E5225FD720C004238EC /* HexMapModel+ViewModel.swift */; };
 		FAC16E6825FD720C004238EC /* HexMapModel+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E5225FD720C004238EC /* HexMapModel+ViewModel.swift */; };
-		FAC16E6925FD720C004238EC /* HexMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E5325FD720C004238EC /* HexMapView.swift */; };
-		FAC16E6A25FD720C004238EC /* HexMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E5325FD720C004238EC /* HexMapView.swift */; };
+		FAC16E6925FD720C004238EC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E5325FD720C004238EC /* MapView.swift */; };
+		FAC16E6A25FD720C004238EC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E5325FD720C004238EC /* MapView.swift */; };
 		FAC16E6B25FD720C004238EC /* MapNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E5525FD720C004238EC /* MapNodeView.swift */; };
 		FAC16E6C25FD720C004238EC /* MapNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E5525FD720C004238EC /* MapNodeView.swift */; };
 		FAC16E6D25FD720C004238EC /* LevelSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16E5725FD720C004238EC /* LevelSelectionView.swift */; };
@@ -83,6 +83,10 @@
 		FAC16EAF25FD9AAA004238EC /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EAD25FD9AAA004238EC /* StatefulPreviewWrapper.swift */; };
 		FAC16EB825FD9F87004238EC /* BuildProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EB725FD9F87004238EC /* BuildProgressView.swift */; };
 		FAC16EB925FD9F87004238EC /* BuildProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EB725FD9F87004238EC /* BuildProgressView.swift */; };
+		FAC16EC325FDC2A1004238EC /* MapEdgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EC225FDC2A1004238EC /* MapEdgeView.swift */; };
+		FAC16EC425FDC2A1004238EC /* MapEdgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EC225FDC2A1004238EC /* MapEdgeView.swift */; };
+		FAC16ED225FDD2CB004238EC /* MapEdgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16ED125FDD2CB004238EC /* MapEdgeViewModel.swift */; };
+		FAC16ED325FDD2CB004238EC /* MapEdgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16ED125FDD2CB004238EC /* MapEdgeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,7 +145,7 @@
 		FAC16E5025FD720C004238EC /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		FAC16E5125FD720C004238EC /* TerritoryBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerritoryBorder.swift; sourceTree = "<group>"; };
 		FAC16E5225FD720C004238EC /* HexMapModel+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HexMapModel+ViewModel.swift"; sourceTree = "<group>"; };
-		FAC16E5325FD720C004238EC /* HexMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexMapView.swift; sourceTree = "<group>"; };
+		FAC16E5325FD720C004238EC /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FAC16E5525FD720C004238EC /* MapNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNodeView.swift; sourceTree = "<group>"; };
 		FAC16E5725FD720C004238EC /* LevelSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectionView.swift; sourceTree = "<group>"; };
 		FAC16E5825FD720C004238EC /* LevelSelectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectionViewModel.swift; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 		FAC16EA125FD880D004238EC /* CircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
 		FAC16EAD25FD9AAA004238EC /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
 		FAC16EB725FD9F87004238EC /* BuildProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildProgressView.swift; sourceTree = "<group>"; };
+		FAC16EC225FDC2A1004238EC /* MapEdgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEdgeView.swift; sourceTree = "<group>"; };
+		FAC16ED125FDD2CB004238EC /* MapEdgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEdgeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,10 +425,12 @@
 		FAC16E4F25FD720C004238EC /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				FAC16EC225FDC2A1004238EC /* MapEdgeView.swift */,
+				FAC16ED125FDD2CB004238EC /* MapEdgeViewModel.swift */,
 				FAC16E5025FD720C004238EC /* MapViewModel.swift */,
+				FAC16E5325FD720C004238EC /* MapView.swift */,
 				FAC16E5125FD720C004238EC /* TerritoryBorder.swift */,
 				FAC16E5225FD720C004238EC /* HexMapModel+ViewModel.swift */,
-				FAC16E5325FD720C004238EC /* HexMapView.swift */,
 				FAC16E5425FD720C004238EC /* Node */,
 			);
 			path = Map;
@@ -629,10 +637,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC16EC325FDC2A1004238EC /* MapEdgeView.swift in Sources */,
 				FAC16E8825FD7756004238EC /* RoundButton.swift in Sources */,
 				FAC16E5F25FD720C004238EC /* GameViewModel.swift in Sources */,
 				FAC16E7725FD722D004238EC /* ContentView.swift in Sources */,
-				FAC16E6925FD720C004238EC /* HexMapView.swift in Sources */,
+				FAC16ED225FDD2CB004238EC /* MapEdgeViewModel.swift in Sources */,
+				FAC16E6925FD720C004238EC /* MapView.swift in Sources */,
 				FAC16E6D25FD720C004238EC /* LevelSelectionView.swift in Sources */,
 				FAC16D7025FC4A44004238EC /* HexMapState.swift in Sources */,
 				FAC16D7725FC4B33004238EC /* NodeType.swift in Sources */,
@@ -668,10 +678,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC16EC425FDC2A1004238EC /* MapEdgeView.swift in Sources */,
 				FAC16E8925FD7756004238EC /* RoundButton.swift in Sources */,
 				FAC16E6025FD720C004238EC /* GameViewModel.swift in Sources */,
 				FAC16E7825FD722D004238EC /* ContentView.swift in Sources */,
-				FAC16E6A25FD720C004238EC /* HexMapView.swift in Sources */,
+				FAC16ED325FDD2CB004238EC /* MapEdgeViewModel.swift in Sources */,
+				FAC16E6A25FD720C004238EC /* MapView.swift in Sources */,
 				FAC16E6E25FD720C004238EC /* LevelSelectionView.swift in Sources */,
 				FAC16D7125FC4A44004238EC /* HexMapState.swift in Sources */,
 				FAC16D7825FC4B33004238EC /* NodeType.swift in Sources */,

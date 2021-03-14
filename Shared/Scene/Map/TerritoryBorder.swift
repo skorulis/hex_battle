@@ -48,7 +48,7 @@ extension TerritoryBorder: View {
 struct TerritoryBorder_Previews: PreviewProvider {
     
     static var previews: some View {
-        let viewModel = HexMapView_Previews.previewViewModel
+        let viewModel = MapView_Previews.previewViewModel
         let player = PlayerModel(id: 1)
         TerritoryBorder(viewModel: viewModel, player: player)
     }

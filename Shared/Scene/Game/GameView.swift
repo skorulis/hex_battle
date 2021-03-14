@@ -34,7 +34,7 @@ extension GameView: View {
     @ViewBuilder
     public var maybeMap: some View {
         if let mapVM = viewModel.mapViewModel() {
-            HexMapView(viewModel: mapVM)
+            MapView(viewModel: mapVM)
         } else {
             EmptyView()
         }
@@ -47,7 +47,7 @@ struct GameView_Previews: PreviewProvider {
     
     static var previews: some View {
         let stateService = GameStateService()
-        stateService.start(map: HexMapView_Previews.previewMap)
+        stateService.start(map: MapView_Previews.previewMap)
         stateService.selectedNode = 1
         let viewModel = GameViewModel(stateService: stateService)
         return GameView(viewModel: viewModel)

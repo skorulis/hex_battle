@@ -35,6 +35,14 @@ final class MapViewModel: ObservableObject {
         return stateService?.selectedNode == id
     }
     
+    var edgeViewModels: [MapEdgeViewModel] {
+        return map.edges.map { (edge) -> MapEdgeViewModel in
+            let node1 = map.node(id: edge.id1)
+            let node2 = map.node(id: edge.id2)
+            return MapEdgeViewModel(node1: node1, node2: node2)
+        }
+    }
+    
     
 }
 
