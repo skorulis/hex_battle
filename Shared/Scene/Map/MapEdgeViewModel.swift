@@ -46,7 +46,7 @@ final class MapEdgeViewModel {
 extension MapEdgeViewModel: Identifiable {
     
     var id: String {
-        return "\(node1.id)-\(node2.id)"
+        return "\(node1.id)-\(node2.id)-\(type1)-\(type2)"
     }
 }
 

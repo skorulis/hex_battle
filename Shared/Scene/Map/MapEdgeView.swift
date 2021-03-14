@@ -15,7 +15,8 @@ struct MapEdgeView {
     
     let viewModel: MapEdgeViewModel
     let lineWidth: CGFloat = 3
-    @State var dashPhase: CGFloat = 10
+    @State private var forwardPhase: CGFloat = 10
+    @State private var backwardsPhase: CGFloat = 10
     
     init(viewModel: MapEdgeViewModel) {
         self.viewModel = viewModel
@@ -50,13 +51,13 @@ extension MapEdgeView: View {
     
     private var forwardsLine: some View {
         line(from: node1.point, to: node2.point)
-            .stroke(style: strokeStyle(phase: dashPhase))
+            .stroke(style: strokeStyle(phase: forwardPhase))
             .foregroundColor(viewModel.type1.baseColor)
     }
     
     private var backwardsLine: some View {
         line(from: node2.point, to: node1.point)
-            .stroke(style: strokeStyle(phase: 0))
+            .stroke(style: strokeStyle(phase: backwardsPhase))
             .foregroundColor(viewModel.type2.baseColor)
     }
     
@@ -104,7 +105,12 @@ extension MapEdgeView {
     private func startAnimation() {
         if viewModel.isFlowingForwards {
             withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false)) {
-                dashPhase -= 24
+                forwardPhase -= 24
+            }
+        }
+        if viewModel.isFlowingBackwards {
+            withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false)) {
+                backwardsPhase -= 24
             }
         }
     }

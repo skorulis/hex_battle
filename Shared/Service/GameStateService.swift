@@ -67,7 +67,7 @@ extension GameStateService {
     }
     
     private func constructionEvent(player: Int) -> PlayerState.ConstructionTimeFrame {
-        let duration: TimeInterval = 10
+        let duration: TimeInterval = 10 * 0.2
         let subscriber = Timer.publish(every: duration, on: .main, in: .common)
             .autoconnect()
             .sink { _ in

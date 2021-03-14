@@ -89,6 +89,8 @@
 		FAC16ED325FDD2CB004238EC /* MapEdgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16ED125FDD2CB004238EC /* MapEdgeViewModel.swift */; };
 		FAC16EDE25FDE982004238EC /* CGPointVector in Frameworks */ = {isa = PBXBuildFile; productRef = FAC16EDD25FDE982004238EC /* CGPointVector */; };
 		FAC16EE425FDE991004238EC /* CGPointVector in Frameworks */ = {isa = PBXBuildFile; productRef = FAC16EE325FDE991004238EC /* CGPointVector */; };
+		FAC16EEE25FE0FC3004238EC /* HexGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EED25FE0FC3004238EC /* HexGridView.swift */; };
+		FAC16EEF25FE0FC3004238EC /* HexGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EED25FE0FC3004238EC /* HexGridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +163,7 @@
 		FAC16EB725FD9F87004238EC /* BuildProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildProgressView.swift; sourceTree = "<group>"; };
 		FAC16EC225FDC2A1004238EC /* MapEdgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEdgeView.swift; sourceTree = "<group>"; };
 		FAC16ED125FDD2CB004238EC /* MapEdgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEdgeViewModel.swift; sourceTree = "<group>"; };
+		FAC16EED25FE0FC3004238EC /* HexGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexGridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -436,6 +439,7 @@
 				FAC16E5125FD720C004238EC /* TerritoryBorder.swift */,
 				FAC16E5225FD720C004238EC /* HexMapModel+ViewModel.swift */,
 				FAC16E5425FD720C004238EC /* Node */,
+				FAC16EED25FE0FC3004238EC /* HexGridView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -660,6 +664,7 @@
 				FAC16E5D25FD720C004238EC /* GameView.swift in Sources */,
 				FAC16DD625FC753C004238EC /* GameStateService.swift in Sources */,
 				FA59B6E225FC2ACD00C7ABC8 /* IOCConfig.swift in Sources */,
+				FAC16EEE25FE0FC3004238EC /* HexGridView.swift in Sources */,
 				FAC16E6125FD720C004238EC /* RenderConstants.swift in Sources */,
 				FA59B6B925FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
 				FAC16DFF25FC8EBA004238EC /* AppStateService.swift in Sources */,
@@ -701,6 +706,7 @@
 				FAC16E5E25FD720C004238EC /* GameView.swift in Sources */,
 				FAC16DD725FC753C004238EC /* GameStateService.swift in Sources */,
 				FA59B6E325FC2ACD00C7ABC8 /* IOCConfig.swift in Sources */,
+				FAC16EEF25FE0FC3004238EC /* HexGridView.swift in Sources */,
 				FAC16E6225FD720C004238EC /* RenderConstants.swift in Sources */,
 				FA59B6BA25FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
 				FAC16E0025FC8EBA004238EC /* AppStateService.swift in Sources */,
