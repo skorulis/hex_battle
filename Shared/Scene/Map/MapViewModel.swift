@@ -17,14 +17,14 @@ final class MapViewModel: ObservableObject {
     init(map: HexMapModel, state: HexMapState, stateService: GameStateService?) {
         self.map = map
         self.mapState = state
-        self.stateService  =  stateService
-        stateService?.$state
+        self.stateService = stateService
+        /*stateService?.$state
             .filter { $0 != nil}
             .map { $0! }
-            .assign(to: &$mapState)
+            .assign(to: &$mapState)*/
         
-        stateService?.$selectedNode
-            .assign(to: &$selectedNode)
+        //stateService?.$selectedNode
+         //   .assign(to: &$selectedNode)
     }
     
     func nodeState(id: Int) -> HexMapNodeState {

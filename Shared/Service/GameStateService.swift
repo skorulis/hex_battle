@@ -23,7 +23,9 @@ final class GameStateService: ObservableObject {
     public var playerStates: [Int: PlayerState] = [:]
     
     public func start(map: HexMapModel) {
-        self.map = GameStateService.reposition(map)
+        let grid = HexGrid()
+        try! GameStateService.validate(map)
+        self.map = GameStateService.reposition(map, grid: grid)
         self.state = GameStateService.buildState(self.map!)
         for player in self.state?.players ?? [] {
             playerStates[player.id] = PlayerState()
@@ -102,21 +104,39 @@ extension GameStateService {
 extension GameStateService {
     
     /// Make sure no nodes are too close to the edge
-    static func reposition(_ map: HexMapModel) -> HexMapModel {
-        let buffer = RenderConstants.borderBuffer + RenderConstants.nodeRadius
-        let minX = map.nodes.map { $0.x }.min() ?? 0
-        let minY = map.nodes.map { $0.y }.min() ?? 0
-        let xMovement = max(0, buffer - CGFloat(minX))
-        let yMovement = max(0, buffer - CGFloat(minY))
+    static func reposition(_ map: HexMapModel, grid: HexGrid) -> HexMapModel {
+        
         let mappedNodes = map.nodes.map { (node) -> HexMapNode in
+            let position = grid.position(x: Int(node.x), y: Int(node.y))
             return HexMapNode(
                 id: node.id,
-                x: node.x + xMovement,
-                y: node.y + yMovement,
+                x: position.x,
+                y: position.y,
                 initialState: node.initialState
             )
         }
         return HexMapModel(name: map.name, nodes: mappedNodes, edges: map.edges)
+    }
+    
+    static func validate(_ map: HexMapModel) throws {
+        let ids = map.nodes.map { $0.id }
+        let points = map.nodes.map { "\($0.x)-\($0.y)" }
+        let idSet = Set(ids)
+        let pointSet = Set(points)
+        if ids.count != idSet.count {
+            throw MapError.duplicateIds
+        }
+        if pointSet.count != points.count {
+            throw MapError.duplicatePositions
+        }
+        
+        let edgeIds = map.edges.map { ["\($0.id1)", "\($0.id2)"].joined(separator: "-") }
+        let edgeIdSet = Set(edgeIds)
+        
+        if edgeIds.count != edgeIdSet.count {
+            throw MapError.duplicateEdges
+        }
+        
     }
     
     static func buildState(_ map: HexMapModel) -> HexMapState {

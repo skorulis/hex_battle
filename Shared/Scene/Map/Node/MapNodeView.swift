@@ -37,6 +37,7 @@ extension MapNodeView: View {
     var body: some View {
         Button(action: action, label: {
             Text(state.type.symbol)
+            Text("\(model.id)")
         })
         .buttonStyle(RoundButtonStyle(selected: selected))
     }

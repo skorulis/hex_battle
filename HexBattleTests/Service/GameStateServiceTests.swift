@@ -16,22 +16,21 @@ class GameStateServiceTests: XCTestCase {
     
     func testReposition() {
         let nodes = [
-            HexMapNode(id: 1, x: 0, y: 5, initialState: nil),
-            HexMapNode(id: 2, x: 100, y: 100, initialState: nil),
+            HexMapNode(id: 1, x: 0, y: 1, initialState: nil),
+            HexMapNode(id: 2, x: 2, y: 2, initialState: nil),
         ]
         let map = HexMapModel(name: "test", nodes: nodes, edges: [])
-        let adjusted = GameStateService.reposition(map)
+        let grid = HexGrid(hexSize: 40)
+        let adjusted = GameStateService.reposition(map, grid: grid)
         
         let node1 = adjusted.nodes[0]
         let node2 = adjusted.nodes[1]
         
-        let buffer = RenderConstants.borderBuffer + RenderConstants.nodeRadius
+        XCTAssertEqual(CGFloat(node1.x), 40)
+        XCTAssertEqual(CGFloat(node1.y), 103, accuracy: 1)
         
-        XCTAssertEqual(CGFloat(node1.x), buffer)
-        XCTAssertEqual(CGFloat(node1.y), buffer)
-        
-        XCTAssertEqual(CGFloat(node2.x), 100 + buffer)
-        XCTAssertEqual(CGFloat(node2.y), 100 + buffer - 5)
+        XCTAssertEqual(CGFloat(node2.x), 160)
+        XCTAssertEqual(CGFloat(node2.y), 173, accuracy: 1)
         
     }
     

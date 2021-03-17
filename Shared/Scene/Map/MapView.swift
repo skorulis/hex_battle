@@ -107,12 +107,12 @@ struct MapView_Previews: PreviewProvider {
         let c2 = HexMapNodeState(type: .command, owner: 2)
         
         let nodes = [
-            HexMapNode(id: 1, x: 40, y: 40, initialState: c1),
-            HexMapNode(id: 2, x: 100, y: 190, initialState: nil),
-            HexMapNode(id: 3, x: 200, y: 100, initialState: c2),
-            HexMapNode(id: 4, x: 300, y: 100, initialState: nil),
-            HexMapNode(id: 5, x: 300, y: 200, initialState: nil),
-            HexMapNode(id: 6, x: 300, y: 0, initialState: nil),
+            HexMapNode(id: 1, x: 0, y: 0, initialState: c1),
+            HexMapNode(id: 2, x: 1, y: 1, initialState: nil),
+            HexMapNode(id: 3, x: 2, y: 1, initialState: c2),
+            HexMapNode(id: 4, x: 3, y: 1, initialState: nil),
+            HexMapNode(id: 5, x: 2, y: 0, initialState: nil),
+            HexMapNode(id: 6, x: 2, y: 2, initialState: nil),
         ]
         let edges = [
             HexMapEdge(id1: 1, id2: 2),
@@ -121,7 +121,8 @@ struct MapView_Previews: PreviewProvider {
             HexMapEdge(id1: 3, id2: 5),
             HexMapEdge(id1: 3, id2: 6),
         ]
-        return GameStateService.reposition(HexMapModel(name: "Map1", nodes: nodes, edges: edges))
+        let grid = HexGrid()
+        return GameStateService.reposition(HexMapModel(name: "Map1", nodes: nodes, edges: edges), grid: grid)
     }
     
     static var previewViewModel: MapViewModel {

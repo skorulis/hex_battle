@@ -28,6 +28,8 @@
 		FA59B7ED25FC43C200C7ABC8 /* Color+Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7EB25FC43C200C7ABC8 /* Color+Neumorphic.swift */; };
 		FA59B7F325FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7F225FC462700C7ABC8 /* LinearGradient+Neumorphic.swift */; };
 		FA59B7F425FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7F225FC462700C7ABC8 /* LinearGradient+Neumorphic.swift */; };
+		FAAF28792601F7AE009B91BE /* MapError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF28782601F7AE009B91BE /* MapError.swift */; };
+		FAAF287A2601F7AE009B91BE /* MapError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF28782601F7AE009B91BE /* MapError.swift */; };
 		FAC16D7025FC4A44004238EC /* HexMapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D6F25FC4A44004238EC /* HexMapState.swift */; };
 		FAC16D7125FC4A44004238EC /* HexMapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D6F25FC4A44004238EC /* HexMapState.swift */; };
 		FAC16D7725FC4B33004238EC /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D7625FC4B33004238EC /* NodeType.swift */; };
@@ -134,6 +136,7 @@
 		FA59B77E25FC341800C7ABC8 /* MapServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapServiceTests.swift; sourceTree = "<group>"; };
 		FA59B7EB25FC43C200C7ABC8 /* Color+Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Neumorphic.swift"; sourceTree = "<group>"; };
 		FA59B7F225FC462700C7ABC8 /* LinearGradient+Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinearGradient+Neumorphic.swift"; sourceTree = "<group>"; };
+		FAAF28782601F7AE009B91BE /* MapError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapError.swift; sourceTree = "<group>"; };
 		FAC16D6F25FC4A44004238EC /* HexMapState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapState.swift; sourceTree = "<group>"; };
 		FAC16D7625FC4B33004238EC /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
 		FAC16D8C25FC57C4004238EC /* HexMapNodeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapNodeViewModelTests.swift; sourceTree = "<group>"; };
@@ -278,6 +281,7 @@
 				FAC16D7625FC4B33004238EC /* NodeType.swift */,
 				FAC16D9625FC5CC4004238EC /* PlayerModel.swift */,
 				FAC16E9525FD81F0004238EC /* PlayerState.swift */,
+				FAAF28782601F7AE009B91BE /* MapError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -662,6 +666,7 @@
 				FAC16D7025FC4A44004238EC /* HexMapState.swift in Sources */,
 				FAC16D7725FC4B33004238EC /* NodeType.swift in Sources */,
 				FA59B6C925FC2A1600C7ABC8 /* MapService.swift in Sources */,
+				FAAF28792601F7AE009B91BE /* MapError.swift in Sources */,
 				FAC16E5B25FD720C004238EC /* AppCoordinatorView.swift in Sources */,
 				FAC16F952600BABA004238EC /* HexGrid.swift in Sources */,
 				FAC16E9625FD81F0004238EC /* PlayerState.swift in Sources */,
@@ -705,6 +710,7 @@
 				FAC16D7125FC4A44004238EC /* HexMapState.swift in Sources */,
 				FAC16D7825FC4B33004238EC /* NodeType.swift in Sources */,
 				FA59B6CA25FC2A1600C7ABC8 /* MapService.swift in Sources */,
+				FAAF287A2601F7AE009B91BE /* MapError.swift in Sources */,
 				FAC16E5C25FD720C004238EC /* AppCoordinatorView.swift in Sources */,
 				FAC16F962600BABA004238EC /* HexGrid.swift in Sources */,
 				FAC16E9725FD81F0004238EC /* PlayerState.swift in Sources */,

@@ -9,7 +9,11 @@ import Foundation
 
 struct HexGrid {
  
-    let hexSize: CGFloat = 40
+    let hexSize: CGFloat
+    
+    init(hexSize: CGFloat = 80) {
+        self.hexSize = hexSize
+    }
     
     func position(x: Int, y: Int) -> CGPoint {
         let xPos = CGFloat(x) * 3*width/4 + width/2
