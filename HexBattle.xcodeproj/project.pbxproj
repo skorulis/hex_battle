@@ -91,6 +91,8 @@
 		FAC16EE425FDE991004238EC /* CGPointVector in Frameworks */ = {isa = PBXBuildFile; productRef = FAC16EE325FDE991004238EC /* CGPointVector */; };
 		FAC16EEE25FE0FC3004238EC /* HexGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EED25FE0FC3004238EC /* HexGridView.swift */; };
 		FAC16EEF25FE0FC3004238EC /* HexGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EED25FE0FC3004238EC /* HexGridView.swift */; };
+		FAC16F952600BABA004238EC /* HexGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F942600BABA004238EC /* HexGrid.swift */; };
+		FAC16F962600BABA004238EC /* HexGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F942600BABA004238EC /* HexGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +166,7 @@
 		FAC16EC225FDC2A1004238EC /* MapEdgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEdgeView.swift; sourceTree = "<group>"; };
 		FAC16ED125FDD2CB004238EC /* MapEdgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEdgeViewModel.swift; sourceTree = "<group>"; };
 		FAC16EED25FE0FC3004238EC /* HexGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexGridView.swift; sourceTree = "<group>"; };
+		FAC16F942600BABA004238EC /* HexGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +272,7 @@
 		FA59B6AB25FC286A00C7ABC8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FAC16F942600BABA004238EC /* HexGrid.swift */,
 				FA59B6B825FC287F00C7ABC8 /* HexMapModel.swift */,
 				FAC16D6F25FC4A44004238EC /* HexMapState.swift */,
 				FAC16D7625FC4B33004238EC /* NodeType.swift */,
@@ -432,13 +436,13 @@
 		FAC16E4F25FD720C004238EC /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				FAC16E5425FD720C004238EC /* Node */,
 				FAC16EC225FDC2A1004238EC /* MapEdgeView.swift */,
 				FAC16ED125FDD2CB004238EC /* MapEdgeViewModel.swift */,
 				FAC16E5025FD720C004238EC /* MapViewModel.swift */,
 				FAC16E5325FD720C004238EC /* MapView.swift */,
 				FAC16E5125FD720C004238EC /* TerritoryBorder.swift */,
 				FAC16E5225FD720C004238EC /* HexMapModel+ViewModel.swift */,
-				FAC16E5425FD720C004238EC /* Node */,
 				FAC16EED25FE0FC3004238EC /* HexGridView.swift */,
 			);
 			path = Map;
@@ -659,6 +663,7 @@
 				FAC16D7725FC4B33004238EC /* NodeType.swift in Sources */,
 				FA59B6C925FC2A1600C7ABC8 /* MapService.swift in Sources */,
 				FAC16E5B25FD720C004238EC /* AppCoordinatorView.swift in Sources */,
+				FAC16F952600BABA004238EC /* HexGrid.swift in Sources */,
 				FAC16E9625FD81F0004238EC /* PlayerState.swift in Sources */,
 				FAC16E2525FCA41A004238EC /* Color+Extensions.swift in Sources */,
 				FAC16E5D25FD720C004238EC /* GameView.swift in Sources */,
@@ -701,6 +706,7 @@
 				FAC16D7825FC4B33004238EC /* NodeType.swift in Sources */,
 				FA59B6CA25FC2A1600C7ABC8 /* MapService.swift in Sources */,
 				FAC16E5C25FD720C004238EC /* AppCoordinatorView.swift in Sources */,
+				FAC16F962600BABA004238EC /* HexGrid.swift in Sources */,
 				FAC16E9725FD81F0004238EC /* PlayerState.swift in Sources */,
 				FAC16E2625FCA41A004238EC /* Color+Extensions.swift in Sources */,
 				FAC16E5E25FD720C004238EC /* GameView.swift in Sources */,

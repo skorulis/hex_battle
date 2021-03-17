@@ -12,13 +12,14 @@ import SwiftUI
 
 struct HexGridView {
     
-    let hexSize: CGFloat = 40
     let columns: Int
     let rows: Int
+    private let grid: HexGrid
     
     init(rows: Int, columns: Int) {
         self.rows = rows
         self.columns = columns
+        self.grid = HexGrid()
     }
     
 }
@@ -31,14 +32,11 @@ extension HexGridView: View {
         ZStack {
             ForEach(0..<columns) { x in
                 ForEach(0..<rows) { y in
-                    let pos = position(x: x, y: y)
+                    let pos = grid.position(x: x, y: y)
                     hex
                         .position(x: pos.x,y: pos.y)
                 }
             }
-            
-                
-                
         }
         EmptyView()
     }
@@ -46,36 +44,19 @@ extension HexGridView: View {
     private var hex: some View {
         return Path { path in
             path.addLines([
-                CGPoint(x: width/4, y: 0),
-                CGPoint(x: width * 3/4, y: 0),
-                CGPoint(x: width, y: height/2),
-                CGPoint(x: width * 3 / 4, y: height),
-                CGPoint(x: width / 4, y: height),
-                CGPoint(x:0, y: height / 2),
-                CGPoint(x: width/4, y: 0)
+                CGPoint(x: grid.width/4, y: 0),
+                CGPoint(x: grid.width * 3/4, y: 0),
+                CGPoint(x: grid.width, y: grid.height/2),
+                CGPoint(x: grid.width * 3 / 4, y: grid.height),
+                CGPoint(x: grid.width / 4, y: grid.height),
+                CGPoint(x:0, y: grid.height / 2),
+                CGPoint(x: grid.width/4, y: 0)
             ])
         }
         .stroke()
-        .frame(width: width, height: height)
+        .frame(width: grid.width, height: grid.height)
     }
     
-    func position(x: Int, y: Int) -> CGPoint {
-        let xPos = CGFloat(x) * 3*width/4 + width/2
-        var yPos = CGFloat(y) * height + height/2
-        if x % 2 == 1 {
-            yPos += height/2
-        }
-        
-        return CGPoint(x: xPos, y: yPos)
-    }
-    
-    var width: CGFloat {
-        return hexSize * 2
-    }
-    
-    var height: CGFloat {
-        return width * sqrt(3) / 2
-    }
 }
 
 // MARK: - Previews
