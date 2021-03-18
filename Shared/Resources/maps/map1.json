@@ -1,13 +1,27 @@
 {
-  "name":"TestMap1",
+  "name": "TestMap1",
+  "players": [
+    {
+      "id": 1,
+      "initialBuildings": {
+        "alpha": 2,
+        "beta": 2,
+        "gamma": 2
+      }
+    },
+    {
+      "id": 2,
+      "initialBuildings": {}
+    }
+  ],
   "nodes": [
     {
       "id": 1,
       "x": 0,
       "y": 1,
       "initialState": {
-        "type":"command",
-        "owner":1
+        "type": "command",
+        "owner": 1
       }
     },
     {
@@ -50,11 +64,10 @@
       "x": 4,
       "y": 1,
       "initialState": {
-        "type":"command",
-        "owner":2
+        "type": "command",
+        "owner": 2
       }
     }
-    
   ],
   "edges": [
     {

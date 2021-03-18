@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CGPointVector
 
 struct HexGrid {
  
@@ -31,6 +32,23 @@ struct HexGrid {
     
     var height: CGFloat {
         return width * sqrt(3) / 2
+    }
+    
+    var pathPoints: [CGPoint] {
+        return [
+            CGPoint(x: width/4, y: 0),
+            CGPoint(x: width * 3/4, y: 0),
+            CGPoint(x: width, y: height/2),
+            CGPoint(x: width * 3 / 4, y: height),
+            CGPoint(x: width / 4, y: height),
+            CGPoint(x:0, y: height / 2),
+            CGPoint(x: width/4, y: 0)
+        ]
+    }
+    
+    func pathPoints(x: Int, y: Int) -> [CGPoint] {
+        let centre = position(x: x, y: y)
+        return pathPoints.map { $0 + centre }
     }
     
 }

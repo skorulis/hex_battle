@@ -43,15 +43,7 @@ extension HexGridView: View {
     
     private var hex: some View {
         return Path { path in
-            path.addLines([
-                CGPoint(x: grid.width/4, y: 0),
-                CGPoint(x: grid.width * 3/4, y: 0),
-                CGPoint(x: grid.width, y: grid.height/2),
-                CGPoint(x: grid.width * 3 / 4, y: grid.height),
-                CGPoint(x: grid.width / 4, y: grid.height),
-                CGPoint(x:0, y: grid.height / 2),
-                CGPoint(x: grid.width/4, y: 0)
-            ])
+            path.addLines(grid.pathPoints)
         }
         .stroke()
         .frame(width: grid.width, height: grid.height)

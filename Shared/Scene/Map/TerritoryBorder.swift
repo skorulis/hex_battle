@@ -5,6 +5,7 @@
 //  Created by Alexander Skorulis on 13/3/21.
 //
 
+import CGPointVector
 import Foundation
 
 import SwiftUI
@@ -14,7 +15,11 @@ import SwiftUI
 struct TerritoryBorder {
     
     @ObservedObject var viewModel: MapViewModel
-    let player: PlayerModel
+    let player: PlayerState
+    
+    var grid: HexGrid {
+        return viewModel.stateService?.grid ?? HexGrid()
+    }
     
 }
 
@@ -26,13 +31,8 @@ extension TerritoryBorder: View {
         Path { path in
             for node in viewModel.map.nodes {
                 if viewModel.nodeState(id: node.id).owner == player.id {
-                    let point = CGRect(
-                        x: CGFloat(node.x) - RenderConstants.basicTerritoryRadius,
-                        y: CGFloat(node.y) - RenderConstants.basicTerritoryRadius,
-                        width: RenderConstants.basicTerritoryRadius * 2,
-                        height: RenderConstants.basicTerritoryRadius * 2
-                    )
-                    path.addEllipse(in: point)
+                    let middlePoint = node.point - CGPoint(x: grid.width/2, y: grid.height/2)
+                    path.addLines(grid.pathPoints.map { $0 + middlePoint })
                 }
             }
             
@@ -49,7 +49,7 @@ struct TerritoryBorder_Previews: PreviewProvider {
     
     static var previews: some View {
         let viewModel = MapView_Previews.previewViewModel
-        let player = PlayerModel(id: 1)
+        let player = PlayerState(id: 1)
         TerritoryBorder(viewModel: viewModel, player: player)
     }
 }

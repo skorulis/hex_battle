@@ -15,8 +15,12 @@ class MapServiceTests: XCTestCase {
     lazy var mapService = ioc.get(MapService.self)!
     
     
-    func testLoadingMaps() {
+    func testLoadingMaps() throws {
         XCTAssertGreaterThan(mapService.maps.count, 0)
+        
+        for map in mapService.maps {
+            try MapInitialisationService.validate(map)
+        }
         
     }
     

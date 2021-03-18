@@ -29,6 +29,7 @@ public final class IOCConfig {
         container.register(MapService.self).inObjectScope(.container)
         container.register(GameStateService.self).inObjectScope(.container)
         container.register(AppStateService.self).inObjectScope(.container)
+        container.register(MapInitialisationService.self)
     }
     
     private func setupViewModels() {

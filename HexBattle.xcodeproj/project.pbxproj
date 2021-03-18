@@ -30,13 +30,14 @@
 		FA59B7F425FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7F225FC462700C7ABC8 /* LinearGradient+Neumorphic.swift */; };
 		FAAF28792601F7AE009B91BE /* MapError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF28782601F7AE009B91BE /* MapError.swift */; };
 		FAAF287A2601F7AE009B91BE /* MapError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF28782601F7AE009B91BE /* MapError.swift */; };
+		FAAF288B26033704009B91BE /* MapInitialisationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF288A26033704009B91BE /* MapInitialisationService.swift */; };
+		FAAF288C26033704009B91BE /* MapInitialisationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF288A26033704009B91BE /* MapInitialisationService.swift */; };
+		FAAF2896260340CC009B91BE /* MapInitialisationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF2895260340CC009B91BE /* MapInitialisationServiceTests.swift */; };
 		FAC16D7025FC4A44004238EC /* HexMapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D6F25FC4A44004238EC /* HexMapState.swift */; };
 		FAC16D7125FC4A44004238EC /* HexMapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D6F25FC4A44004238EC /* HexMapState.swift */; };
 		FAC16D7725FC4B33004238EC /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D7625FC4B33004238EC /* NodeType.swift */; };
 		FAC16D7825FC4B33004238EC /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D7625FC4B33004238EC /* NodeType.swift */; };
 		FAC16D8D25FC57C4004238EC /* HexMapNodeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D8C25FC57C4004238EC /* HexMapNodeViewModelTests.swift */; };
-		FAC16DA425FC5D14004238EC /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D9625FC5CC4004238EC /* PlayerModel.swift */; };
-		FAC16DA925FC5D15004238EC /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D9625FC5CC4004238EC /* PlayerModel.swift */; };
 		FAC16DD625FC753C004238EC /* GameStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16DD525FC753C004238EC /* GameStateService.swift */; };
 		FAC16DD725FC753C004238EC /* GameStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16DD525FC753C004238EC /* GameStateService.swift */; };
 		FAC16DDD25FC8022004238EC /* GameStateServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16DDC25FC8022004238EC /* GameStateServiceTests.swift */; };
@@ -137,10 +138,11 @@
 		FA59B7EB25FC43C200C7ABC8 /* Color+Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Neumorphic.swift"; sourceTree = "<group>"; };
 		FA59B7F225FC462700C7ABC8 /* LinearGradient+Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinearGradient+Neumorphic.swift"; sourceTree = "<group>"; };
 		FAAF28782601F7AE009B91BE /* MapError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapError.swift; sourceTree = "<group>"; };
+		FAAF288A26033704009B91BE /* MapInitialisationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInitialisationService.swift; sourceTree = "<group>"; };
+		FAAF2895260340CC009B91BE /* MapInitialisationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInitialisationServiceTests.swift; sourceTree = "<group>"; };
 		FAC16D6F25FC4A44004238EC /* HexMapState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapState.swift; sourceTree = "<group>"; };
 		FAC16D7625FC4B33004238EC /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
 		FAC16D8C25FC57C4004238EC /* HexMapNodeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapNodeViewModelTests.swift; sourceTree = "<group>"; };
-		FAC16D9625FC5CC4004238EC /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		FAC16DD525FC753C004238EC /* GameStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateService.swift; sourceTree = "<group>"; };
 		FAC16DDC25FC8022004238EC /* GameStateServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateServiceTests.swift; sourceTree = "<group>"; };
 		FAC16DFE25FC8EB9004238EC /* AppStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateService.swift; sourceTree = "<group>"; };
@@ -279,7 +281,6 @@
 				FA59B6B825FC287F00C7ABC8 /* HexMapModel.swift */,
 				FAC16D6F25FC4A44004238EC /* HexMapState.swift */,
 				FAC16D7625FC4B33004238EC /* NodeType.swift */,
-				FAC16D9625FC5CC4004238EC /* PlayerModel.swift */,
 				FAC16E9525FD81F0004238EC /* PlayerState.swift */,
 				FAAF28782601F7AE009B91BE /* MapError.swift */,
 			);
@@ -301,6 +302,7 @@
 				FA59B6E125FC2ACD00C7ABC8 /* IOCConfig.swift */,
 				FAC16DD525FC753C004238EC /* GameStateService.swift */,
 				FAC16DFE25FC8EB9004238EC /* AppStateService.swift */,
+				FAAF288A26033704009B91BE /* MapInitialisationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -357,6 +359,7 @@
 			children = (
 				FA59B77E25FC341800C7ABC8 /* MapServiceTests.swift */,
 				FAC16DDC25FC8022004238EC /* GameStateServiceTests.swift */,
+				FAAF2895260340CC009B91BE /* MapInitialisationServiceTests.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -675,12 +678,12 @@
 				FAC16DD625FC753C004238EC /* GameStateService.swift in Sources */,
 				FA59B6E225FC2ACD00C7ABC8 /* IOCConfig.swift in Sources */,
 				FAC16EEE25FE0FC3004238EC /* HexGridView.swift in Sources */,
+				FAAF288B26033704009B91BE /* MapInitialisationService.swift in Sources */,
 				FAC16E6125FD720C004238EC /* RenderConstants.swift in Sources */,
 				FA59B6B925FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
 				FAC16DFF25FC8EBA004238EC /* AppStateService.swift in Sources */,
 				FA59B7EC25FC43C200C7ABC8 /* Color+Neumorphic.swift in Sources */,
 				FAC16EB825FD9F87004238EC /* BuildProgressView.swift in Sources */,
-				FAC16DA425FC5D14004238EC /* PlayerModel.swift in Sources */,
 				FAC16E6525FD720C004238EC /* TerritoryBorder.swift in Sources */,
 				FAC16E6325FD720C004238EC /* MapViewModel.swift in Sources */,
 				FA59B6EB25FC2B3A00C7ABC8 /* PServiceType.swift in Sources */,
@@ -719,12 +722,12 @@
 				FAC16DD725FC753C004238EC /* GameStateService.swift in Sources */,
 				FA59B6E325FC2ACD00C7ABC8 /* IOCConfig.swift in Sources */,
 				FAC16EEF25FE0FC3004238EC /* HexGridView.swift in Sources */,
+				FAAF288C26033704009B91BE /* MapInitialisationService.swift in Sources */,
 				FAC16E6225FD720C004238EC /* RenderConstants.swift in Sources */,
 				FA59B6BA25FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
 				FAC16E0025FC8EBA004238EC /* AppStateService.swift in Sources */,
 				FA59B7ED25FC43C200C7ABC8 /* Color+Neumorphic.swift in Sources */,
 				FAC16EB925FD9F87004238EC /* BuildProgressView.swift in Sources */,
-				FAC16DA925FC5D15004238EC /* PlayerModel.swift in Sources */,
 				FAC16E6625FD720C004238EC /* TerritoryBorder.swift in Sources */,
 				FAC16E6425FD720C004238EC /* MapViewModel.swift in Sources */,
 				FA59B6EC25FC2B3A00C7ABC8 /* PServiceType.swift in Sources */,
@@ -753,6 +756,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC16D8D25FC57C4004238EC /* HexMapNodeViewModelTests.swift in Sources */,
+				FAAF2896260340CC009B91BE /* MapInitialisationServiceTests.swift in Sources */,
 				FAC16DDD25FC8022004238EC /* GameStateServiceTests.swift in Sources */,
 				FAC16E3925FCB139004238EC /* ColorTests.swift in Sources */,
 				FA59B77F25FC341800C7ABC8 /* MapServiceTests.swift in Sources */,

@@ -8,10 +8,21 @@
 import Foundation
 
 /// Represents the current state of the game
-struct HexMapState: Codable {
+struct HexMapState {
     
     var nodes:[Int: HexMapNodeState] = [:]
-    var players: [PlayerModel] = []
+    var players: [Int: PlayerState] = [:]
+    
+    var allPlayers: [PlayerState] {
+        get  {
+            return Array(players.values)
+        }
+        set {
+            for p in newValue {
+                players[p.id] = p
+            }
+        }
+    }
     
 }
 

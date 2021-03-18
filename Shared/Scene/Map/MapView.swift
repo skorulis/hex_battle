@@ -76,7 +76,7 @@ extension MapView: View {
     
     private var borders: some View {
         ZStack {
-            ForEach(viewModel.mapState.players) { player in
+            ForEach(viewModel.mapState.allPlayers) { player in
                 TerritoryBorder(viewModel: viewModel, player: player)
             }
         }
@@ -121,13 +121,18 @@ struct MapView_Previews: PreviewProvider {
             HexMapEdge(id1: 3, id2: 5),
             HexMapEdge(id1: 3, id2: 6),
         ]
+        let players = [
+            MapPlayer(id: 1, initialBuildings: [NodeType.alpha.rawValue: 2]),
+            MapPlayer(id: 2, initialBuildings: [NodeType.alpha.rawValue: 2]),
+        ]
+        
         let grid = HexGrid()
-        return GameStateService.reposition(HexMapModel(name: "Map1", nodes: nodes, edges: edges), grid: grid)
+        return MapInitialisationService.reposition(HexMapModel(name: "Map1", nodes: nodes, edges: edges, players: players), grid: grid)
     }
     
     static var previewViewModel: MapViewModel {
         let map = previewMap
-        let state = GameStateService.buildState(map)
+        let state = MapInitialisationService.buildState(map)
         let viewModel = MapViewModel(map: previewMap, state: state, stateService: nil)
         viewModel.mapState.nodes[2] = HexMapNodeState(type: .passive, owner: 1)
         

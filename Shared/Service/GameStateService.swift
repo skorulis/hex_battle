@@ -10,8 +10,11 @@ import Swinject
 
 final class GameStateService: ObservableObject {
     
+    private let initService: MapInitialisationService
+    
     public var map: HexMapModel?
-    public var player: PlayerModel = PlayerModel(id: 1) //Always player 1 for now
+    public var grid: HexGrid = HexGrid()
+    public var playerId: Int = 1 //Always player 1 for now
     
     @Published
     public var state: HexMapState?
@@ -19,17 +22,18 @@ final class GameStateService: ObservableObject {
     @Published
     public var selectedNode: Int?
     
-    @Published
-    public var playerStates: [Int: PlayerState] = [:]
+    public var playerStates: [Int: PlayerState] {
+        return state?.players ?? [:]
+    }
+    
+    public init(initService: MapInitialisationService) {
+        self.initService = initService
+    }
     
     public func start(map: HexMapModel) {
-        let grid = HexGrid()
-        try! GameStateService.validate(map)
-        self.map = GameStateService.reposition(map, grid: grid)
-        self.state = GameStateService.buildState(self.map!)
-        for player in self.state?.players ?? [] {
-            playerStates[player.id] = PlayerState()
-        }
+        let checked = try! initService.initialise(map: map, grid: grid)
+        self.map = checked.map
+        self.state = checked.state
     }
 
     public func mapViewModel() -> MapViewModel {
@@ -52,7 +56,7 @@ extension GameStateService {
         
         state.constructionQueue.append(item)
 
-        playerStates[player] = state
+        self.state?.players[player] = state
     }
     
     func buildNode(type: NodeType, nodeId: Int, owner: Int) {
@@ -65,7 +69,7 @@ extension GameStateService {
         
         var playerState = playerStates[owner]!
         playerState.remove(node: type)
-        playerStates[owner] = playerState
+        self.state?.players[owner] = playerState
     }
     
     private func constructionEvent(player: Int) -> PlayerState.ConstructionTimeFrame {
@@ -94,72 +98,7 @@ extension GameStateService {
             first.time = constructionEvent(player: player)
             state.constructionQueue[0] = first
         }
-        playerStates[player] = state
-    }
-    
-}
-
-// MARK: Helpers
-
-extension GameStateService {
-    
-    /// Make sure no nodes are too close to the edge
-    static func reposition(_ map: HexMapModel, grid: HexGrid) -> HexMapModel {
-        
-        let mappedNodes = map.nodes.map { (node) -> HexMapNode in
-            let position = grid.position(x: Int(node.x), y: Int(node.y))
-            return HexMapNode(
-                id: node.id,
-                x: position.x,
-                y: position.y,
-                initialState: node.initialState
-            )
-        }
-        return HexMapModel(name: map.name, nodes: mappedNodes, edges: map.edges)
-    }
-    
-    static func validate(_ map: HexMapModel) throws {
-        let ids = map.nodes.map { $0.id }
-        let points = map.nodes.map { "\($0.x)-\($0.y)" }
-        let idSet = Set(ids)
-        let pointSet = Set(points)
-        if ids.count != idSet.count {
-            throw MapError.duplicateIds
-        }
-        if pointSet.count != points.count {
-            throw MapError.duplicatePositions
-        }
-        
-        let edgeIds = map.edges.map { ["\($0.id1)", "\($0.id2)"].joined(separator: "-") }
-        let edgeIdSet = Set(edgeIds)
-        
-        if edgeIds.count != edgeIdSet.count {
-            throw MapError.duplicateEdges
-        }
-        
-    }
-    
-    static func buildState(_ map: HexMapModel) -> HexMapState {
-        var mapState = HexMapState()
-        var players: Set<Int> = []
-        for node in map.nodes {
-            if let initialState = node.initialState {
-                mapState.nodes[node.id] = initialState
-                if let owner = initialState.owner {
-                    players.insert(owner)
-                }
-            } else {
-                mapState.nodes[node.id] = HexMapNodeState(type: .empty)
-            }
-            
-        }
-        
-        mapState.players = Array(players).map { (id) -> PlayerModel in
-            return PlayerModel(id: id)
-        }
-        
-        
-        return mapState
+        self.state?.players[player] = state
     }
     
 }
@@ -169,7 +108,7 @@ extension GameStateService {
 extension GameStateService: PServiceType {
     
     static func make(_ r: Resolver) -> GameStateService {
-        return GameStateService()
+        return GameStateService(initService: r.forceResolve())
     }
 }
 
