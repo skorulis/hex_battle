@@ -35,7 +35,7 @@ class GameStateServiceTests: XCTestCase {
     }
     
     func testInitialState() {
-        let s1 = HexMapNodeState(type: .command, owner: 1)
+        let s1 = HexMapNode.InitialState( type: .command, owner: 1)
         let nodes = [
             HexMapNode(id: 1, x: 0, y: 5, initialState: s1),
             HexMapNode(id: 2, x: 100, y: 100, initialState: nil),
@@ -52,7 +52,7 @@ class GameStateServiceTests: XCTestCase {
     }
     
     func testViewModel() {
-        let s1 = HexMapNodeState(type: .command, owner: 1)
+        let s1 = HexMapNode.InitialState(type: .command, owner: 1)
         let nodes = [
             HexMapNode(id: 1, x: 0, y: 5, initialState: s1),
             HexMapNode(id: 2, x: 100, y: 100, initialState: nil),

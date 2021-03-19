@@ -70,12 +70,17 @@ extension MapInitialisationService {
         var players: Set<Int> = []
         for node in map.nodes {
             if let initialState = node.initialState {
-                mapState.nodes[node.id] = initialState
+                mapState.nodes[node.id] = HexMapNodeState(
+                    id: node.id,
+                    type: initialState.type,
+                    owner: initialState.owner,
+                    inputs: [:]
+                )
                 if let owner = initialState.owner {
                     players.insert(owner)
                 }
             } else {
-                mapState.nodes[node.id] = HexMapNodeState(type: .empty)
+                mapState.nodes[node.id] = HexMapNodeState(id:node.id, type: .empty)
             }
             
         }

@@ -103,8 +103,8 @@ extension View {
 struct MapView_Previews: PreviewProvider {
     
     static var previewMap: HexMapModel {
-        let c1 = HexMapNodeState(type: .command, owner: 1)
-        let c2 = HexMapNodeState(type: .command, owner: 2)
+        let c1 = HexMapNode.InitialState(type: .command, owner: 1)
+        let c2 = HexMapNode.InitialState(type: .command, owner: 2)
         
         let nodes = [
             HexMapNode(id: 1, x: 0, y: 0, initialState: c1),
@@ -134,9 +134,9 @@ struct MapView_Previews: PreviewProvider {
         let map = previewMap
         let state = MapInitialisationService.buildState(map)
         let viewModel = MapViewModel(map: previewMap, state: state, stateService: nil)
-        viewModel.mapState.nodes[2] = HexMapNodeState(type: .passive, owner: 1)
+        viewModel.mapState.nodes[2] = HexMapNodeState(id: 2, type: .passive, owner: 1)
         
-        viewModel.mapState.nodes[4] = HexMapNodeState(type: .passive, owner: 2)
+        viewModel.mapState.nodes[4] = HexMapNodeState(id: 4, type: .passive, owner: 2)
         
         return viewModel
     }

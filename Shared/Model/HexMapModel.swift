@@ -21,9 +21,15 @@ public struct HexMapNode: Codable {
     public let id: Int
     public let x: CGFloat
     public let y: CGFloat
-    let initialState: HexMapNodeState?
+    let initialState: InitialState?
+    
+    struct InitialState: Codable {
+        var type: NodeType = .empty
+        var owner: Int?
+    }
     
 }
+
 
 public struct HexMapEdge: Codable {
     

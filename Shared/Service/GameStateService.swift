@@ -85,6 +85,22 @@ extension GameStateService {
     
 }
 
+// MARK: - Calculations
+
+extension GameStateService {
+    
+    func updatePowers() {
+        for nodeState in map?.nodes ?? [] {
+            
+        }
+    }
+    
+    func calculatePower(node: HexMapNodeState) -> [NodeType: Int] {
+        return [:]
+    }
+    
+}
+
 // MARK: - Time events
 
 extension GameStateService {

@@ -28,8 +28,10 @@ struct HexMapState {
 
 struct HexMapNodeState: Codable {
     
+    let id: Int
     var type: NodeType = .empty
     var owner: Int?
     
+    var inputs: [NodeType: Int] = [:]
     
 }
