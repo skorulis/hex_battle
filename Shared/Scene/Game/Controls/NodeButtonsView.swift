@@ -37,8 +37,6 @@ extension NodeButtonsView: View {
     
     var body: some View {
         ZStack {
-            Circle()
-                .frame(width: NodeButtonsView.radius * 2, height: NodeButtonsView.radius * 2)
             VStack {
                 Button(action: self.onClose, label: {
                     Text("Close")
@@ -46,17 +44,30 @@ extension NodeButtonsView: View {
             }
             if self.isOpen {
                 ForEach(0..<5) { index in
-                    Button(action: {}, label: {
-                        Text("\(index)")
-                    })
-                    .buttonStyle(RoundButtonStyle(selected: false))
-                    .offset(buttonPosition(index))
+                    actionButton(index)
+                    
                 }
             }
         }
         .frame(width: NodeButtonsView.radius * 2, height: NodeButtonsView.radius * 2 )
         .animation(.easeIn, value: isOpen)
         .padding(50)
+    }
+    
+    private func actionButton(_ index: Int) -> some View {
+        let offset = buttonPosition(index)
+        return Button(action: {}, label: {
+            Text("\(index)")
+        })
+        .id("button-\(index)")
+        .zIndex(Double(index)*2)
+        .buttonStyle(RoundButtonStyle(selected: false))
+        .offset(offset)
+        .animation(Animation.default.delay(Double(index) * 0.06))
+        .transition(
+            AnyTransition.offset(x: -offset.width, y: -offset.height)
+                .combined(with: .opacity)
+        )
     }
     
     private func buttonPosition(_ index: Int) -> CGSize {

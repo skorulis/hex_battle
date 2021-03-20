@@ -37,7 +37,11 @@ struct RoundButtonStyle:ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: RenderConstants.nodeRadius * 2, height: RenderConstants.nodeRadius * 2)
-            .background(circleBackground(configuration: configuration))
+            .background(
+                circleBackground(configuration: configuration)
+                    .id("circle background")
+            )
+        
     }
     
     @ViewBuilder
