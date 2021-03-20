@@ -29,6 +29,11 @@ extension GameView: View {
             GameControlsView(viewModel: viewModel)
                 .frame(height: 80)
         }
+        .fullScreen(
+            id: "controls",
+            item: viewModel.selectedNode,
+            content: selectedControls
+        )
     }
     
     @ViewBuilder
@@ -37,6 +42,13 @@ extension GameView: View {
             MapView(viewModel: mapVM)
         } else {
             EmptyView()
+        }
+    }
+    
+    @ViewBuilder
+    public func selectedControls(item: MapNodeState) -> some View {
+        NodeButtonsView(node: item) {
+            self.viewModel.selectedNodeId = nil
         }
     }
 }

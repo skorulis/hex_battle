@@ -34,7 +34,7 @@ extension GameControlsView: View {
     
     @ViewBuilder
     private var nodeControls: some View {
-        if let selected = viewModel.selectedNode, let node = viewModel.nodeState(id: selected) {
+        if let selected = viewModel.selectedNodeId, let node = viewModel.nodeState(id: selected) {
             ScrollView(.horizontal, showsIndicators: false, content: {
                 switch node.type {
                 case .command:

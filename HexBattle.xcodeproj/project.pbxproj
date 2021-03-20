@@ -40,6 +40,8 @@
 		FAAF28C42605B34F009B91BE /* RecipeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF28C32605B34F009B91BE /* RecipeServiceTests.swift */; };
 		FAAF28D32605C0D7009B91BE /* TopLevelControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF28C92605BFEF009B91BE /* TopLevelControlsView.swift */; };
 		FAAF28D82605C0D8009B91BE /* TopLevelControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF28C92605BFEF009B91BE /* TopLevelControlsView.swift */; };
+		FAAF28F02605DCAD009B91BE /* NodeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF28DD2605DC7D009B91BE /* NodeButtonsView.swift */; };
+		FAAF28F52605DCAD009B91BE /* NodeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF28DD2605DC7D009B91BE /* NodeButtonsView.swift */; };
 		FAC16D7025FC4A44004238EC /* HexMapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D6F25FC4A44004238EC /* HexMapState.swift */; };
 		FAC16D7125FC4A44004238EC /* HexMapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D6F25FC4A44004238EC /* HexMapState.swift */; };
 		FAC16D7725FC4B33004238EC /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16D7625FC4B33004238EC /* NodeType.swift */; };
@@ -151,6 +153,7 @@
 		FAAF28AF26059CA7009B91BE /* PowerRecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerRecipeModel.swift; sourceTree = "<group>"; };
 		FAAF28C32605B34F009B91BE /* RecipeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeServiceTests.swift; sourceTree = "<group>"; };
 		FAAF28C92605BFEF009B91BE /* TopLevelControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLevelControlsView.swift; sourceTree = "<group>"; };
+		FAAF28DD2605DC7D009B91BE /* NodeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeButtonsView.swift; sourceTree = "<group>"; };
 		FAC16D6F25FC4A44004238EC /* HexMapState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapState.swift; sourceTree = "<group>"; };
 		FAC16D7625FC4B33004238EC /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
 		FAC16D8C25FC57C4004238EC /* HexMapNodeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapNodeViewModelTests.swift; sourceTree = "<group>"; };
@@ -491,6 +494,7 @@
 			children = (
 				FAC16EB725FD9F87004238EC /* BuildProgressView.swift */,
 				FAAF28C92605BFEF009B91BE /* TopLevelControlsView.swift */,
+				FAAF28DD2605DC7D009B91BE /* NodeButtonsView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -708,6 +712,7 @@
 				FAAF28D82605C0D8009B91BE /* TopLevelControlsView.swift in Sources */,
 				FAC16E7925FD722D004238EC /* HexBattleApp.swift in Sources */,
 				FAC16E5925FD720C004238EC /* AppCoordinator.swift in Sources */,
+				FAAF28F52605DCAD009B91BE /* NodeButtonsView.swift in Sources */,
 				FAC16EA225FD880D004238EC /* CircularProgress.swift in Sources */,
 				FAC16E6F25FD720C004238EC /* LevelSelectionViewModel.swift in Sources */,
 				FAC16E6725FD720C004238EC /* HexMapModel+ViewModel.swift in Sources */,
@@ -755,6 +760,7 @@
 				FAAF28D32605C0D7009B91BE /* TopLevelControlsView.swift in Sources */,
 				FAC16E7A25FD722D004238EC /* HexBattleApp.swift in Sources */,
 				FAC16E5A25FD720C004238EC /* AppCoordinator.swift in Sources */,
+				FAAF28F02605DCAD009B91BE /* NodeButtonsView.swift in Sources */,
 				FAC16EA325FD880D004238EC /* CircularProgress.swift in Sources */,
 				FAC16E7025FD720C004238EC /* LevelSelectionViewModel.swift in Sources */,
 				FAC16E6825FD720C004238EC /* HexMapModel+ViewModel.swift in Sources */,

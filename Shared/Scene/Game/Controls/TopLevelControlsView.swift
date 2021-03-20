@@ -94,6 +94,20 @@ extension View {
             .preference(key: FullScreenKey.self, value: model)
     }
     
+    func fullScreen<Content: View, V>(
+        id: String,
+        item: V?,
+        @ViewBuilder content: @escaping (V) -> Content
+    ) -> some View {
+        let model = FullScreenModel(
+            id: id,
+            visible: item != nil,
+            content: {AnyView(content(item!))}
+        )
+        return self
+            .preference(key: FullScreenKey.self, value: model)
+    }
+    
 }
 
 // MARK: - Previews

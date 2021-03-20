@@ -15,7 +15,7 @@ final class GameViewModel: ObservableObject {
     let stateService: GameStateService?
     
     @Published
-    var selectedNode: Int?
+    var selectedNodeId: Int?
     
     @Published
     var playerState: PlayerState
@@ -26,11 +26,18 @@ final class GameViewModel: ObservableObject {
         self.playerState = stateService.playerStates[playerId]!
         
         stateService.$selectedNode
-            .assign(to: &$selectedNode)
+            .assign(to: &$selectedNodeId)
         
         stateService.$state
             .map { $0!.players[playerId]! }
             .assign(to: &$playerState)
+    }
+    
+    var selectedNode: MapNodeState? {
+        guard let selectedNodeId = selectedNodeId else {
+            return nil
+        }
+        return stateService?.state?.nodes[selectedNodeId]
     }
     
 }
@@ -72,7 +79,7 @@ extension GameViewModel {
     
     func buildNode(type: NodeType) -> () -> Void {
         return {
-            guard let nodeId = self.selectedNode else { return }
+            guard let nodeId = self.selectedNodeId else { return }
             let ownerId = self.playerId
             self.stateService?.buildNode(type: type, nodeId: nodeId, owner: ownerId)
         }
