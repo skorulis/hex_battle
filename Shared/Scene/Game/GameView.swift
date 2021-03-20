@@ -48,7 +48,7 @@ extension GameView: View {
     
     @ViewBuilder
     public func selectedControls(item: MapNodeState) -> some View {
-        NodeButtonsView(node: item) {
+        NodeButtonsView(node: item, isOpen: .constant(true)) {
             self.viewModel.selectedNodeId = nil
         }
         .matchedGeometryEffect(id: "node-\(item.id)", in: namespace, properties: .position, isSource: false)
