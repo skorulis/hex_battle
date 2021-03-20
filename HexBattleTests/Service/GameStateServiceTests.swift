@@ -89,17 +89,34 @@ class GameStateServiceTests: XCTestCase {
         
         //Only has one edge
         XCTAssertEqual(
-            sut.calculatePower(node: sut.state!.nodes[1]!),
+            sut.calculateEnergy(node: sut.state!.nodes[1]!),
             [NodeType.alpha:1]
             )
         
         XCTAssertEqual(
-            sut.calculatePower(node: sut.state!.nodes[2]!),
+            sut.calculateEnergy(node: sut.state!.nodes[2]!),
             [NodeType.alpha:1, NodeType.beta: 2, NodeType.gamma: 1]
             )
         
     }
     
+    func test_energy_distribution_update() {
+        sut.start(map: GameStateServiceTests.map1)
+        
+        let node1 = sut.state?.nodes[1]
+        XCTAssertEqual(
+            node1?.energyInputs,
+            [NodeType.alpha:1]
+        )
+        
+        let node2 = sut.state?.nodes[2]
+        XCTAssertEqual(
+            node2?.energyInputs,
+            [NodeType.alpha:1, NodeType.beta: 2, NodeType.gamma: 1]
+        )
+        
+        XCTAssertEqual(node2?.activeEffect, NodeEffect.healing)
+    }
     
 }
 

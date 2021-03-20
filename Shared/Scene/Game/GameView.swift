@@ -47,7 +47,7 @@ struct GameView_Previews: PreviewProvider {
     
     static var previews: some View {
         let initService = MapInitialisationService()
-        let stateService = GameStateService(initService: initService)
+        let stateService = GameStateService(initService: initService, recipes: RecipeService())
         stateService.start(map: MapView_Previews.previewMap)
         stateService.selectedNode = 1
         let viewModel = GameViewModel(stateService: stateService)

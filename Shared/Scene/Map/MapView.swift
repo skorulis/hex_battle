@@ -134,9 +134,9 @@ struct MapView_Previews: PreviewProvider {
         let map = previewMap
         let state = MapInitialisationService.buildState(map)
         let viewModel = MapViewModel(map: previewMap, state: state, stateService: nil)
-        viewModel.mapState.nodes[2] = HexMapNodeState(id: 2, type: .passive, owner: 1)
+        viewModel.mapState.nodes[2] = MapNodeState(id: 2, type: .passive, owner: 1)
         
-        viewModel.mapState.nodes[4] = HexMapNodeState(id: 4, type: .passive, owner: 2)
+        viewModel.mapState.nodes[4] = MapNodeState(id: 4, type: .passive, owner: 2)
         
         return viewModel
     }

@@ -43,7 +43,7 @@ extension GameViewModel {
         return stateService?.mapViewModel()
     }
     
-    func nodeState(id: Int) -> HexMapNodeState? {
+    func nodeState(id: Int) -> MapNodeState? {
         return stateService?.state?.nodes[id]
     }
     

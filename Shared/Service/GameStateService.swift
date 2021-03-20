@@ -11,13 +11,18 @@ import Swinject
 final class GameStateService: ObservableObject {
     
     private let initService: MapInitialisationService
+    private let recipes: RecipeService
     
     public var map: HexMapModel?
     public var grid: HexGrid = HexGrid()
     public var playerId: Int = 1 //Always player 1 for now
     
     @Published
-    public var state: HexMapState?
+    public var state: HexMapState? {
+        didSet {
+            updateEnergy()
+        }
+    }
     
     @Published
     public var selectedNode: Int?
@@ -26,8 +31,12 @@ final class GameStateService: ObservableObject {
         return state?.players ?? [:]
     }
     
-    public init(initService: MapInitialisationService) {
+    public init(
+        initService: MapInitialisationService,
+        recipes: RecipeService
+    ) {
         self.initService = initService
+        self.recipes = recipes
     }
     
     public func start(map: HexMapModel) {
@@ -89,24 +98,38 @@ extension GameStateService {
 
 extension GameStateService {
     
-    func connectedNodes(id: Int) -> [HexMapNodeState] {
+    func connectedNodes(id: Int) -> [MapNodeState] {
         guard let state = state else { return [] }
         let nodeIds = map?.edges.compactMap { $0.connected(id) } ?? []
         let states = nodeIds.map { state.nodes[$0]! }
         return states 
     }
     
-    func updatePowers() {
-        for nodeState in map?.nodes ?? [] {
+    func updateEnergy() {
+        guard var state = state else { return }
+        let token = state.energyToken
+        guard token != state.lastEnergyToken else { return }
+        
+        for node in map?.nodes ?? [] {
+            guard var nodeState = state.nodes[node.id] else { continue }
+            nodeState.energyInputs = calculateEnergy(node: nodeState)
+            if nodeState.activeEffect == .none {
+                let availableRecipes = recipes.availableRecipes(inputs: nodeState.energyInputs)
+                nodeState.activeEffect = availableRecipes.first?.output ?? .none
+            }
             
+            state.nodes[node.id] = nodeState
         }
+        
+        state.lastEnergyToken = token
+        self.state = state
     }
     
-    func calculatePower(node: HexMapNodeState) -> [NodeType: Int] {
+    func calculateEnergy(node: MapNodeState) -> [NodeType: Int] {
         let conn = connectedNodes(id: node.id)
         return conn.reduce([:]) { (result, node) -> [NodeType: Int] in
             var dict = result
-            for e in node.energy {
+            for e in node.energyOutputs {
                 dict[e] = (dict[e] ?? 0) + 1
             }
             return dict
@@ -138,7 +161,10 @@ extension GameStateService {
 extension GameStateService: PServiceType {
     
     static func make(_ r: Resolver) -> GameStateService {
-        return GameStateService(initService: r.forceResolve())
+        return GameStateService(
+            initService: r.forceResolve(),
+            recipes: r.forceResolve()
+            )
     }
 }
 

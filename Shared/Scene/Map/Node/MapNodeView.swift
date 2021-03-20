@@ -12,13 +12,13 @@ import SwiftUI
 struct MapNodeView {
     
     let model: HexMapNode
-    let state: HexMapNodeState
+    let state: MapNodeState
     let selected: Bool
     let action: () -> Void
     
     init(
         model: HexMapNode,
-        state: HexMapNodeState,
+        state: MapNodeState,
         selected: Bool,
         action: @escaping () -> Void
     ) {
@@ -49,7 +49,7 @@ struct MapNodeView_Previews: PreviewProvider {
     
     static var previews: some View {
         let model = HexMapNode(id: 1, x: 10, y: 10, initialState: nil)
-        let state = HexMapNodeState(id: 1, type: .command)
+        let state = MapNodeState(id: 1, type: .command)
         MapNodeView(
             model: model,
             state: state,

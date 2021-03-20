@@ -27,7 +27,7 @@ final class MapViewModel: ObservableObject {
             .assign(to: &$selectedNode)
     }
     
-    func nodeState(id: Int) -> HexMapNodeState {
+    func nodeState(id: Int) -> MapNodeState {
         return mapState.nodes[id]!
     }
     
