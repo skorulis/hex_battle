@@ -69,5 +69,62 @@ class GameStateServiceTests: XCTestCase {
         
     }
     
+    func test_connectedNodes() {
+        sut.start(map: GameStateServiceTests.map1)
+        
+        let nodes1 = sut.connectedNodes(id: 1)
+        XCTAssertEqual(nodes1.count, 1)
+        XCTAssertEqual(nodes1[0].id, 2)
+        
+        let nodes2 = sut.connectedNodes(id: 2)
+        XCTAssertEqual(nodes2.count, 2)
+        
+        let nodes3 = sut.connectedNodes(id: 3)
+        XCTAssertEqual(nodes3.count, 1)
+        XCTAssertEqual(nodes3[0].id, 2)
+    }
     
+    func test_energy_distribution_basic() {
+        sut.start(map: GameStateServiceTests.map1)
+        
+        //Only has one edge
+        XCTAssertEqual(
+            sut.calculatePower(node: sut.state!.nodes[1]!),
+            [NodeType.alpha:1]
+            )
+        
+        XCTAssertEqual(
+            sut.calculatePower(node: sut.state!.nodes[2]!),
+            [NodeType.alpha:1, NodeType.beta: 2, NodeType.gamma: 1]
+            )
+        
+    }
+    
+    
+}
+
+
+extension GameStateServiceTests {
+    
+    static var map1: HexMapModel {
+        let s1 = HexMapNode.InitialState(type: .command, owner: 1)
+        let s2 = HexMapNode.InitialState(type: .alpha, owner: 1)
+        let s3 = HexMapNode.InitialState(type: .beta, owner: 1)
+        let nodes = [
+            HexMapNode(id: 1, x: 0, y: 0, initialState: s1),
+            HexMapNode(id: 2, x: 1, y: 1, initialState: s2),
+            HexMapNode(id: 3, x: 2, y: 2, initialState: s3),
+        ]
+        let edges = [
+            HexMapEdge(id1: 1, id2: 2),
+            HexMapEdge(id1: 2, id2: 3)
+        ]
+        
+        let players = [
+            MapPlayer(id: 1, initialBuildings: [:])
+        ]
+        
+        let map = HexMapModel(name: "test", nodes: nodes, edges: edges, players: players)
+        return map
+    }
 }

@@ -34,4 +34,12 @@ struct HexMapNodeState: Codable {
     
     var inputs: [NodeType: Int] = [:]
     
+    var energy: [NodeType] {
+        switch type {
+        case .passive, .empty: return []
+        case .alpha, .beta, .gamma: return [type]
+        case .command: return [.alpha, .beta, .gamma]
+        }
+    }
+    
 }

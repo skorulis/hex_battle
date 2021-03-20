@@ -89,6 +89,13 @@ extension GameStateService {
 
 extension GameStateService {
     
+    func connectedNodes(id: Int) -> [HexMapNodeState] {
+        guard let state = state else { return [] }
+        let nodeIds = map?.edges.compactMap { $0.connected(id) } ?? []
+        let states = nodeIds.map { state.nodes[$0]! }
+        return states 
+    }
+    
     func updatePowers() {
         for nodeState in map?.nodes ?? [] {
             
@@ -96,7 +103,14 @@ extension GameStateService {
     }
     
     func calculatePower(node: HexMapNodeState) -> [NodeType: Int] {
-        return [:]
+        let conn = connectedNodes(id: node.id)
+        return conn.reduce([:]) { (result, node) -> [NodeType: Int] in
+            var dict = result
+            for e in node.energy {
+                dict[e] = (dict[e] ?? 0) + 1
+            }
+            return dict
+        }
     }
     
 }

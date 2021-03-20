@@ -36,6 +36,18 @@ public struct HexMapEdge: Codable {
     public let id1: Int
     public let id2: Int
     
+    func touches(_ id: Int) -> Bool {
+        return id1 == id || id2 == id
+    }
+    
+    func connected(_ id: Int) -> Int? {
+        switch true {
+        case id == id1: return id2
+        case id == id2: return id1
+        default: return nil
+        }
+    }
+    
 }
 
 public struct MapPlayer: Codable {
