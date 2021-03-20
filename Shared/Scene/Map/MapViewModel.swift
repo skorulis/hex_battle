@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import SwiftUI
 
 final class MapViewModel: ObservableObject {
     

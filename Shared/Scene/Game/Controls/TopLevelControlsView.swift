@@ -14,7 +14,7 @@ import SwiftUI
 struct TopLevelControlsView<Content: View> {
     
     let content: Content
-    @State var fullscreenView: AnyView?
+    @State var fullscreenView: FullScreenModel?
     
     init(@ViewBuilder content: () -> Content) {
         self.content = content()
@@ -26,22 +26,34 @@ struct TopLevelControlsView<Content: View> {
 
 extension TopLevelControlsView: View {
     
-    
-    
     var body: some View {
         ZStack {
             content
                 .onPreferenceChange(FullScreenKey.self, perform: { value in
-                    if value.visible {
-                        self.fullscreenView = value.content()
-                    } else {
-                        self.fullscreenView = nil
+                    withAnimation {
+                        if value.visible {
+                            self.fullscreenView = value
+                        } else {
+                            self.fullscreenView = nil
+                        }
                     }
                 })
-            fullscreenView
+            fullscreenWrapper
         }
         
     }
+    
+    @ViewBuilder
+    private var fullscreenWrapper: some View  {
+        if let model = fullscreenView {
+            model.content()
+                .id(model.id)
+                .transition(.opacity)
+        } else {
+            EmptyView()
+        }
+    }
+    
 }
 
 // MARK: Preference keys

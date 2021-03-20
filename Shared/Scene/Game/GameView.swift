@@ -12,6 +12,7 @@ import SwiftUI
 struct GameView {
     
     @ObservedObject var viewModel: GameViewModel
+    @Namespace var namespace
     
     init(viewModel: GameViewModel) {
         self.viewModel = viewModel
@@ -30,7 +31,7 @@ extension GameView: View {
                 .frame(height: 80)
         }
         .fullScreen(
-            id: "controls",
+            id: "controls\(viewModel.selectedNodeId ?? 0)",
             item: viewModel.selectedNode,
             content: selectedControls
         )
@@ -39,7 +40,7 @@ extension GameView: View {
     @ViewBuilder
     public var maybeMap: some View {
         if let mapVM = viewModel.mapViewModel() {
-            MapView(viewModel: mapVM)
+            MapView(viewModel: mapVM, namespace: namespace)
         } else {
             EmptyView()
         }
@@ -50,6 +51,8 @@ extension GameView: View {
         NodeButtonsView(node: item) {
             self.viewModel.selectedNodeId = nil
         }
+        .matchedGeometryEffect(id: "node-\(item.id)", in: namespace, properties: .position, isSource: false)
+        .transition(.opacity)
     }
 }
 

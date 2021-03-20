@@ -12,6 +12,8 @@ import SwiftUI
 
 struct NodeButtonsView {
     
+    static private let radius: CGFloat = 100
+    
     private let node: MapNodeState
     private let onClose: () -> ()
     
@@ -28,7 +30,8 @@ extension NodeButtonsView: View {
     
     var body: some View {
         ZStack {
-            Color.red
+            Circle()
+                .frame(width: NodeButtonsView.radius * 2, height: NodeButtonsView.radius * 2)
             VStack {
                 Button(action: self.onClose, label: {
                     Text("Close")
@@ -37,7 +40,7 @@ extension NodeButtonsView: View {
             }
             
         }
-        .frame(width: 200, height: 200)
+        .frame(width: NodeButtonsView.radius * 2 + 50, height: NodeButtonsView.radius * 2 + 50)
     }
 }
 

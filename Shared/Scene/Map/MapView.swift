@@ -13,6 +13,12 @@ import SwiftUI
 struct MapView {
     
     @ObservedObject var viewModel: MapViewModel
+    private var namespace: Namespace.ID
+    
+    init(viewModel: MapViewModel, namespace: Namespace.ID) {
+        self.viewModel = viewModel
+        self.namespace = namespace
+    }
     
     var model: HexMapModel {
         return viewModel.map
@@ -45,6 +51,7 @@ extension MapView: View {
                     selected: viewModel.selectedNode == node.id,
                     action: viewModel.selectNode(id: node.id)
                 )
+                .matchedGeometryEffect(id: "node-\(node.id)", in: namespace, isSource: true)
                 .position(x: CGFloat(node.x), y: CGFloat(node.y))
             }
         }
@@ -141,8 +148,17 @@ struct MapView_Previews: PreviewProvider {
         return viewModel
     }
     
+    struct PreviewWrapper: View {
+        
+        @Namespace var namespace
+        
+        var body: some View {
+            MapView(viewModel: previewViewModel, namespace: namespace)
+        }
+    }
+    
     static var previews: some View {
-        return MapView(viewModel: previewViewModel)
+        return PreviewWrapper()
     }
     
 }
