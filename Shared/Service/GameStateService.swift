@@ -46,7 +46,7 @@ final class GameStateService: ObservableObject {
     }
 
     public func mapViewModel() -> MapViewModel {
-        return MapViewModel(map: map!, state: state!, stateService: self)
+        return MapViewModel(stateService: self)
     }
     
 }

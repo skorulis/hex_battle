@@ -6,24 +6,30 @@
 //
 
 import Foundation
+import Swinject
 
 final class MapViewModel: ObservableObject {
     
-    let stateService: GameStateService?
+    var stateService: GameStateService?
     let map: HexMapModel
     @Published var mapState: HexMapState
     @Published var selectedNode: Int?
     
-    init(map: HexMapModel, state: HexMapState, stateService: GameStateService?) {
+    init(map: HexMapModel, state: HexMapState) {
         self.map = map
         self.mapState = state
+    }
+    
+    init(stateService: GameStateService) {
+        self.map = stateService.map!
+        self.mapState = stateService.state!
         self.stateService = stateService
-        stateService?.$state
+        stateService.$state
             .filter { $0 != nil}
             .map { $0! }
             .assign(to: &$mapState)
         
-        stateService?.$selectedNode
+        stateService.$selectedNode
             .assign(to: &$selectedNode)
     }
     
@@ -56,6 +62,16 @@ extension MapViewModel {
         return {
             self.stateService?.selectedNode = id
         }
+    }
+}
+
+
+//MARK: PServiceType
+
+extension MapViewModel: PServiceType {
+    
+    static func make(_ r: Resolver) -> MapViewModel {
+        return MapViewModel(stateService: r.forceResolve())
     }
 }
 
