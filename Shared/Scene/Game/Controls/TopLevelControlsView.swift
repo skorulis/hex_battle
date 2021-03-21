@@ -15,6 +15,7 @@ struct TopLevelControlsView<Content: View> {
     
     let content: Content
     @State var fullscreenView: FullScreenModel?
+    @State var leavingView: FullScreenModel?
     @State var fullscreenOpen: Bool = false
     
     static var AnimationTime: TimeInterval {
@@ -35,7 +36,16 @@ extension TopLevelControlsView: View {
         ZStack {
             content
                 .onPreferenceChange(FullScreenKey.self, perform: { value in
+                    leavingView = fullscreenView
+                    DispatchQueue.main.async {
+                        leavingView?.visible = false
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Self.AnimationTime) {
+                        self.leavingView = nil
+                    }
+                    
                     if value.visible {
+                        self.fullscreenOpen = false
                         self.fullscreenView = value
                         if !self.fullscreenOpen {
                             DispatchQueue.main.async {
@@ -43,12 +53,12 @@ extension TopLevelControlsView: View {
                             }
                         }
                     } else {
+                        
+                        self.fullscreenView = nil
                         self.fullscreenOpen = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + Self.AnimationTime) {
-                            self.fullscreenView = nil
-                        }
                     }
                 })
+            leavingWrapper
             fullscreenWrapper
         }
         
@@ -60,12 +70,21 @@ extension TopLevelControlsView: View {
             model.content()
                 .id(model.id)
                 .environment(\.fullscreenOpen, fullscreenOpen)
-                .transition(.opacity)
         } else {
             EmptyView()
         }
     }
     
+    @ViewBuilder
+    private var leavingWrapper: some View  {
+        if let leaving = leavingView {
+            leaving.content()
+                .id(leaving.id)
+                .environment(\.fullscreenOpen, leaving.visible)
+        } else {
+            EmptyView()
+        }
+    }
 }
 
 // MARK: Preference keys
@@ -73,7 +92,7 @@ extension TopLevelControlsView: View {
 struct FullScreenModel: Equatable, Hashable {
     
     let id: String
-    let visible: Bool
+    var visible: Bool
     let content: () -> AnyView
     
     
