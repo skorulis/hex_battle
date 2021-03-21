@@ -15,6 +15,11 @@ struct TopLevelControlsView<Content: View> {
     
     let content: Content
     @State var fullscreenView: FullScreenModel?
+    @State var fullscreenOpen: Bool = false
+    
+    static var AnimationTime: TimeInterval {
+        return 0.4
+    }
     
     init(@ViewBuilder content: () -> Content) {
         self.content = content()
@@ -30,10 +35,16 @@ extension TopLevelControlsView: View {
         ZStack {
             content
                 .onPreferenceChange(FullScreenKey.self, perform: { value in
-                    withAnimation {
-                        if value.visible {
-                            self.fullscreenView = value
-                        } else {
+                    if value.visible {
+                        self.fullscreenView = value
+                        if !self.fullscreenOpen {
+                            DispatchQueue.main.async {
+                                self.fullscreenOpen = true
+                            }
+                        }
+                    } else {
+                        self.fullscreenOpen = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Self.AnimationTime) {
                             self.fullscreenView = nil
                         }
                     }
@@ -48,6 +59,7 @@ extension TopLevelControlsView: View {
         if let model = fullscreenView {
             model.content()
                 .id(model.id)
+                .environment(\.fullscreenOpen, fullscreenOpen)
                 .transition(.opacity)
         } else {
             EmptyView()
@@ -120,6 +132,20 @@ extension View {
             .preference(key: FullScreenKey.self, value: model)
     }
     
+}
+
+// MARK: - Environment keys
+
+struct FullScreenOpenKey: EnvironmentKey {
+    static var defaultValue: Bool = false
+}
+
+extension EnvironmentValues {
+    
+    var fullscreenOpen: Bool {
+        get { self[FullScreenOpenKey.self] }
+        set { self[FullScreenOpenKey.self] = newValue }
+    }
 }
 
 // MARK: - Previews

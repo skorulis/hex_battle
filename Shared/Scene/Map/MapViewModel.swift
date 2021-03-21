@@ -61,7 +61,12 @@ extension MapViewModel {
     
     func selectNode(id: Int) -> () -> Void {
         return {
-            self.stateService?.selectedNode = id
+            if id == self.stateService?.selectedNode {
+                self.stateService?.selectedNode = nil
+            } else {
+                self.stateService?.selectedNode = id
+            }
+            
         }
     }
 }

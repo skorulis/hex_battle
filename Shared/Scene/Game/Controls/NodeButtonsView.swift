@@ -16,16 +16,14 @@ struct NodeButtonsView {
     static private let radius: CGFloat = 100
     
     private let node: MapNodeState
-    @Binding private var isOpen: Bool
+    @Environment(\.fullscreenOpen) var isOpen: Bool
     private let onClose: () -> ()
     
     init(
         node: MapNodeState,
-        isOpen: Binding<Bool>,
         onClose: @escaping () -> ()
     ) {
         self.node = node
-        self._isOpen = isOpen
         self.onClose = onClose
     }
     
@@ -37,11 +35,6 @@ extension NodeButtonsView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                Button(action: self.onClose, label: {
-                    Text("Close")
-                })
-            }
             if self.isOpen {
                 ForEach(0..<5) { index in
                     actionButton(index)
@@ -87,13 +80,18 @@ struct NodeButtonsView_Previews: PreviewProvider {
         let node = MapNodeState(id: 1, type: .command, owner: 1, activeEffect: .turret, energyInputs: [:])
         StatefulPreviewWrapper(true) { binding in
             VStack {
-                NodeButtonsView(
-                    node: node,
-                    isOpen: binding,
-                    onClose: {}
-                    )
                 Toggle("Show buttons", isOn: binding)
+                if binding.wrappedValue {
+                    NodeButtonsView(
+                        node: node,
+                        onClose: {}
+                        )
+                    .id("TEST")
+                } else {
+                    EmptyView()
+                }
             }
+            .frame(width: 400, height: 400)
             
             
         }
