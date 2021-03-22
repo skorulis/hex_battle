@@ -1,5 +1,5 @@
 //
-//  TopLevelControlsView.swift
+//  ModalContainerView.swift
 //  HexBattleTests
 //
 //  Created by Alexander Skorulis on 20/3/21.
@@ -11,12 +11,10 @@ import SwiftUI
 
 // MARK: - Memory footprint
 
-struct TopLevelControlsView<Content: View> {
+struct ModalContainerView<Content: View> {
     
     let content: Content
-    @State var fullscreenView: FullScreenModel?
-    @State var leavingView: FullScreenModel?
-    @State var fullscreenOpen: Bool = false
+    @State var modals: [String: FullScreenModalState] = [:]
     
     static var AnimationTime: TimeInterval {
         return 0.4
@@ -30,60 +28,81 @@ struct TopLevelControlsView<Content: View> {
 
 // MARK: - Rendering
 
-extension TopLevelControlsView: View {
+extension ModalContainerView: View {
     
     var body: some View {
         ZStack {
             content
                 .onPreferenceChange(FullScreenKey.self, perform: { value in
-                    leavingView = fullscreenView
-                    DispatchQueue.main.async {
-                        leavingView?.visible = false
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + Self.AnimationTime) {
-                        self.leavingView = nil
-                    }
-                    
-                    if value.visible {
-                        self.fullscreenOpen = false
-                        self.fullscreenView = value
-                        if !self.fullscreenOpen {
-                            DispatchQueue.main.async {
-                                self.fullscreenOpen = true
-                            }
-                        }
-                    } else {
-                        
-                        self.fullscreenView = nil
-                        self.fullscreenOpen = false
-                    }
+                    self.update(value   )
                 })
-            leavingWrapper
-            fullscreenWrapper
+            ForEach(Array(modals.keys), id:\.self) { key in
+                modalView(modals[key]!)
+                    
+            }
         }
         
     }
     
     @ViewBuilder
-    private var fullscreenWrapper: some View  {
-        if let model = fullscreenView {
-            model.content()
-                .id(model.id)
-                .environment(\.fullscreenOpen, fullscreenOpen)
+    private func modalView(_ modal: FullScreenModalState) -> some View {
+        if modal.model.visible {
+            modal.model.content()
+                .id(modal.model.id)
+                .environment(\.fullscreenOpen, modal.isOpen)
         } else {
             EmptyView()
         }
+        
     }
     
-    @ViewBuilder
-    private var leavingWrapper: some View  {
-        if let leaving = leavingView {
-            leaving.content()
-                .id(leaving.id)
-                .environment(\.fullscreenOpen, leaving.visible)
-        } else {
-            EmptyView()
+    private func update(_ value: FullScreenModel) {
+        var existing = self.modals[value.id]
+        if existing == nil {
+            existing = FullScreenModalState(model: value, isOpen: false)
         }
+        existing?.isOpen = false
+        
+        existing?.model = value
+
+        self.modals[value.id] = existing!
+        
+        if value.visible {
+            let toHide = modals.keys.filter { (key) -> Bool in
+                return key != value.id && modals[key]?.model.visible == true
+            }
+            for key in toHide {
+                modals[key]?.model.visible = false
+            }
+        }
+        
+        DispatchQueue.main.async {
+            existing?.isOpen = true
+            self.modals[value.id] = existing!
+        }
+        
+        /*self.combinedViews[value.id] = existing
+        
+        DispatchQueue.main.async {
+            leavingView?.visible = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + Self.AnimationTime) {
+            self.leavingView = nil
+        }
+        
+        if value.visible {
+            self.fullscreenOpen = false
+            self.fullscreenView = value
+            if !self.fullscreenOpen {
+                DispatchQueue.main.async {
+                    self.fullscreenOpen = true
+                }
+            }
+        } else {
+            
+            self.fullscreenView = nil
+            self.fullscreenOpen = false
+        }*/
     }
 }
 
@@ -94,8 +113,6 @@ struct FullScreenModel: Equatable, Hashable {
     let id: String
     var visible: Bool
     let content: () -> AnyView
-    
-    
     
     static func == (lhs: FullScreenModel, rhs: FullScreenModel) -> Bool {
         return lhs.visible == rhs.visible &&
@@ -109,6 +126,23 @@ struct FullScreenModel: Equatable, Hashable {
     
 }
 
+struct FullScreenModalState: Equatable, Hashable {
+    
+    var model: FullScreenModel
+    var isOpen: Bool
+    
+    static func == (lhs: FullScreenModalState, rhs: FullScreenModalState) -> Bool {
+        return lhs.model == rhs.model &&
+            lhs.isOpen == rhs.isOpen
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(model)
+        hasher.combine(isOpen)
+    }
+    
+}
+
 struct FullScreenKey: PreferenceKey {
     static var defaultValue: FullScreenModel = FullScreenModel(
         id: "",
@@ -116,7 +150,10 @@ struct FullScreenKey: PreferenceKey {
         content: { AnyView(EmptyView()) }
     )
     
-    static func reduce(value: inout FullScreenModel, nextValue: () -> FullScreenModel) {()
+    static func reduce(
+        value: inout FullScreenModel,
+        nextValue: () -> FullScreenModel
+    ) {
         value = nextValue()
     }
 }
@@ -169,10 +206,10 @@ extension EnvironmentValues {
 
 // MARK: - Previews
 
-struct TopLevelControlsView_Previews: PreviewProvider {
+struct ModalContainerView_Previews: PreviewProvider {
     
     static var previews: some View {
-        TopLevelControlsView {
+        ModalContainerView {
             ZStack {
                 Color.white
                 Text("TEST")

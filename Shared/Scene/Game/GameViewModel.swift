@@ -20,15 +20,15 @@ final class GameViewModel: ObservableObject {
     @Published
     var playerState: PlayerState
     
-    init(stateService: GameStateService) {
-        let playerId = stateService.playerId
+    init(stateService: GameStateService?) {
+        let playerId = stateService?.playerId ?? 1
         self.stateService = stateService
-        self.playerState = stateService.playerStates[playerId]!
+        self.playerState = stateService?.playerStates[playerId] ?? PlayerState(id: playerId)
         
-        stateService.$selectedNode
+        stateService?.$selectedNode
             .assign(to: &$selectedNodeId)
         
-        stateService.$state
+        stateService?.$state
             .map { $0!.players[playerId]! }
             .assign(to: &$playerState)
     }

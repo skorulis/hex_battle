@@ -17,14 +17,14 @@ struct NodeButtonsView {
     
     private let node: MapNodeState
     @Environment(\.fullscreenOpen) var isOpen: Bool
-    private let onClose: () -> ()
+    @ObservedObject private var viewModel: GameViewModel
     
     init(
         node: MapNodeState,
-        onClose: @escaping () -> ()
+        viewModel: GameViewModel
     ) {
         self.node = node
-        self.onClose = onClose
+        self.viewModel = viewModel
     }
     
 }
@@ -36,9 +36,17 @@ extension NodeButtonsView: View {
     var body: some View {
         ZStack {
             if self.isOpen {
-                ForEach(0..<5) { index in
-                    actionButton(index)
-                    
+                ForEach(Array(0..<availableButtons.count), id:\.self) { index in
+                    let offset = buttonPosition(index)
+                    availableButtons[index]
+                        .zIndex(Double(index)*2)
+                        .buttonStyle(RoundButtonStyle(selected: false))
+                        .offset(offset)
+                        .animation(Animation.default.delay(Double(index) * 0.06))
+                        .transition(
+                            AnyTransition.offset(x: -offset.width, y: -offset.height)
+                                .combined(with: .opacity)
+                        )
                 }
             }
         }
@@ -70,6 +78,40 @@ extension NodeButtonsView: View {
         let vector = start * rotation
         return CGSize(width: vector.x, height: vector.y)
     }
+    
+    private var availableButtons: [AnyView] {
+        switch node.type {
+        case .command:
+            return NodeType.buildable.map { (type) -> AnyView in
+                let button = typeButton(type: type, action: viewModel.startConstruction(type: type))
+                return AnyView(button)
+            }
+        case .empty:
+            return NodeType.buildable.map { (type) -> AnyView in
+                let button = typeButton(type: type, action: viewModel.buildNode(type: type))
+                    .disabled(viewModel.builtCount(type: type) == 0)
+                return AnyView(button)
+            }
+        default: return []
+        }
+    }
+    
+    func typeButton(type: NodeType, action: @escaping () -> ()) -> some View {
+        ZStack(alignment: .bottomTrailing ){
+            Button(action: action, label: {
+                Text(type.name)
+            })
+            .buttonStyle(RoundButtonStyle(selected: false))
+            Group {
+                Spacer()
+                Text("\(viewModel.builtCount(type: type))")
+                    .frame(alignment:.bottomLeading)
+            }
+        }
+        .id("button-\(type)")
+        
+    }
+
 }
 
 // MARK: - Previews
@@ -78,19 +120,24 @@ struct NodeButtonsView_Previews: PreviewProvider {
     
     static var previews: some View {
         let node = MapNodeState(id: 1, type: .command, owner: 1, activeEffect: .turret, energyInputs: [:])
+        let viewModel = GameViewModel(stateService: nil)
         StatefulPreviewWrapper(true) { binding in
             VStack {
                 Toggle("Show buttons", isOn: binding)
+                
                 if binding.wrappedValue {
                     NodeButtonsView(
                         node: node,
-                        onClose: {}
+                        viewModel: viewModel
                         )
+                    .environment(\.fullscreenOpen, binding.wrappedValue)
                     .id("TEST")
                 } else {
                     EmptyView()
                 }
+                
             }
+            
             .frame(width: 400, height: 400)
             
             
