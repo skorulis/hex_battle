@@ -17,11 +17,11 @@ struct NodeButtonsView {
     
     private let node: MapNodeState
     @Environment(\.fullscreenOpen) var isOpen: Bool
-    @ObservedObject private var viewModel: GameViewModel
+    @ObservedObject private var viewModel: ControlsViewModel
     
     init(
         node: MapNodeState,
-        viewModel: GameViewModel
+        viewModel: ControlsViewModel
     ) {
         self.node = node
         self.viewModel = viewModel
@@ -120,7 +120,7 @@ struct NodeButtonsView_Previews: PreviewProvider {
     
     static var previews: some View {
         let node = MapNodeState(id: 1, type: .command, owner: 1, activeEffect: .turret, energyInputs: [:])
-        let viewModel = GameViewModel(stateService: nil)
+        let viewModel = ControlsViewModel(stateService: nil)
         StatefulPreviewWrapper(true) { binding in
             VStack {
                 Toggle("Show buttons", isOn: binding)

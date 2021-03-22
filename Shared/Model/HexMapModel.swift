@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 public struct HexMapModel: Codable {
     
     public var name: String

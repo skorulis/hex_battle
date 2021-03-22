@@ -30,17 +30,20 @@ extension GameView: View {
             GameControlsView(viewModel: viewModel)
                 .frame(height: 80)
         }
-        .fullScreen(
+        /*.fullScreen(
             id: "controls\(viewModel.selectedNodeId ?? 0)",
             item: viewModel.selectedNode,
             content: selectedControls
-        )
+        )*/
     }
     
     @ViewBuilder
     public var maybeMap: some View {
         if let mapVM = viewModel.mapViewModel() {
-            MapView(viewModel: mapVM, namespace: namespace)
+            MapView(
+                viewModel: mapVM,
+                selectionViewModel: viewModel.selectionViewModel,
+                namespace: namespace)
         } else {
             EmptyView()
         }
@@ -48,7 +51,7 @@ extension GameView: View {
     
     @ViewBuilder
     public func selectedControls(item: MapNodeState) -> some View {
-        NodeButtonsView(node: item, viewModel: viewModel)
+        NodeButtonsView(node: item, viewModel: viewModel.selectionViewModel)
         .matchedGeometryEffect(id: "node-\(item.id)", in: namespace, properties: .position, isSource: false)
     }
 }

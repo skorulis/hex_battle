@@ -34,20 +34,7 @@ extension GameControlsView: View {
     
     @ViewBuilder
     private var nodeControls: some View {
-        if let selected = viewModel.selectedNodeId, let node = viewModel.nodeState(id: selected) {
-            ScrollView(.horizontal, showsIndicators: false, content: {
-                switch node.type {
-                case .command:
-                    commandButtons
-                case .empty:
-                    emptyButtons
-                default:
-                    Text("TODO")
-                }
-            })
-        } else {
-            EmptyView()
-        }
+        EmptyView()
     }
     
     func typeButton(type: NodeType, action: @escaping () -> ()) -> some View {

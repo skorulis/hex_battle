@@ -105,6 +105,8 @@
 		FAC16EEF25FE0FC3004238EC /* HexGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16EED25FE0FC3004238EC /* HexGridView.swift */; };
 		FAC16F952600BABA004238EC /* HexGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F942600BABA004238EC /* HexGrid.swift */; };
 		FAC16F962600BABA004238EC /* HexGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F942600BABA004238EC /* HexGrid.swift */; };
+		FAEE34E52608A3D000A8612B /* ControlsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE34E42608A3D000A8612B /* ControlsViewModel.swift */; };
+		FAEE34E62608A3D000A8612B /* ControlsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE34E42608A3D000A8612B /* ControlsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +188,7 @@
 		FAC16ED125FDD2CB004238EC /* MapEdgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEdgeViewModel.swift; sourceTree = "<group>"; };
 		FAC16EED25FE0FC3004238EC /* HexGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexGridView.swift; sourceTree = "<group>"; };
 		FAC16F942600BABA004238EC /* HexGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexGrid.swift; sourceTree = "<group>"; };
+		FAEE34E42608A3D000A8612B /* ControlsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,6 +498,7 @@
 				FAC16EB725FD9F87004238EC /* BuildProgressView.swift */,
 				FAAF28C92605BFEF009B91BE /* ModalContainerView.swift */,
 				FAAF28DD2605DC7D009B91BE /* NodeButtonsView.swift */,
+				FAEE34E42608A3D000A8612B /* ControlsViewModel.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -719,6 +723,7 @@
 				FA59B7F325FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */,
 				FAC16E8F25FD791A004238EC /* GameControls.swift in Sources */,
 				FAC16EAE25FD9AAA004238EC /* StatefulPreviewWrapper.swift in Sources */,
+				FAEE34E52608A3D000A8612B /* ControlsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,6 +772,7 @@
 				FA59B7F425FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */,
 				FAC16E9025FD791A004238EC /* GameControls.swift in Sources */,
 				FAC16EAF25FD9AAA004238EC /* StatefulPreviewWrapper.swift in Sources */,
+				FAEE34E62608A3D000A8612B /* ControlsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

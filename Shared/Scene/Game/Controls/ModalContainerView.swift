@@ -34,7 +34,7 @@ extension ModalContainerView: View {
         ZStack {
             content
                 .onPreferenceChange(FullScreenKey.self, perform: { value in
-                    self.update(value   )
+                    self.updateAll(value)
                 })
             ForEach(Array(modals.keys), id:\.self) { key in
                 modalView(modals[key]!)
@@ -53,7 +53,13 @@ extension ModalContainerView: View {
         } else {
             EmptyView()
         }
-        
+    }
+    
+    private func updateAll(_ dict: [String: FullScreenModel]) {
+        dict.values.forEach { (model) in
+            update(model)
+        }
+        print("Updated modals")
     }
     
     private func update(_ value: FullScreenModel) {
@@ -61,48 +67,40 @@ extension ModalContainerView: View {
         if existing == nil {
             existing = FullScreenModalState(model: value, isOpen: false)
         }
-        existing?.isOpen = false
+        //existing?.isOpen = false
         
-        existing?.model = value
-
-        self.modals[value.id] = existing!
-        
+        //Content function can only be changed while appearing
         if value.visible {
+            existing?.model.content = value.content
+        }
+        
+
+        if value.visible {
+            existing?.model.visible = true
             let toHide = modals.keys.filter { (key) -> Bool in
                 return key != value.id && modals[key]?.model.visible == true
             }
             for key in toHide {
-                modals[key]?.model.visible = false
-            }
-        }
-        
-        DispatchQueue.main.async {
-            existing?.isOpen = true
-            self.modals[value.id] = existing!
-        }
-        
-        /*self.combinedViews[value.id] = existing
-        
-        DispatchQueue.main.async {
-            leavingView?.visible = false
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + Self.AnimationTime) {
-            self.leavingView = nil
-        }
-        
-        if value.visible {
-            self.fullscreenOpen = false
-            self.fullscreenView = value
-            if !self.fullscreenOpen {
-                DispatchQueue.main.async {
-                    self.fullscreenOpen = true
-                }
+                modals[key]?.isOpen = false
             }
         } else {
-            
-            self.fullscreenView = nil
-            self.fullscreenOpen = false
+            existing?.isOpen = false
+        }
+        
+        self.modals[value.id] = existing!
+        
+        if value.visible {
+            DispatchQueue.main.async {
+                existing?.isOpen = true
+                self.modals[value.id] = existing!
+            }
+        }
+        
+        /*
+        DispatchQueue.main.asyncAfter(deadline: .now() + Self.AnimationTime) {
+            self.leavingView = nil
         }*/
+      
     }
 }
 
@@ -112,7 +110,7 @@ struct FullScreenModel: Equatable, Hashable {
     
     let id: String
     var visible: Bool
-    let content: () -> AnyView
+    var content: () -> AnyView
     
     static func == (lhs: FullScreenModel, rhs: FullScreenModel) -> Bool {
         return lhs.visible == rhs.visible &&
@@ -144,17 +142,13 @@ struct FullScreenModalState: Equatable, Hashable {
 }
 
 struct FullScreenKey: PreferenceKey {
-    static var defaultValue: FullScreenModel = FullScreenModel(
-        id: "",
-        visible: false,
-        content: { AnyView(EmptyView()) }
-    )
+    static var defaultValue: [String: FullScreenModel] = [:]
     
     static func reduce(
-        value: inout FullScreenModel,
-        nextValue: () -> FullScreenModel
+        value: inout [String: FullScreenModel],
+        nextValue: () -> [String: FullScreenModel]
     ) {
-        value = nextValue()
+        value.merge(dict: nextValue())
     }
 }
 
@@ -171,7 +165,7 @@ extension View {
             content: { AnyView(content()) }
         )
         return self
-            .preference(key: FullScreenKey.self, value: model)
+            .preference(key: FullScreenKey.self, value: [model.id: model])
     }
     
     func fullScreen<Content: View, V>(
@@ -185,7 +179,7 @@ extension View {
             content: {AnyView(content(item!))}
         )
         return self
-            .preference(key: FullScreenKey.self, value: model)
+            .preference(key: FullScreenKey.self, value: [model.id: model])
     }
     
 }
@@ -227,3 +221,11 @@ struct ModalContainerView_Previews: PreviewProvider {
     }
 }
 
+
+extension Dictionary {
+    mutating func merge(dict: [Key: Value]){
+        for (k, v) in dict {
+            updateValue(v, forKey: k)
+        }
+    }
+}
