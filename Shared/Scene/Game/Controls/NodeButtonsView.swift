@@ -92,7 +92,8 @@ extension NodeButtonsView: View {
                     .disabled(viewModel.builtCount(type: type) == 0)
                 return AnyView(button)
             }
-        default: return []
+        default:
+            return defaultNodeButtons()
         }
     }
     
@@ -109,10 +110,20 @@ extension NodeButtonsView: View {
             }
         }
         .id("button-\(type)")
+    }
+
+    
+    func defaultNodeButtons() -> [AnyView] {
+        let button = Button(action: viewModel.clearNode, label: {
+            Image(systemName: "trash")
+        })
+        .buttonStyle(RoundButtonStyle(selected: false))
         
+        return [AnyView(button)]
     }
 
 }
+
 
 // MARK: - Previews
 

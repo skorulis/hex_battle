@@ -84,6 +84,11 @@ extension ControlsViewModel {
         }
     }
     
+    func clearNode() {
+        guard let nodeId = self.stateService?.selectedNode else { return }
+        self.stateService?.clearNode(playerId: playerId, nodeId: nodeId)
+    }
+    
 }
 
 //MARK: PServiceType

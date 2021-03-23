@@ -92,6 +92,15 @@ extension GameStateService {
         return PlayerState.ConstructionTimeFrame(start: Date().timeIntervalSince1970, duration: duration, subscriber: subscriber)
     }
     
+    func clearNode(playerId: Int, nodeId: Int) {
+        guard var nodeState = state?.nodes[nodeId] else {
+            return
+        }
+        nodeState.owner = nil
+        nodeState.type = .empty
+        state?.nodes[nodeId] = nodeState
+    }
+    
 }
 
 // MARK: - Calculations
