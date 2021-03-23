@@ -55,6 +55,23 @@ final class MapViewModel: ObservableObject {
     
 }
 
+// MARK: - Computed
+
+extension MapViewModel {
+    
+    func canSelect(node: MapNodeState) -> Bool {
+        if node.owner == stateService?.playerId {
+            return true //Owned by player
+        }
+        if node.owner != nil {
+            return false //Owned by someone else
+        }
+        
+        let connected = stateService?.connectedNodes(id: node.id)
+        return connected?.contains(where: {$0.owner == stateService?.playerId }) ?? false
+    }
+}
+
 // MARK: - Behaviours
 
 extension MapViewModel {

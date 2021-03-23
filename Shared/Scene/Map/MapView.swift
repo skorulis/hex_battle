@@ -55,7 +55,7 @@ extension MapView: View {
                 )
                 .matchedGeometryEffect(id: "node-\(node.id)", in: namespace, isSource: true)
                 .position(x: node.x, y: node.y)
-                .disabled(state.owner != nil && state.owner != selectionViewModel.playerId)
+                .disabled(!viewModel.canSelect(node: state))
                 .fullScreen(
                     id: "controls-\(state.type)-\(node.id)",
                     item: selectionViewModel.nodeIfSelected(node.id),
