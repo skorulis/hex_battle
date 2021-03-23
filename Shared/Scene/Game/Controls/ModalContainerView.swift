@@ -59,6 +59,7 @@ extension ModalContainerView: View {
         dict.values.forEach { (model) in
             update(model)
         }
+        
         print("Updated modals")
     }
     
@@ -67,14 +68,12 @@ extension ModalContainerView: View {
         if existing == nil {
             existing = FullScreenModalState(model: value, isOpen: false)
         }
-        //existing?.isOpen = false
         
         //Content function can only be changed while appearing
         if value.visible {
             existing?.model.content = value.content
         }
         
-
         if value.visible {
             existing?.model.visible = true
             let toHide = modals.keys.filter { (key) -> Bool in

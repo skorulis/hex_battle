@@ -27,14 +27,8 @@ extension GameView: View {
     var body: some View {
         VStack {
             maybeMap
-            GameControlsView(viewModel: viewModel)
-                .frame(height: 80)
+            PlayerStatusView(viewModel: viewModel.playerStatusViewModel)
         }
-        /*.fullScreen(
-            id: "controls\(viewModel.selectedNodeId ?? 0)",
-            item: viewModel.selectedNode,
-            content: selectedControls
-        )*/
     }
     
     @ViewBuilder

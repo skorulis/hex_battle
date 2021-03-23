@@ -15,11 +15,26 @@ final class ControlsViewModel: ObservableObject {
     @Published
     var selectedNodeId: Int?
     
+    @Published
+    var playerState: PlayerState
+    
     init(stateService: GameStateService?) {
         self.stateService = stateService
         
+        let playerId = stateService?.playerId ?? 1
+        
+        self.playerState = stateService?.playerStates[playerId] ?? PlayerState(id: playerId)
+        
+        setupObservers()
+    }
+    
+    private func setupObservers() {
         stateService?.$selectedNode
             .assign(to: &$selectedNodeId)
+        
+        stateService?.$state
+            .map { [unowned self] in $0!.players[self.playerId]! }
+            .assign(to: &$playerState)
     }
     
     var selectedNode: MapNodeState? {
@@ -42,9 +57,12 @@ final class ControlsViewModel: ObservableObject {
 
 extension ControlsViewModel {
     
+    var playerId: Int {
+        return playerState.id
+    }
+    
     func builtCount(type: NodeType) -> Int {
-        return 10
-        //return playerState.readyBuildings[type] ?? 0
+        return playerState.readyBuildings[type] ?? 0
     }
 }
 
@@ -54,15 +72,15 @@ extension ControlsViewModel {
     
     func startConstruction(type: NodeType) -> () -> Void {
         return {
-            //self.stateService?.startConstruction(player: self.playerId, type: type)
+            self.stateService?.startConstruction(player: self.playerId, type: type)
         }
     }
     
     func buildNode(type: NodeType) -> () -> Void {
         return {
             guard let nodeId = self.stateService?.selectedNode else { return }
-            //let ownerId = self.playerId
-            //self.stateService?.buildNode(type: type, nodeId: nodeId, owner: ownerId)
+            let ownerId = self.playerId
+            self.stateService?.buildNode(type: type, nodeId: nodeId, owner: ownerId)
         }
     }
     

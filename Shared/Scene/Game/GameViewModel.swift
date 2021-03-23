@@ -14,7 +14,6 @@ final class GameViewModel: ObservableObject {
     
     let stateService: GameStateService?
     
-    
     @Published
     var playerState: PlayerState
     
@@ -28,8 +27,18 @@ final class GameViewModel: ObservableObject {
             .assign(to: &$playerState)
     }
     
+}
+
+// MARK: - Sub view models
+
+extension GameViewModel {
+     
     var selectionViewModel: ControlsViewModel {
         return ControlsViewModel(stateService: stateService)
+    }
+    
+    var playerStatusViewModel: PlayerStatusViewModel {
+        return PlayerStatusViewModel(stateService: stateService)
     }
     
 }
