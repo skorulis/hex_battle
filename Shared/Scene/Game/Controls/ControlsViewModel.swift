@@ -51,6 +51,16 @@ final class ControlsViewModel: ObservableObject {
             return nil
         }
     }
+    
+    func buildableEffects(node: MapNodeState) -> [NodeEffect] {
+        var available = stateService?.recipes.availableRecipes(inputs: node.energyInputs) ?? []
+        available = available.filter { node.activeEffect != $0.output }
+        return available.map { $0.output }
+    }
+    
+    func buildEffect(node: MapNodeState, effect: NodeEffect) {
+        stateService?.buildEffect(node: node, effect: effect)
+    }
 }
 
 // MARK: - Computed

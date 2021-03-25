@@ -114,12 +114,20 @@ extension NodeButtonsView: View {
 
     
     func defaultNodeButtons() -> [AnyView] {
-        let button = Button(action: viewModel.clearNode, label: {
+        let trash = Button(action: viewModel.clearNode, label: {
             Image(systemName: "trash")
         })
         .buttonStyle(RoundButtonStyle(selected: false))
         
-        return [AnyView(button)]
+        let buildable = viewModel.buildableEffects(node: node).map { (effect) in
+            return AnyView(
+                Button(action: {}, label: {
+                    Image(systemName: effect.iconName)
+                })
+            )
+        }
+        
+        return buildable + [AnyView(trash)]
     }
 
 }

@@ -36,8 +36,11 @@ extension MapNodeView: View {
     
     var body: some View {
         Button(action: action, label: {
-            Text(state.type.symbol)
-            Text("\(model.id)")
+            if state.activeEffect == .none {
+                Text("\(model.id)")
+            } else {
+                Image(systemName: state.activeEffect.iconName)
+            }
         })
         .buttonStyle(RoundButtonStyle(selected: selected))
     }

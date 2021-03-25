@@ -38,7 +38,6 @@ extension ModalContainerView: View {
                 })
             ForEach(Array(modals.keys), id:\.self) { key in
                 modalView(modals[key]!)
-                    
             }
         }
         
@@ -58,13 +57,16 @@ extension ModalContainerView: View {
     private func updateAll(_ dict: [String: FullScreenModel]) {
         dict.values.forEach { (model) in
             update(model)
-        }
-        
-        print("Updated modals")
+        }        
     }
     
     private func update(_ value: FullScreenModel) {
         var existing = self.modals[value.id]
+        if !value.visible && !(existing?.model.visible ?? false) {
+            //No change, don't update
+            return
+        }
+        
         if existing == nil {
             existing = FullScreenModalState(model: value, isOpen: false)
         }
@@ -81,25 +83,27 @@ extension ModalContainerView: View {
             }
             for key in toHide {
                 modals[key]?.isOpen = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + Self.AnimationTime) {
+                    self.modals.removeValue(forKey: key)
+                }
             }
-        } else {
-            existing?.isOpen = false
-        }
-        
-        self.modals[value.id] = existing!
-        
-        if value.visible {
+                
+            // Run open action
             DispatchQueue.main.async {
                 existing?.isOpen = true
                 self.modals[value.id] = existing!
             }
+            
+        } else {
+            existing?.isOpen = false
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + Self.AnimationTime) {
+                self.modals.removeValue(forKey: value.id)
+            }
         }
         
-        /*
-        DispatchQueue.main.asyncAfter(deadline: .now() + Self.AnimationTime) {
-            self.leavingView = nil
-        }*/
-      
+        self.modals[value.id] = existing!
+ 
     }
 }
 
@@ -158,6 +162,7 @@ extension View {
         visible: Bool,
         @ViewBuilder content: @escaping () -> Content
     ) -> some View {
+        
         let model = FullScreenModel(
             id: id,
             visible: visible,
@@ -172,10 +177,14 @@ extension View {
         item: V?,
         @ViewBuilder content: @escaping (V) -> Content
     ) -> some View {
+        let builder: () -> (AnyView) = {
+            return AnyView(content(item!))
+        }
+        
         let model = FullScreenModel(
             id: id,
             visible: item != nil,
-            content: {AnyView(content(item!))}
+            content: builder
         )
         return self
             .preference(key: FullScreenKey.self, value: [model.id: model])

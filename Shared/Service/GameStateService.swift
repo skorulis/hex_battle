@@ -11,7 +11,7 @@ import Swinject
 final class GameStateService: ObservableObject {
     
     private let initService: MapInitialisationService
-    private let recipes: RecipeService
+    let recipes: RecipeService
     
     public var map: HexMapModel?
     public var grid: HexGrid = HexGrid()
@@ -99,6 +99,10 @@ extension GameStateService {
         nodeState.owner = nil
         nodeState.type = .empty
         state?.nodes[nodeId] = nodeState
+    }
+    
+    func buildEffect(node: MapNodeState, effect: NodeEffect) {
+        state?.nodes[node.id]?.activeEffect = effect
     }
     
 }

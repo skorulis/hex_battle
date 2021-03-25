@@ -14,7 +14,8 @@ struct RecipeService {
     
     static let recipes: [PowerRecipeModel] = [
         PowerRecipeModel(inputs: [.alpha: 2], output: .turret),
-        PowerRecipeModel(inputs: [.beta: 2], output: .healing)
+        PowerRecipeModel(inputs: [.beta: 2], output: .healing),
+        PowerRecipeModel(inputs: [.gamma: 2], output: .rangeBoost),
     ]
     
     func availableRecipes(inputs: [NodeType: Int]) -> [PowerRecipeModel] {

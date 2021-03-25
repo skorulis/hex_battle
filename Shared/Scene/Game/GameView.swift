@@ -43,11 +43,6 @@ extension GameView: View {
         }
     }
     
-    @ViewBuilder
-    public func selectedControls(item: MapNodeState) -> some View {
-        NodeButtonsView(node: item, viewModel: viewModel.selectionViewModel)
-        .matchedGeometryEffect(id: "node-\(item.id)", in: namespace, properties: .position, isSource: false)
-    }
 }
 
 // MARK: - Previews
