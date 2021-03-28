@@ -82,7 +82,7 @@ extension GameStateService {
         self.state?.players[owner] = playerState
     }
     
-    private func constructionEvent(player: Int) -> PlayerState.ConstructionTimeFrame {
+    private func constructionEvent(player: Int) -> EventTimeFrame {
         let duration: TimeInterval = 10 * 0.2
         let subscriber = Timer.publish(every: duration, on: .main, in: .common)
             .autoconnect()
@@ -90,7 +90,7 @@ extension GameStateService {
             self.finishConstruction(player: player)
         }
         
-        return PlayerState.ConstructionTimeFrame(start: Date().timeIntervalSince1970, duration: duration, subscriber: subscriber)
+        return EventTimeFrame(start: Date().timeIntervalSince1970, duration: duration, subscriber: subscriber)
     }
     
     func clearNode(playerId: Int, nodeId: Int) {

@@ -49,19 +49,7 @@ extension PlayerState {
     struct ConstructionQueueItem: Identifiable {
         let id: UUID = UUID()
         let type: NodeType
-        var time: ConstructionTimeFrame?
-    }
-    
-    struct ConstructionTimeFrame {
-        let start: TimeInterval
-        let duration: TimeInterval
-        var subscriber: AnyCancellable
-        
-        init(start: TimeInterval, duration: TimeInterval, subscriber: AnyCancellable) {
-            self.start = start
-            self.duration = duration
-            self.subscriber = subscriber
-        }
+        var time: EventTimeFrame?
     }
     
 }
