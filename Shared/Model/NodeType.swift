@@ -75,5 +75,18 @@ extension NodeType {
             return false
         }
     }
+    
+    var maxHealth: Double {
+        switch self {
+        case .alpha, .beta, .gamma:
+            return 100
+        case .command:
+            return 1000
+        case .passive:
+            return 200
+        case .empty:
+            return 0
+        }
+    }
 
 }

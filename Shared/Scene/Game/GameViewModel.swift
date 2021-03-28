@@ -86,6 +86,31 @@ extension GameViewModel {
         }
     }
     
+    func dumpMap() {
+        guard var mapX = self.stateService?.map else { return }
+        mapX.nodes = mapX.nodes.map({ (node) -> HexMapNode in
+            guard let state = self.stateService?.state?.nodes[node.id] else {
+                return node
+            }
+            var output = node
+            if let owner = state.owner {
+                output.initialState = HexMapNode.InitialState(type: state.type, owner: owner)
+            }
+            
+            return output
+        })
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let json = try encoder.encode(mapX)
+            let text = String(data: json, encoding: .utf8)!
+            print(text)
+        } catch {
+            print("Error encoding the map ")
+        }
+        
+    }
+    
 }
 
 

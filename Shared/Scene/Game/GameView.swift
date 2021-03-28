@@ -25,10 +25,24 @@ struct GameView {
 extension GameView: View {
     
     var body: some View {
-        VStack {
-            maybeMap
-            PlayerStatusView(viewModel: viewModel.playerStatusViewModel)
+        ZStack {
+            VStack {
+                maybeMap
+                PlayerStatusView(viewModel: viewModel.playerStatusViewModel)
+            }
+            
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    Button(action: viewModel.dumpMap, label: {
+                        Text("SAVE")
+                    })
+                    .frame(alignment: .topLeading)
+                }
+                Spacer()
+            }
         }
+        
     }
     
     @ViewBuilder

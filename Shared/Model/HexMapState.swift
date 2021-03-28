@@ -38,6 +38,7 @@ struct MapNodeState: Codable {
     var type: NodeType = .empty
     var owner: Int?
     var activeEffect: NodeEffect = .none
+    var health: Double = 0
     
     var energyInputs: [NodeType: Int] = [:]
     

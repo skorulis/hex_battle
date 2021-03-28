@@ -74,6 +74,7 @@ extension MapInitialisationService {
                     id: node.id,
                     type: initialState.type,
                     owner: initialState.owner,
+                    health: initialState.type.maxHealth,
                     energyInputs: [:]
                 )
                 if let owner = initialState.owner {

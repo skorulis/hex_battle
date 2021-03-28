@@ -35,15 +35,40 @@ struct MapNodeView {
 extension MapNodeView: View {
     
     var body: some View {
-        Button(action: action, label: {
-            if state.activeEffect == .none {
-                Text("\(model.id)")
-            } else {
-                Image(systemName: state.activeEffect.iconName)
-            }
-        })
-        .buttonStyle(RoundButtonStyle(selected: selected))
+        ZStack {
+            maybeHealthBar
+            Button(action: action, label: {
+                if state.activeEffect == .none {
+                    Text("\(model.id)")
+                } else {
+                    Image(systemName: state.activeEffect.iconName)
+                }
+            })
+            .buttonStyle(RoundButtonStyle(selected: selected))
+        }
+        
     }
+    
+    @ViewBuilder
+    private var maybeHealthBar: some View {
+        if state.type != .empty {
+            ArcShape(fraction: healthPct)
+                .fill(Color.green)
+                .frame(width: RenderConstants.nodeRadius * 2 + 8, height: RenderConstants.nodeRadius * 2 + 8)
+        } else {
+            EmptyView()
+        }
+    }
+}
+
+// MARK: - Inner logic
+
+extension MapNodeView {
+    
+    var healthPct: Double {
+        return self.state.health / self.state.type.maxHealth
+    }
+    
 }
 
 // MARK: - Previews

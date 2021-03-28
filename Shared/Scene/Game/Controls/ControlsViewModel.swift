@@ -61,6 +61,12 @@ final class ControlsViewModel: ObservableObject {
     func buildEffect(node: MapNodeState, effect: NodeEffect) {
         stateService?.buildEffect(node: node, effect: effect)
     }
+    
+    func buildEffect(_ node: MapNodeState, _ effect: NodeEffect) -> () -> Void {
+        return {
+            self.buildEffect(node: node, effect: effect)
+        }
+    }
 }
 
 // MARK: - Computed

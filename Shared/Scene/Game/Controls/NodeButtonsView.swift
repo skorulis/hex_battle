@@ -121,7 +121,7 @@ extension NodeButtonsView: View {
         
         let buildable = viewModel.buildableEffects(node: node).map { (effect) in
             return AnyView(
-                Button(action: {}, label: {
+                Button(action: viewModel.buildEffect(node, effect), label: {
                     Image(systemName: effect.iconName)
                 })
             )

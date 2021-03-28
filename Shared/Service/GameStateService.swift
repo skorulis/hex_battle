@@ -74,6 +74,7 @@ extension GameStateService {
         }
         nodeState.owner = owner
         nodeState.type = type
+        nodeState.health = type.maxHealth
         state?.nodes[nodeId] = nodeState
         
         var playerState = playerStates[owner]!
@@ -98,6 +99,7 @@ extension GameStateService {
         }
         nodeState.owner = nil
         nodeState.type = .empty
+        nodeState.health = 0
         state?.nodes[nodeId] = nodeState
     }
     
@@ -139,8 +141,14 @@ extension GameStateService {
     }
     
     func calculateEnergy(node: MapNodeState) -> [NodeType: Int] {
+        guard let owner = node.owner else {
+            return [:]
+        }
         let conn = connectedNodes(id: node.id)
         return conn.reduce([:]) { (result, node) -> [NodeType: Int] in
+            if node.owner != owner {
+                return result
+            }
             var dict = result
             for e in node.energyOutputs {
                 dict[e] = (dict[e] ?? 0) + 1

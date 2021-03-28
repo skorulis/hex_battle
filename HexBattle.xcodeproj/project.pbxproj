@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA1DA47A260EC0ED00B838C7 /* testmaps in Resources */ = {isa = PBXBuildFile; fileRef = FA1DA479260EC0ED00B838C7 /* testmaps */; };
+		FA1DA47B260EC0ED00B838C7 /* testmaps in Resources */ = {isa = PBXBuildFile; fileRef = FA1DA479260EC0ED00B838C7 /* testmaps */; };
 		FA59B68625FC280F00C7ABC8 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B68525FC280F00C7ABC8 /* Tests_iOS.swift */; };
 		FA59B69725FC280F00C7ABC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA59B66C25FC280F00C7ABC8 /* Assets.xcassets */; };
 		FA59B69825FC280F00C7ABC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA59B66C25FC280F00C7ABC8 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		FA59B7ED25FC43C200C7ABC8 /* Color+Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7EB25FC43C200C7ABC8 /* Color+Neumorphic.swift */; };
 		FA59B7F325FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7F225FC462700C7ABC8 /* LinearGradient+Neumorphic.swift */; };
 		FA59B7F425FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59B7F225FC462700C7ABC8 /* LinearGradient+Neumorphic.swift */; };
+		FAA494E526102A3200155480 /* ArcShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA494E426102A3200155480 /* ArcShape.swift */; };
+		FAA494E626102A3200155480 /* ArcShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA494E426102A3200155480 /* ArcShape.swift */; };
 		FAAF28792601F7AE009B91BE /* MapError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF28782601F7AE009B91BE /* MapError.swift */; };
 		FAAF287A2601F7AE009B91BE /* MapError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF28782601F7AE009B91BE /* MapError.swift */; };
 		FAAF288B26033704009B91BE /* MapInitialisationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF288A26033704009B91BE /* MapInitialisationService.swift */; };
@@ -129,6 +133,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA1DA479260EC0ED00B838C7 /* testmaps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = testmaps; sourceTree = "<group>"; };
 		FA59B66C25FC280F00C7ABC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA59B67125FC280F00C7ABC8 /* HexBattle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HexBattle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA59B67425FC280F00C7ABC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -150,6 +155,7 @@
 		FA59B77E25FC341800C7ABC8 /* MapServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapServiceTests.swift; sourceTree = "<group>"; };
 		FA59B7EB25FC43C200C7ABC8 /* Color+Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Neumorphic.swift"; sourceTree = "<group>"; };
 		FA59B7F225FC462700C7ABC8 /* LinearGradient+Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinearGradient+Neumorphic.swift"; sourceTree = "<group>"; };
+		FAA494E426102A3200155480 /* ArcShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcShape.swift; sourceTree = "<group>"; };
 		FAAF28782601F7AE009B91BE /* MapError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapError.swift; sourceTree = "<group>"; };
 		FAAF288A26033704009B91BE /* MapInitialisationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInitialisationService.swift; sourceTree = "<group>"; };
 		FAAF2895260340CC009B91BE /* MapInitialisationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInitialisationServiceTests.swift; sourceTree = "<group>"; };
@@ -311,6 +317,7 @@
 		FA59B6BF25FC292300C7ABC8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA1DA479260EC0ED00B838C7 /* testmaps */,
 				FA59B6F125FC2C9600C7ABC8 /* maps */,
 			);
 			path = Resources;
@@ -511,6 +518,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC16EAD25FD9AAA004238EC /* StatefulPreviewWrapper.swift */,
+				FAA494E426102A3200155480 /* ArcShape.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -652,6 +660,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA59B6F225FC2C9600C7ABC8 /* maps in Resources */,
+				FA1DA47A260EC0ED00B838C7 /* testmaps in Resources */,
 				FA59B69725FC280F00C7ABC8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,6 +670,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA59B6F325FC2C9600C7ABC8 /* maps in Resources */,
+				FA1DA47B260EC0ED00B838C7 /* testmaps in Resources */,
 				FA59B69825FC280F00C7ABC8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,6 +697,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC16EC325FDC2A1004238EC /* MapEdgeView.swift in Sources */,
+				FAA494E526102A3200155480 /* ArcShape.swift in Sources */,
 				FAC16E8825FD7756004238EC /* RoundButton.swift in Sources */,
 				FAC16E5F25FD720C004238EC /* GameViewModel.swift in Sources */,
 				FAC16E7725FD722D004238EC /* ContentView.swift in Sources */,
@@ -737,6 +748,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC16EC425FDC2A1004238EC /* MapEdgeView.swift in Sources */,
+				FAA494E626102A3200155480 /* ArcShape.swift in Sources */,
 				FAC16E8925FD7756004238EC /* RoundButton.swift in Sources */,
 				FAC16E6025FD720C004238EC /* GameViewModel.swift in Sources */,
 				FAC16E7825FD722D004238EC /* ContentView.swift in Sources */,

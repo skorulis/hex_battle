@@ -22,7 +22,7 @@ public struct HexMapNode: Codable {
     public let id: Int
     public let x: CGFloat
     public let y: CGFloat
-    let initialState: InitialState?
+    var initialState: InitialState?
     
     struct InitialState: Codable {
         var type: NodeType = .empty

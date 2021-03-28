@@ -47,6 +47,7 @@ class GameStateServiceTests: XCTestCase {
         
         XCTAssertEqual(state.nodes[1]?.owner, 1)
         XCTAssertEqual(state.nodes[1]?.type, .command)
+        XCTAssertEqual(state.nodes[1]?.health, NodeType.command.maxHealth)
         
         XCTAssertEqual(state.players.count, 1)
     }
@@ -118,8 +119,17 @@ class GameStateServiceTests: XCTestCase {
         XCTAssertEqual(node2?.activeEffect, NodeEffect.healing)
     }
     
+    func test_energy_map1() throws {
+        sut.start(map: try Self.loadMap(name: "test1"))
+        
+        let node8 = sut.state?.nodes[8]
+        
+        XCTAssertEqual(node8?.energyInputs.count, 0) 
+    }
+    
 }
 
+// MARK: Map information
 
 extension GameStateServiceTests {
     
@@ -142,6 +152,13 @@ extension GameStateServiceTests {
         ]
         
         let map = HexMapModel(name: "test", nodes: nodes, edges: edges, players: players)
+        return map
+    }
+    
+    static func loadMap(name: String) throws -> HexMapModel {
+        let url = Bundle.main.url(forResource: "testmaps/\(name)", withExtension: "json")!
+        let data = try Data(contentsOf: url)
+        let map = try JSONDecoder().decode(HexMapModel.self, from: data)
         return map
     }
 }
