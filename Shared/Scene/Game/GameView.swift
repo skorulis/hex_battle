@@ -30,6 +30,7 @@ extension GameView: View {
                 maybeMap
                 PlayerStatusView(viewModel: viewModel.playerStatusViewModel)
             }
+            maybeProjectiles
             
             VStack(alignment: .leading) {
                 HStack {
@@ -46,12 +47,19 @@ extension GameView: View {
     }
     
     @ViewBuilder
+    var maybeProjectiles: some View {
+        ProjectilesView(viewModel: viewModel.projectilesViewModel)
+            .background(Color.green.opacity(0.5))
+    }
+    
+    @ViewBuilder
     public var maybeMap: some View {
         if let mapVM = viewModel.mapViewModel() {
             MapView(
                 viewModel: mapVM,
                 selectionViewModel: viewModel.selectionViewModel,
-                namespace: namespace)
+                namespace: namespace
+            )
         } else {
             EmptyView()
         }

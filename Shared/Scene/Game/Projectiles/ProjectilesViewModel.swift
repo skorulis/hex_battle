@@ -7,10 +7,31 @@
 
 import Foundation
 import Swinject
+import Combine
 
 final class ProjectilesViewModel: ObservableObject {
     
-    @Published var missiles: [Missile] = []
+    @Published var missiles: [Missile] = [
+        ProjectilesViewModel.makeMissile()
+    ]
+    
+}
+
+// MARK: - Inner logic
+
+extension ProjectilesViewModel {
+    
+    static func makeMissile() -> Missile {
+        let start = Date().timeIntervalSinceNow
+        let dummySubscriber = Just("").sink { (text) in
+            print("Text")
+        }
+        let event = EventTimeFrame(start: start, duration: 20, subscriber: dummySubscriber)
+        
+        let startPos = CGPoint(x: 50, y: 50)
+        let missile = Missile(source: startPos, target: CGPoint(x: 200, y: 100), event: event)
+        return missile
+    }
     
 }
 

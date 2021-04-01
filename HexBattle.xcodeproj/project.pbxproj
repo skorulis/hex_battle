@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA05E99026131D75002AC8F0 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA05E98F26131D75002AC8F0 /* TimeInterval+Extensions.swift */; };
+		FA05E99126131D75002AC8F0 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA05E98F26131D75002AC8F0 /* TimeInterval+Extensions.swift */; };
 		FA1DA47A260EC0ED00B838C7 /* testmaps in Resources */ = {isa = PBXBuildFile; fileRef = FA1DA479260EC0ED00B838C7 /* testmaps */; };
 		FA1DA47B260EC0ED00B838C7 /* testmaps in Resources */ = {isa = PBXBuildFile; fileRef = FA1DA479260EC0ED00B838C7 /* testmaps */; };
+		FA26F18D2616877400EC8E79 /* ParametricCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26F18C2616877400EC8E79 /* ParametricCurve.swift */; };
+		FA26F18E2616877400EC8E79 /* ParametricCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26F18C2616877400EC8E79 /* ParametricCurve.swift */; };
+		FA26F194261687B300EC8E79 /* Bezier3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26F193261687B300EC8E79 /* Bezier3.swift */; };
+		FA26F195261687B300EC8E79 /* Bezier3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26F193261687B300EC8E79 /* Bezier3.swift */; };
 		FA4916C92610464D00ABF1C9 /* ProjectilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4916C82610464D00ABF1C9 /* ProjectilesView.swift */; };
 		FA4916CA2610464D00ABF1C9 /* ProjectilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4916C82610464D00ABF1C9 /* ProjectilesView.swift */; };
 		FA4916D42610466000ABF1C9 /* ProjectilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4916D32610466000ABF1C9 /* ProjectilesViewModel.swift */; };
@@ -143,7 +149,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA05E98F26131D75002AC8F0 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		FA1DA479260EC0ED00B838C7 /* testmaps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = testmaps; sourceTree = "<group>"; };
+		FA26F18C2616877400EC8E79 /* ParametricCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametricCurve.swift; sourceTree = "<group>"; };
+		FA26F193261687B300EC8E79 /* Bezier3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bezier3.swift; sourceTree = "<group>"; };
 		FA4916C82610464D00ABF1C9 /* ProjectilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectilesView.swift; sourceTree = "<group>"; };
 		FA4916D32610466000ABF1C9 /* ProjectilesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectilesViewModel.swift; sourceTree = "<group>"; };
 		FA4916DB261047F100ABF1C9 /* Missile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Missile.swift; sourceTree = "<group>"; };
@@ -251,6 +260,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA26F18B2616876400EC8E79 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				FA26F18C2616877400EC8E79 /* ParametricCurve.swift */,
+				FA26F193261687B300EC8E79 /* Bezier3.swift */,
+			);
+			path = Math;
+			sourceTree = "<group>";
+		};
 		FA4916C7261045EC00ABF1C9 /* Projectiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +407,7 @@
 		FA59B6E825FC2B2900C7ABC8 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				FA26F18B2616876400EC8E79 /* Math */,
 				FAC16EAC25FD9AA2004238EC /* SwiftUI */,
 				FA59B6E925FC2B3300C7ABC8 /* Extensions */,
 			);
@@ -402,6 +421,7 @@
 				FA59B6EA25FC2B3A00C7ABC8 /* PServiceType.swift */,
 				FA59B7EB25FC43C200C7ABC8 /* Color+Neumorphic.swift */,
 				FA59B7F225FC462700C7ABC8 /* LinearGradient+Neumorphic.swift */,
+				FA05E98F26131D75002AC8F0 /* TimeInterval+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -768,6 +788,7 @@
 				FA59B6B925FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
 				FAC16DFF25FC8EBA004238EC /* AppStateService.swift in Sources */,
 				FA59B7EC25FC43C200C7ABC8 /* Color+Neumorphic.swift in Sources */,
+				FA26F194261687B300EC8E79 /* Bezier3.swift in Sources */,
 				FAC16EB825FD9F87004238EC /* BuildProgressView.swift in Sources */,
 				FA4916F32610507800ABF1C9 /* MissileView.swift in Sources */,
 				FAC16E6525FD720C004238EC /* TerritoryBorder.swift in Sources */,
@@ -775,6 +796,7 @@
 				FAAF28BE26059CBE009B91BE /* PowerRecipeModel.swift in Sources */,
 				FA59B6EB25FC2B3A00C7ABC8 /* PServiceType.swift in Sources */,
 				FAEE34F72609D1CF00A8612B /* PlayerStatusViewModel.swift in Sources */,
+				FA26F18D2616877400EC8E79 /* ParametricCurve.swift in Sources */,
 				FAC16E6B25FD720C004238EC /* MapNodeView.swift in Sources */,
 				FAAF28D82605C0D8009B91BE /* ModalContainerView.swift in Sources */,
 				FAC16E7925FD722D004238EC /* HexBattleApp.swift in Sources */,
@@ -787,6 +809,7 @@
 				FA4916E826104F7300ABF1C9 /* EventTimeFrame.swift in Sources */,
 				FAC16E6725FD720C004238EC /* HexMapModel+ViewModel.swift in Sources */,
 				FA59B7F325FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */,
+				FA05E99026131D75002AC8F0 /* TimeInterval+Extensions.swift in Sources */,
 				FAC16EAE25FD9AAA004238EC /* StatefulPreviewWrapper.swift in Sources */,
 				FAEE34E52608A3D000A8612B /* ControlsViewModel.swift in Sources */,
 			);
@@ -824,6 +847,7 @@
 				FA59B6BA25FC287F00C7ABC8 /* HexMapModel.swift in Sources */,
 				FAC16E0025FC8EBA004238EC /* AppStateService.swift in Sources */,
 				FA59B7ED25FC43C200C7ABC8 /* Color+Neumorphic.swift in Sources */,
+				FA26F195261687B300EC8E79 /* Bezier3.swift in Sources */,
 				FAC16EB925FD9F87004238EC /* BuildProgressView.swift in Sources */,
 				FA4916F42610507800ABF1C9 /* MissileView.swift in Sources */,
 				FAC16E6625FD720C004238EC /* TerritoryBorder.swift in Sources */,
@@ -831,6 +855,7 @@
 				FAAF28B926059CBE009B91BE /* PowerRecipeModel.swift in Sources */,
 				FA59B6EC25FC2B3A00C7ABC8 /* PServiceType.swift in Sources */,
 				FAEE34F82609D1CF00A8612B /* PlayerStatusViewModel.swift in Sources */,
+				FA26F18E2616877400EC8E79 /* ParametricCurve.swift in Sources */,
 				FAC16E6C25FD720C004238EC /* MapNodeView.swift in Sources */,
 				FAAF28D32605C0D7009B91BE /* ModalContainerView.swift in Sources */,
 				FAC16E7A25FD722D004238EC /* HexBattleApp.swift in Sources */,
@@ -843,6 +868,7 @@
 				FA4916E926104F7300ABF1C9 /* EventTimeFrame.swift in Sources */,
 				FAC16E6825FD720C004238EC /* HexMapModel+ViewModel.swift in Sources */,
 				FA59B7F425FC462700C7ABC8 /* LinearGradient+Neumorphic.swift in Sources */,
+				FA05E99126131D75002AC8F0 /* TimeInterval+Extensions.swift in Sources */,
 				FAC16EAF25FD9AAA004238EC /* StatefulPreviewWrapper.swift in Sources */,
 				FAEE34E62608A3D000A8612B /* ControlsViewModel.swift in Sources */,
 			);

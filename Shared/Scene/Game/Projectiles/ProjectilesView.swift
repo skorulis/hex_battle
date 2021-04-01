@@ -26,7 +26,8 @@ extension ProjectilesView: View {
                 MissileView(missile: missile)
             }
         }
-        .frame(width: 400, height: 400)
+        .frame(maxWidth:.infinity, maxHeight: .infinity)
+        
     }
 }
 
@@ -39,6 +40,7 @@ struct ProjectilesView_Previews: PreviewProvider {
         viewModel.missiles.append(makeMissile())
         return VStack {
             ProjectilesView(viewModel: viewModel)
+                .frame(width: 400, height: 400)
             HStack {
                 Button(action: {
                     viewModel.missiles.append(makeMissile())
@@ -50,14 +52,15 @@ struct ProjectilesView_Previews: PreviewProvider {
         
     }
     
-    static func makeMissile() -> Missile{
+    static func makeMissile() -> Missile {
         let start = Date().timeIntervalSinceNow
         let dummySubscriber = Just("").sink { (text) in
             print("Text")
         }
-        let event = EventTimeFrame(start: start, duration: start+1, subscriber: dummySubscriber)
+        let event = EventTimeFrame(start: start, duration: 20, subscriber: dummySubscriber)
         
-        let missile = Missile(source: .zero, target: CGPoint(x: 200, y: 100), event: event)
+        let startPos = CGPoint(x: 50, y: 50)
+        let missile = Missile(source: startPos, target: CGPoint(x: 200, y: 100), event: event)
         return missile
     }
 }

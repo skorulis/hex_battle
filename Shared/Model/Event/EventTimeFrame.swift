@@ -18,4 +18,9 @@ struct EventTimeFrame {
         self.duration = duration
         self.subscriber = subscriber
     }
+    
+    func fraction(at: TimeInterval) -> TimeInterval {
+        let t = (at - start) / duration
+        return max(min(t,0),1)
+    }
 }

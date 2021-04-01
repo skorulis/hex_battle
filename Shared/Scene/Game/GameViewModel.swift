@@ -41,6 +41,9 @@ extension GameViewModel {
         return PlayerStatusViewModel(stateService: stateService)
     }
     
+    var projectilesViewModel: ProjectilesViewModel {
+        return ProjectilesViewModel()
+    }
 }
 
 // MARK: - Data access
@@ -64,7 +67,7 @@ extension GameViewModel {
     }
 }
 
-// MARK: - Behaviours
+// MARK: - Behaviors
 
 extension GameViewModel {
     

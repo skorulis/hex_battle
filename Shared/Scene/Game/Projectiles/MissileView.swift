@@ -14,6 +14,7 @@ import SwiftUI
 struct MissileView {
     
     private let missile: Missile
+    @State private var movement: TimeInterval = 0
     
     init(missile: Missile) {
         self.missile = missile
@@ -25,8 +26,50 @@ struct MissileView {
 extension MissileView: View {
     
     var body: some View {
-        Image(systemName: "paperplane")
-            .position(x: missile.source.x, y: missile.source.y)
+        Image(systemName: "arrow.right")
+            .frame(width:20, height: 20)
+            .missilePosition(missile: missile, position: movement)
+            .onAppear(perform: animateToFinish)
+    }
+    
+}
+
+// MARK: - Behaviors
+
+extension MissileView {
+    
+    private func animateToFinish() {
+        withAnimation(.easeIn(duration: missile.event.duration)) {
+            self.movement = 1
+        }
+    }
+    
+}
+
+// MARK: - View modifies
+
+struct MissileAnimationModifier: AnimatableModifier {
+    
+    let missile: Missile
+    var time: TimeInterval
+    
+    var animatableData: TimeInterval {
+        get { return time }
+        set { time = newValue }
+    }
+    
+    func body(content: Content) -> some View {
+        return content
+            .rotationEffect(missile.rotation(t: animatableData))
+            .position(missile.fractionPosition(t: animatableData))
+    }
+    
+}
+
+extension View {
+    
+    func missilePosition(missile: Missile, position: TimeInterval) -> some View {
+        self.modifier(MissileAnimationModifier(missile:missile, time: position))
     }
 }
 
@@ -39,7 +82,7 @@ struct MissileView_Previews: PreviewProvider {
         let dummySubscriber = Just("").sink { (text) in
             print("Text")
         }
-        let event = EventTimeFrame(start: start, duration: start+1, subscriber: dummySubscriber)
+        let event = EventTimeFrame(start: start, duration: start+5, subscriber: dummySubscriber)
         
         let missile = Missile(
             source: CGPoint(x: 20, y: 20),
@@ -49,7 +92,7 @@ struct MissileView_Previews: PreviewProvider {
         ZStack {
             MissileView(missile: missile)
         }
-        .frame(width: 200, height: 300)
+        .frame(width: 240, height: 300)
         
     }
 }
