@@ -85,6 +85,7 @@ struct MissileView_Previews: PreviewProvider {
         let event = EventTimeFrame(start: start, duration: start+5, subscriber: dummySubscriber)
         
         let missile = Missile(
+            id: UUID(),
             source: CGPoint(x: 20, y: 20),
             target: CGPoint(x: 200, y: 100),
             event: event

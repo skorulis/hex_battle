@@ -42,7 +42,7 @@ extension GameViewModel {
     }
     
     var projectilesViewModel: ProjectilesViewModel {
-        return ProjectilesViewModel()
+        return ProjectilesViewModel(stateService: stateService)
     }
 }
 

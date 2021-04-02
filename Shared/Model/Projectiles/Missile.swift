@@ -5,14 +5,16 @@
 //  Created by Alexander Skorulis on 28/3/21.
 //
 
+import CGPointVector
 import Foundation
 import SwiftUI
+
 
 // MARK: - Memory footprint
 
 struct Missile: Identifiable {
     
-    let id = UUID()
+    let id: UUID
     
     let source: CGPoint
     let target: CGPoint
@@ -21,14 +23,24 @@ struct Missile: Identifiable {
     
     let curve: Bezier3
     
-    init(source: CGPoint, target: CGPoint, event: EventTimeFrame) {
+    init(id: UUID, source: CGPoint, target: CGPoint, event: EventTimeFrame) {
+        
+        let xOffset = CGFloat.random(in: -10...10)
+        let yOffset = CGFloat.random(in: -10...10)
+        
         self.source = source
-        self.target = target
+        self.target = target + CGPoint(x: xOffset, y: yOffset)
         self.event = event
+        self.id = id
         
-        let c1 = CGPoint.zero
+        let dir = self.target - source
+        let mid = (self.target + source) / 2
+        let mov = dir * CGAffineTransform(rotationAngle: CGFloat.pi / 2)
         
-        self.curve = Bezier3(from: source, to: target, control1: c1, control2: c1)
+        let arcHeight = CGFloat.random(in: 0.1...0.4)
+        let c1 = mid - (mov * arcHeight)
+        
+        self.curve = Bezier3(from: source, to: self.target, control1: c1, control2: c1)
     }
     
 }

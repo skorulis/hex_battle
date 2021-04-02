@@ -27,10 +27,15 @@ extension GameView: View {
     var body: some View {
         ZStack {
             VStack {
-                maybeMap
+                ZStack {
+                    maybeMap
+                        .matchedGeometryEffect(id: "map", in: namespace, isSource: true)
+                    maybeProjectiles
+                        .matchedGeometryEffect(id: "map", in: namespace, isSource: false)
+                }
                 PlayerStatusView(viewModel: viewModel.playerStatusViewModel)
             }
-            maybeProjectiles
+            
             
             VStack(alignment: .leading) {
                 HStack {
@@ -49,7 +54,7 @@ extension GameView: View {
     @ViewBuilder
     var maybeProjectiles: some View {
         ProjectilesView(viewModel: viewModel.projectilesViewModel)
-            .background(Color.green.opacity(0.5))
+            .allowsHitTesting(true)
     }
     
     @ViewBuilder
@@ -73,7 +78,7 @@ struct GameView_Previews: PreviewProvider {
     
     static var previews: some View {
         let initService = MapInitialisationService()
-        let stateService = GameStateService(initService: initService, recipes: RecipeService())
+        let stateService = GameStateService(initService: initService, recipes: RecipeService(), eventService: NodeEventService())
         stateService.start(map: MapView_Previews.previewMap)
         stateService.selectedNode = 1
         let viewModel = GameViewModel(stateService: stateService)

@@ -31,13 +31,15 @@ public final class IOCConfig {
         container.register(AppStateService.self).inObjectScope(.container)
         container.register(MapInitialisationService.self)
         container.register(RecipeService.self)
-        container.register(ControlsViewModel.self)
+        
+        container.register(NodeEventService.self).inObjectScope(.container)
     }
     
     private func setupViewModels() {
         container.register(LevelSelectionViewModel.self).inObjectScope(.weak)
         container.register(GameViewModel.self).inObjectScope(.weak)
         container.register(AppCoordinator.self).inObjectScope(.weak)
+        container.register(ControlsViewModel.self).inObjectScope(.weak)
     }
     
     public func get<Service>(_ serviceType: Service.Type = Service.self) -> Service? {

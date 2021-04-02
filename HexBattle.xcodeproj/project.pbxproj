@@ -15,6 +15,8 @@
 		FA26F18E2616877400EC8E79 /* ParametricCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26F18C2616877400EC8E79 /* ParametricCurve.swift */; };
 		FA26F194261687B300EC8E79 /* Bezier3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26F193261687B300EC8E79 /* Bezier3.swift */; };
 		FA26F195261687B300EC8E79 /* Bezier3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26F193261687B300EC8E79 /* Bezier3.swift */; };
+		FA26F19B2616919E00EC8E79 /* NodeEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26F19A2616919E00EC8E79 /* NodeEventService.swift */; };
+		FA26F19C2616919E00EC8E79 /* NodeEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26F19A2616919E00EC8E79 /* NodeEventService.swift */; };
 		FA4916C92610464D00ABF1C9 /* ProjectilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4916C82610464D00ABF1C9 /* ProjectilesView.swift */; };
 		FA4916CA2610464D00ABF1C9 /* ProjectilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4916C82610464D00ABF1C9 /* ProjectilesView.swift */; };
 		FA4916D42610466000ABF1C9 /* ProjectilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4916D32610466000ABF1C9 /* ProjectilesViewModel.swift */; };
@@ -153,6 +155,7 @@
 		FA1DA479260EC0ED00B838C7 /* testmaps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = testmaps; sourceTree = "<group>"; };
 		FA26F18C2616877400EC8E79 /* ParametricCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametricCurve.swift; sourceTree = "<group>"; };
 		FA26F193261687B300EC8E79 /* Bezier3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bezier3.swift; sourceTree = "<group>"; };
+		FA26F19A2616919E00EC8E79 /* NodeEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeEventService.swift; sourceTree = "<group>"; };
 		FA4916C82610464D00ABF1C9 /* ProjectilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectilesView.swift; sourceTree = "<group>"; };
 		FA4916D32610466000ABF1C9 /* ProjectilesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectilesViewModel.swift; sourceTree = "<group>"; };
 		FA4916DB261047F100ABF1C9 /* Missile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Missile.swift; sourceTree = "<group>"; };
@@ -393,6 +396,7 @@
 				FAC16DFE25FC8EB9004238EC /* AppStateService.swift */,
 				FAAF288A26033704009B91BE /* MapInitialisationService.swift */,
 				FAAF289B26059B60009B91BE /* RecipeService.swift */,
+				FA26F19A2616919E00EC8E79 /* NodeEventService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -798,6 +802,7 @@
 				FAEE34F72609D1CF00A8612B /* PlayerStatusViewModel.swift in Sources */,
 				FA26F18D2616877400EC8E79 /* ParametricCurve.swift in Sources */,
 				FAC16E6B25FD720C004238EC /* MapNodeView.swift in Sources */,
+				FA26F19B2616919E00EC8E79 /* NodeEventService.swift in Sources */,
 				FAAF28D82605C0D8009B91BE /* ModalContainerView.swift in Sources */,
 				FAC16E7925FD722D004238EC /* HexBattleApp.swift in Sources */,
 				FAC16E5925FD720C004238EC /* AppCoordinator.swift in Sources */,
@@ -857,6 +862,7 @@
 				FAEE34F82609D1CF00A8612B /* PlayerStatusViewModel.swift in Sources */,
 				FA26F18E2616877400EC8E79 /* ParametricCurve.swift in Sources */,
 				FAC16E6C25FD720C004238EC /* MapNodeView.swift in Sources */,
+				FA26F19C2616919E00EC8E79 /* NodeEventService.swift in Sources */,
 				FAAF28D32605C0D7009B91BE /* ModalContainerView.swift in Sources */,
 				FAC16E7A25FD722D004238EC /* HexBattleApp.swift in Sources */,
 				FAC16E5A25FD720C004238EC /* AppCoordinator.swift in Sources */,

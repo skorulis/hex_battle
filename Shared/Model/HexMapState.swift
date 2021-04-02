@@ -32,13 +32,14 @@ struct HexMapState {
     
 }
 
-struct MapNodeState: Codable {
+struct MapNodeState {
     
     let id: Int
     var type: NodeType = .empty
     var owner: Int?
     var activeEffect: NodeEffect = .none
     var health: Double = 0
+    var nextEvent: EventTimeFrame?
     
     var energyInputs: [NodeType: Int] = [:]
     

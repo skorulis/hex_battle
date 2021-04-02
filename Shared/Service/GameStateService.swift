@@ -11,6 +11,7 @@ import Swinject
 final class GameStateService: ObservableObject {
     
     private let initService: MapInitialisationService
+    private let eventService: NodeEventService
     let recipes: RecipeService
     
     public var map: HexMapModel?
@@ -27,16 +28,21 @@ final class GameStateService: ObservableObject {
     @Published
     public var selectedNode: Int?
     
+    @Published var missiles: [Missile]
+    
     public var playerStates: [Int: PlayerState] {
         return state?.players ?? [:]
     }
     
     public init(
         initService: MapInitialisationService,
-        recipes: RecipeService
+        recipes: RecipeService,
+        eventService: NodeEventService
     ) {
         self.initService = initService
         self.recipes = recipes
+        self.eventService = eventService
+        self.missiles = []
     }
     
     public func start(map: HexMapModel) {
@@ -100,11 +106,21 @@ extension GameStateService {
         nodeState.owner = nil
         nodeState.type = .empty
         nodeState.health = 0
+        nodeState.nextEvent = nil
         state?.nodes[nodeId] = nodeState
     }
     
     func buildEffect(node: MapNodeState, effect: NodeEffect) {
-        state?.nodes[node.id]?.activeEffect = effect
+        guard var stateNode = state?.nodes[node.id] else {
+            return
+        }
+        stateNode.activeEffect = effect
+        updateEvents(node: &stateNode)
+        state?.nodes[node.id] = stateNode
+    }
+    
+    private func updateEvents(node: inout MapNodeState) {
+        node.nextEvent = eventService.event(for: node, stateService: self)
     }
     
 }
@@ -128,11 +144,11 @@ extension GameStateService {
         for node in map?.nodes ?? [] {
             guard var nodeState = state.nodes[node.id] else { continue }
             nodeState.energyInputs = calculateEnergy(node: nodeState)
-            if nodeState.activeEffect == .none {
+            if nodeState.activeEffect == .none && nodeState.type != .command {
                 let availableRecipes = recipes.availableRecipes(inputs: nodeState.energyInputs)
                 nodeState.activeEffect = availableRecipes.first?.output ?? .none
             }
-            
+            updateEvents(node: &nodeState)
             state.nodes[node.id] = nodeState
         }
         
@@ -184,7 +200,8 @@ extension GameStateService: PServiceType {
     static func make(_ r: Resolver) -> GameStateService {
         return GameStateService(
             initService: r.forceResolve(),
-            recipes: r.forceResolve()
+            recipes: r.forceResolve(),
+            eventService: r.forceResolve()
             )
     }
 }
